@@ -36,7 +36,7 @@
               <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="cliente_id" id="cliente_id" class="form-control input-sm" placeholder="id del cliente">
+                    <input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm" placeholder="id del cliente">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
@@ -81,7 +81,12 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="estado" id="estado" class="form-control input-sm" placeholder="estado">
+                    <select name="estado" id="estado" class="form-control input-sm" >
+                         <option value="pagado">pagado</option>
+                         <option value="impago">impago</option>
+                         <option value="abono">abono</option>
+                       </select>
+                    {{-- <input type="text" name="estado" id="estado" class="form-control input-sm" placeholder="estado del servicio"> --}}
                   </div>
                 </div>
               </div>

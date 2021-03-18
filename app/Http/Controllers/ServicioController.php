@@ -14,7 +14,7 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        $servicios=Servicio::orderBy('id', 'asc')->paginate(3);
+        $servicios=Servicio::orderBy('id', 'asc')->paginate(10);
         return view('servicio.index', [
             'servicios'=>$servicios
         ]);
@@ -39,7 +39,7 @@ class ServicioController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[ 
-            'cliente_id'=>'required', 
+            'tipo_entidad_id'=>'required', 
             'nombre'=>'required', 
             'fecha_inicio'=>'required', 
             'fecha_fin'=>'required', 
@@ -85,7 +85,7 @@ class ServicioController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[ 
-            'cliente_id'=>'required', 
+            'tipo_entidad_id'=>'required', 
             'nombre'=>'required', 
             'fecha_inicio'=>'required', 
             'fecha_fin'=>'required', 

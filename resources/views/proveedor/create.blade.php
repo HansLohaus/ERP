@@ -1,16 +1,16 @@
 @extends("app.main")
 
 {{-- Cabecera --}}
-@section("title","Clientes")
+@section("title","Proveedores")
 @push("header")
 <style type="text/css"></style>
 @endpush
 
 {{-- Breadcrumb --}}
-@section("breadcrumb-title","Clientes")
+@section("breadcrumb-title","Proveedores")
 @section("breadcrumb")
-    <li class="breadcrumb-item" >Clientes</li>
-    <li class="breadcrumb-item active">Nuevo Cliente</li>
+    <li class="breadcrumb-item">Proveedores</li>
+    <li class="breadcrumb-item active">Nuevo Proveedor</li>
 @endsection
 {{-- Contenido --}}
 @section("content")
@@ -31,7 +31,7 @@
 				</div>
 				<div class="panel-body">					
 					<div class="table-container">
-						<form method="POST" action="{{ route('clientes.store') }}"  role="form">
+						<form method="POST" action="{{ route('proveedores.store') }}"  role="form">
 							{{ csrf_field() }}
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
@@ -88,7 +88,7 @@
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
 									<input type="submit"  value="Guardar" class="btn btn-success btn-block">
-									<a href="{{ route('clientes.index') }}" class="btn btn-info btn-block" >Atrás</a>
+									<a href="{{ route('proveedores.index') }}" class="btn btn-info btn-block" >Atrás</a>
 								</div>	
  
 							</div>

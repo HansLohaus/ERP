@@ -7,39 +7,22 @@ use App\TipoEntidad;
 use App\Entidad;
 use Freshwork\ChileanBundle\Rut;
 
-class ClienteController extends Controller
+class ProveedorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
 
-        $clientes=TipoEntidad::clientes()->orderBy('id', 'asc')->paginate(10);
-        return view('cliente.index', [
-            'clientes'=>$clientes
+        $proveedores=TipoEntidad::proveedores()->orderBy('id', 'asc')->paginate(10);
+        return view('proveedor.index', [
+            'proveedores'=>$proveedores
         ]);
 
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('cliente.create');
+        return view('proveedor.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
@@ -74,50 +57,29 @@ class ClienteController extends Controller
         }
         $tipoentidad=TipoEntidad::create([
             'entidad_id'=>$entidad->id,
-            'tipo' =>"cliente"
+            'tipo' =>"proveedor"
         ]);
-        return redirect()->route('clientes.index')->with('success','Registro creado satisfactoriamente');
+        return redirect()->route('proveedores.index')->with('success','Registro creado satisfactoriamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-         $cliente=TipoEntidad::with([
+         $proveedor=TipoEntidad::with([
             "entidad"    
         ])->findOrFail($id);
-        return  view('cliente.show',compact('cliente'));
+        return  view('proveedor.show',compact('proveedor'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
 
-        $cliente=TipoEntidad::with([
+        $proveedor=TipoEntidad::with([
             "entidad"    
         ])->findOrFail($id);
-        return  view('cliente.edit',compact('cliente'));
+        return  view('proveedor.edit',compact('proveedor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-
 
         $this->validate($request,[ 
             'rut'=>'required|cl_rut', 
@@ -137,8 +99,8 @@ class ClienteController extends Controller
             ->where("nombre_fantasia", $request->nombre_fantasia)
             ->where("id", "!=", $tipoentidad->entidad_id)->first();
         if ($entidad !== null) {
-            $request->session()->flash('alert-danger', 'los datos del cliente ya existen en el sistema.');
-            return redirect()->route('clientes.index');
+            $request->session()->flash('alert-danger', 'los datos del proveedor ya existen en el sistema.');
+            return redirect()->route('proveedores.index');
         }
         Entidad::where("id", $tipoentidad->entidad_id)->update([
             'rut'=>$request->rut,
@@ -153,22 +115,17 @@ class ClienteController extends Controller
             'activo'=>$request->activo
         ]);
         $request->session()->flash('alert-success', 'Registro actualizado satisfactoriamente');
-        return redirect()->route('clientes.index');
+        return redirect()->route('proveedores.index');
  
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request, $id)
     {
         TipoEntidad::findOrFail($id)->delete();
 
          $request->session()->flash('alert-success', 'Registro eliminado satisfactoriamente');
-        return redirect()->route('clientes.index');
+        return redirect()->route('proveedores.index');
    
     }
+
 }

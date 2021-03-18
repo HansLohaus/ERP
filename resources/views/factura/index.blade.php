@@ -75,7 +75,7 @@
               @if($facturas->count())  
               @foreach($facturas as $factura)  
               <tr>
-              	<td>{{$factura->cliente_id}}</td>
+              	<td>{{$factura->tipo_entidad_id}}</td>
                 <td>{{$factura->servicio_id}}</td>
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>

@@ -15,7 +15,7 @@ class EntidadController extends Controller
      */
     public function index()
     {
-        $entidades=Entidad::orderBy('id', 'asc')->paginate(3);
+        $entidades=Entidad::orderBy('id', 'asc')->paginate(10);
         return view('entidad.index', [
             'entidades'=>$entidades
         ]);

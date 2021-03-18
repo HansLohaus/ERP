@@ -13,7 +13,7 @@ class TipoEntidadController extends Controller
      */
     public function index()
     {
-        $tipoentidades=TipoEntidad::orderBy('id', 'asc')->paginate(3);
+        $tipoentidades=TipoEntidad::orderBy('id', 'asc')->paginate(10);
         return view('tipoentidad.index', [
             'tipoentidades'=>$tipoentidades
         ]);

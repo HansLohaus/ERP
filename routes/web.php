@@ -44,6 +44,7 @@ Route::get('/manual',['as' => 'manual', 'uses' => 'UserController@manuales']);
 
 //clientes
 Route::resource('clientes','ClienteController');
+Route::resource('proveedores','ProveedorController');
 Route::resource('servicios','ServicioController');
 Route::resource('facturas','FacturaController');
 Route::resource('pagos','PagoController');

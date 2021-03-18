@@ -1,7 +1,7 @@
 @extends("app.main")
 
 {{-- Cabecera --}}
-@section("title","Clientes")
+@section("title","Proveedores")
 @push("header")
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables/datatables.min.css') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
@@ -11,9 +11,9 @@
 @endpush
 
 {{-- Breadcrumb --}}
-@section("breadcrumb-title","Clientes")
+@section("breadcrumb-title","Proveedores")
 @section("breadcrumb")
-    <li class="breadcrumb-item active">Clientes</li>
+    <li class="breadcrumb-item active">Proveedores</li>
 @endsection
 {{-- Contenido --}}
 @section("content")
@@ -27,10 +27,10 @@
     <div class="col-md-12 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-body">
-          <div class="pull-left"><h3>Lista Clientes</h3></div>
+          <div class="pull-left"><h3>Lista Proveedores</h3></div>
           <div class="pull-right">
 	           <div class="btn-group">
-	             <a href="{{ route('clientes.create') }}" class="btn btn-info" >Añadir Cliente</a>
+	             <a href="{{ route('proveedores.create') }}" class="btn btn-info" >Añadir Proveedor</a>
 	           </div>
           </div>
           <div class="table-container">
@@ -44,19 +44,19 @@
                <th>Eliminar</th>
              </thead>
              <tbody>
-              @if($clientes->count())  
-              @foreach($clientes as $cliente)  
+              @if($proveedores->count())  
+              @foreach($proveedores as $proveedor)  
               <tr>
-                <td>{{$cliente->entidad->rut}}</td>
-                <td>{{$cliente->entidad->razon_social}}</td>
-                <td>{{$cliente->entidad->nombre_fantasia}}</td>
-                <td><a data-cliente="{{json_encode($cliente)}}" href="#" class="btn btn-info" data-toggle="modal" data-target="#mas_info">más info</a></td>
-                <td><a class="btn btn-primary" href="{{action('ClienteController@edit', $cliente->id)}}" ><i class="bi bi-pencil"></i></a></td>
+                <td>{{$proveedor->entidad->rut}}</td>
+                <td>{{$proveedor->entidad->razon_social}}</td>
+                <td>{{$proveedor->entidad->nombre_fantasia}}</td>
+                <td><a data-proveedor="{{json_encode($proveedor)}}" href="#" class="btn btn-info" data-toggle="modal" data-target="#mas_info">más info</a></td>
+                <td><a class="btn btn-primary" href="{{action('ProveedorController@edit', $proveedor->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>
-                  <form action="{{action('ClienteController@destroy', $cliente->id)}}" method="post">
+                  <form action="{{action('ProveedorController@destroy', $proveedor->id)}}" method="post">
                    {{csrf_field()}}
                    <input name="_method" type="hidden" value="DELETE">
-                   <button class="btn btn-danger" type="submit" onclick="return confirm('Se eliminaran todos los servicios y facturas asociados al cliente, ¿Seguro que quieres eliminar? ')"><i class="bi bi-trash"></i></button>
+                   <button class="btn btn-danger" type="submit" onclick="return confirm('Se eliminaran todos los servicios y facturas asociados al proveedor, ¿Seguro que quieres eliminar? ')"><i class="bi bi-trash"></i></button>
                   </form>
                  </td>
                </tr>
@@ -114,9 +114,10 @@
            		{{-- fin popup --}}
         </div>
       </div>
-      {{ $clientes->links() }}
+      {{ $proveedores->links() }}
     </div>
   </div>
+
 @endsection
 @push("scripts")
 <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
@@ -128,13 +129,13 @@
     "bPaginate":true,
     "iDisplayLength": 30,
     "language": {
-        "emptyTable": "No hay clientes en el sistema",
+        "emptyTable": "No hay proveedores en el sistema",
         "paginate": {
             "next":       "Siguiente",
             "previous":   "Anterior"
         },
         "search": "Filtrar por :",
-        "zeroRecords": "No se encuentran clientes para la busqueda solicitada"
+        "zeroRecords": "No se encuentran proveedores para la busqueda solicitada"
     },
     "dom" : "<'table-responsive'tr>p",
 });
@@ -146,9 +147,9 @@ $("#tabla-filtro").on("keyup change",function(){
 </script>
 <script type="text/javascript"> 
 	$("body").on("click", "[data-target='#mas_info']", function(){
-		let cliente=$(this).data("cliente");
-		for (var key in cliente.entidad) {
-			$("#mas_info ."+key).text(cliente.entidad[key]);
+		let proveedor=$(this).data("proveedor");
+		for (var key in proveedor.entidad) {
+			$("#mas_info ."+key).text(proveedor.entidad[key]);
 		}
 	})
 

@@ -49,7 +49,7 @@
               @if($servicios->count())  
               @foreach($servicios as $servicio)  
               <tr>
-              	<td>{{$servicio->cliente_id}}</td>
+              	<td>{{$servicio->tipo_entidad_id}}</td>
                 <td>{{$servicio->nombre}}</td>
                 <td>{{ date_format(date_create($servicio->fecha_inicio),"d-m-Y") }}</td>
                 <td>{{ date_format(date_create($servicio->fecha_fin),"d-m-Y") }} </td>

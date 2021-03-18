@@ -8,7 +8,7 @@ class Factura extends Model
 {
     protected $table = 'facturas';
     protected $fillable = [
-        'cliente_id',
+        'tipo_entidad_id',
 		'servicio_id',
 		'folio',
 		'tipo_dte',

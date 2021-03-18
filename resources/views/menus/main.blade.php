@@ -9,7 +9,7 @@
 
 <li> <a class="waves-effect waves-dark" href="{{route('clientes.index')}}" aria-expanded="false"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">Clientes</span></a></li>
 
-<li> <a class="waves-effect waves-dark" href="{{route('entidades.index')}}" aria-expanded="false"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">Entidades</span></a></li>
+<li> <a class="waves-effect waves-dark" href="{{route('proveedores.index')}}" aria-expanded="false"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">Proveedores</span></a></li>
 
 <li> <a class="waves-effect waves-dark" href="{{route('servicios.index')}}" aria-expanded="false"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">Servicio</span></a></li>
 

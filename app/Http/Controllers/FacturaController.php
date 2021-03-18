@@ -14,7 +14,7 @@ class FacturaController extends Controller
      */
     public function index()
     {
-        $facturas=Factura::orderBy('id', 'asc')->paginate(3);
+        $facturas=Factura::orderBy('id', 'asc')->paginate(10);
         return view('factura.index', [
             'facturas'=>$facturas
         ]);
@@ -39,7 +39,7 @@ class FacturaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[ 
-        'cliente_id'=>'required', 
+        'tipo_entidad_id'=>'required', 
         'servicio_id'=>'required', 
         'folio'=>'required', 
         'tipo_dte'=>'required', 
@@ -88,7 +88,7 @@ class FacturaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[ 
-            'cliente_id'=>'required', 
+            'tipo_entidad_id'=>'required', 
             'servicio_id'=>'required', 
             'folio'=>'required', 
             'tipo_dte'=>'required', 

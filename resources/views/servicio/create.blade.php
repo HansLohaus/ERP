@@ -38,7 +38,7 @@
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<div class="form-group">
-										<input type="text" name="cliente_id" id="cliente_id" class="form-control input-sm" placeholder="id del cliente">
+										<input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm" placeholder="id del cliente">
 									</div>
 										{{-- <select name="cliente_id" id="cliente_id" class="form-control input-sm" required="required">
 											@foreach ($clientes->get())
@@ -68,7 +68,6 @@
   										   <option value="servicio">servicio</option>
   										   <option value="proyecto">proyecto</option>
   										 </select>
-										{{-- <input type="text" name="tipo" id="tipo" class="form-control input-sm" placeholder="tipo"> --}}
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">

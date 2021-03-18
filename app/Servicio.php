@@ -8,7 +8,7 @@ class Servicio extends Model
 {
     protected $table = 'servicios';
     protected $fillable = [
-        'cliente_id',
+        'tipo_entidad_id',
 		'nombre',
 		'fecha_inicio',
 		'fecha_fin',

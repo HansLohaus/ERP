@@ -14,7 +14,7 @@ class PagoController extends Controller
      */
     public function index()
     {
-        $pagos=Pago::orderBy('id', 'asc')->paginate(3);
+        $pagos=Pago::orderBy('id', 'asc')->paginate(10);
         return view('pago.index', [
             'pagos'=>$pagos
         ]);
