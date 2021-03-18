@@ -47,9 +47,9 @@
               @if($clientes->count())  
               @foreach($clientes as $cliente)  
               <tr>
-                <td>{{$cliente->rut}}</td>
-                <td>{{$cliente->razon_social}}</td>
-                <td>{{$cliente->nombre_fantasia}}</td>
+                <td>{{$cliente->entidad->rut}}</td>
+                <td>{{$cliente->entidad->razon_social}}</td>
+                <td>{{$cliente->entidad->nombre_fantasia}}</td>
                 <td><a data-cliente="{{json_encode($cliente)}}" href="#" class="btn btn-info" data-toggle="modal" data-target="#mas_info">más info</a></td>
                 <td><a class="btn btn-primary" href="{{action('ClienteController@edit', $cliente->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>
@@ -57,13 +57,10 @@
                    {{csrf_field()}}
                    <input name="_method" type="hidden" value="DELETE">
                    <button class="btn btn-danger" type="submit" onclick="return confirm('Se eliminaran todos los servicios y facturas asociados al cliente, ¿Seguro que quieres eliminar? ')"><i class="bi bi-trash"></i></button>
+                  </form>
                  </td>
                </tr>
                @endforeach 
-               @else
-               <tr>
-                <td colspan="8">No hay registro !!</td>
-              </tr>
               @endif
             </tbody>
           </table>
@@ -151,8 +148,8 @@ $("#tabla-filtro").on("keyup change",function(){
 <script type="text/javascript"> 
 	$("body").on("click", "[data-target='#mas_info']", function(){
 		let cliente=$(this).data("cliente");
-		for (var key in cliente) {
-			$("#mas_info ."+key).text(cliente[key]);
+		for (var key in cliente.entidad) {
+			$("#mas_info ."+key).text(cliente.entidad[key]);
 		}
 	})
 

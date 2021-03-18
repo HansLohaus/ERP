@@ -28,6 +28,6 @@ class Factura extends Model
     	return $this->belongsTo('App\Servicio','servicio_id');
     }
     public function tipoentidad(){
-    	return $this->belongsTo('App\TipoEntidad','tipo_entidades_id');
+    	return $this->belongsTo('App\TipoEntidad','tipo_entidad_id');
     }
 }

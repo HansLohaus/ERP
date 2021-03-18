@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cliente;
+use App\TipoEntidad;
+use App\Entidad;
 use Freshwork\ChileanBundle\Rut;
 
 class ClienteController extends Controller
@@ -15,7 +16,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes=Cliente::orderBy('id', 'asc')->paginate(3);
+
+        $clientes=TipoEntidad::clientes()->orderBy('id', 'asc')->paginate(3);
         return view('cliente.index', [
             'clientes'=>$clientes
         ]);
@@ -40,19 +42,40 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-    $this->validate($request,[ 
-        'rut'=>'required|cl_rut', 
-        'razon_social'=>'required', 
-        'nombre_fantasia'=>'required',
-        'nombre_contacto_fin'=>'required', 
-        'nombre_contacto_tec'=>'required', 
-        'fono_contacto_fin'=>'required', 
-        'fono_contacto_tec'=>'required', 
-        'email_contacto_fin'=>'required|email', 
-        'email_contacto_tec'=>'required|email', 
-        'activo'=>'required'
-    ]);
-        Cliente::create($request->all());
+
+        $this->validate($request,[ 
+            'rut'=>'required|cl_rut', 
+            'razon_social'=>'required', 
+            'nombre_fantasia'=>'required',
+            'nombre_contacto_fin'=>'required', 
+            'nombre_contacto_tec'=>'required', 
+            'fono_contacto_fin'=>'required', 
+            'fono_contacto_tec'=>'required', 
+            'email_contacto_fin'=>'required|email', 
+            'email_contacto_tec'=>'required|email', 
+            'activo'=>'required'
+        ]);
+        $entidad=Entidad::where("rut", $request->rut)
+            ->where("razon_social", $request->razon_social)
+            ->where("nombre_fantasia", $request->nombre_fantasia)->first();
+        if ($entidad == null) {
+            $entidad=Entidad::create([
+                'rut' =>$request->rut,
+                'razon_social' =>$request->razon_social,
+                'nombre_fantasia' =>$request->nombre_fantasia,
+                'nombre_contacto_fin' =>$request->nombre_contacto_fin,
+                'nombre_contacto_tec' =>$request->nombre_contacto_tec,
+                'fono_contacto_fin' =>$request->fono_contacto_fin,
+                'fono_contacto_tec' =>$request->fono_contacto_tec,
+                'email_contacto_fin' =>$request->email_contacto_fin,
+                'email_contacto_tec' =>$request->email_contacto_tec,
+                'activo' =>$request->activo
+            ]);
+        }
+        $tipoentidad=TipoEntidad::create([
+            'entidad_id'=>$entidad->id,
+            'tipo' =>"cliente"
+        ]);
         return redirect()->route('clientes.index')->with('success','Registro creado satisfactoriamente');
     }
 
@@ -64,8 +87,10 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-         $clientes=Cliente::find($id);
-        return  view('cliente.show',compact('clientes'));
+         $cliente=TipoEntidad::with([
+            "entidad"    
+        ])->findOrFail($id);
+        return  view('cliente.show',compact('cliente'));
     }
 
     /**
@@ -76,7 +101,10 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        $cliente=Cliente::findOrFail($id);
+
+        $cliente=TipoEntidad::with([
+            "entidad"    
+        ])->findOrFail($id);
         return  view('cliente.edit',compact('cliente'));
     }
 
@@ -89,6 +117,8 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $this->validate($request,[ 
             'rut'=>'required|cl_rut', 
             'razon_social'=>'required', 
@@ -101,9 +131,29 @@ class ClienteController extends Controller
             'email_contacto_tec'=>'required', 
             'activo'=>'required'
         ]);
- 
-        Cliente::find($id)->update($request->all());
-        return redirect()->route('clientes.index')->with('success','Registro actualizado satisfactoriamente');
+        $tipoentidad=TipoEntidad::find($id);
+        $entidad=Entidad::where("rut", $request->rut)
+            ->where("razon_social", $request->razon_social)
+            ->where("nombre_fantasia", $request->nombre_fantasia)
+            ->where("id", "!=", $tipoentidad->entidad_id)->first();
+        if ($entidad !== null) {
+            $request->session()->flash('alert-danger', 'los datos del cliente ya existen en el sistema.');
+            return redirect()->route('clientes.index');
+        }
+        Entidad::where("id", $tipoentidad->entidad_id)->update([
+            'rut'=>$request->rut,
+            'razon_social'=>$request->razon_social,
+            'nombre_fantasia'=>$request->nombre_fantasia,
+            'nombre_contacto_fin'=>$request->nombre_contacto_fin,
+            'nombre_contacto_tec'=>$request->nombre_contacto_tec,
+            'fono_contacto_fin'=>$request->fono_contacto_fin,
+            'fono_contacto_tec'=>$request->fono_contacto_tec,
+            'email_contacto_fin'=>$request->email_contacto_fin,
+            'email_contacto_tec'=>$request->email_contacto_tec,
+            'activo'=>$request->activo
+        ]);
+        $request->session()->flash('alert-success', 'Registro actualizado satisfactoriamente');
+        return redirect()->route('clientes.index');
  
     }
 
@@ -113,10 +163,12 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-         Cliente::find($id)->delete();
-        return redirect()->route('clientes.index')->with('success','Registro eliminado satisfactoriamente');
+        TipoEntidad::findOrFail($id)->delete();
+
+         $request->session()->flash('alert-success', 'Registro eliminado satisfactoriamente');
+        return redirect()->route('clientes.index');
    
     }
 }

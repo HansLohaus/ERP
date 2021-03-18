@@ -22,7 +22,7 @@ class Servicio extends Model
     	return $this->hasMany('App\Factura','servicio_id');
     }
     public function tipoentidad(){
-    	return $this->belongsTo('App\TipoEntidad','tipo_entidades_id');
+    	return $this->belongsTo('App\TipoEntidad','tipo_entidad_id');
     }
     
 }

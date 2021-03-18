@@ -20,6 +20,6 @@ class Entidad extends Model
 		'activo'
     ];
     public function tipoentidades(){
-    	return $this->hasMany('App\TipoEntidad','entidades_id');
+    	return $this->hasMany('App\TipoEntidad','entidad_id');
     }
 }
