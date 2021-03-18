@@ -1,0 +1,433 @@
+/*
+Template Name: Material Pro Admin
+Author: Themedesigner
+Email: niravjoshi87@gmail.com
+File: scss
+*/
+/*============================================================== 
+ For Laptop & above all (1650px) 
+ ============================================================== */
+.mini-sidebar .navbar-logo.permuted .light-logo {
+    vertical-align: unset;
+    height: inherit;
+    width: auto;
+}
+body:not(.mini-sidebar) .navbar-logo.permuted .light-logo {
+    height: inherit;
+    vertical-align: top !important;
+}
+
+@media(min-width:1650px) {
+    body:not(.mini-sidebar) {
+        #main-wrapper:not(.single-column) {
+            .navbar-logo.permuted .light-logo {
+                display: none;
+            }
+        }
+        .sidebar-nav ul li a {
+            width: $sidebar_width - $sidebar_padding*2;
+            overflow: hidden;
+            white-space: normal;
+        }
+        .scroll-sidebar {
+            height: calc(100% - 60px) !important;
+        }
+    }
+    .mini-sidebar .sidebar-nav ul li a {
+        width: 100%;
+        white-space: nowrap;
+    }
+}
+/*============================================================== 
+ For Laptop & above all (1370px) 
+ ============================================================== */
+
+@media(max-width:1370px) {
+    body:not(.mini-sidebar) {
+        #main-wrapper:not(.single-column) {
+            .navbar-logo.permuted .light-logo {
+                display: none;
+            }
+        }
+        .sidebar-nav ul li a {
+            width: $sidebar_width - $sidebar_padding*2;
+            overflow: hidden;
+            white-space: normal;
+        }
+        .scroll-sidebar {
+            height: calc(100% - 60px) !important;
+        }
+    }
+    .mini-sidebar .sidebar-nav ul li a {
+        width: 100%;
+        white-space: nowrap;
+    }
+}
+
+
+/*-- ============================================================== 
+ Small Desktop & above all (1024px) 
+ ============================================================== */
+
+@media(min-width:1024px) {
+    body:not(.mini-sidebar) {
+        #main-wrapper:not(.single-column) {
+            .page-wrapper{
+                margin-left:$sidebar_width;
+            }
+            .footer{
+                left: $sidebar_width;
+            } 
+            .navbar-logo.permuted .light-logo {
+                display: none;
+            }
+        }
+        .sidebar-nav ul li a {
+            width: $sidebar_width - $sidebar_padding*2;
+            overflow: hidden;
+            white-space: normal;
+        }
+        .scroll-sidebar {
+            height: calc(100% - 60px) !important;
+        }
+    }
+    .mini-sidebar .sidebar-nav ul li a {
+        width: 100%;
+        white-space: nowrap;
+    }
+}
+
+@media(max-width:1023px) {
+    body:not(.mini-sidebar) {
+        #main-wrapper:not(.single-column) {
+            .page-wrapper {
+                margin-left: $sidebar_width/4;
+            }
+            .footer{
+                left: $sidebar_width/4;
+            }
+            .navbar-logo.permuted .light-logo {
+                display: none;
+            }
+        }
+        .sidebar-nav ul li a {
+            width: $sidebar_width - $sidebar_padding*2;
+            overflow: hidden;
+            white-space: normal;
+        }
+        .scroll-sidebar {
+            height: calc(100% - 60px) !important;
+        }
+    }
+    .inbox-center a {
+        width: 200px;
+    }
+    .mini-sidebar .sidebar-nav ul li a {
+        width: 100%;
+        white-space: nowrap;
+    }
+}
+
+
+/*-- ============================================================== 
+ Ipad & above all(768px) 
+ ============================================================== */
+
+@media(min-width:768px) {
+    .material-icon-list-demo .icons div {
+        width: 33%;
+        padding: 15px;
+        display: inline-block;
+        line-height: 40px;
+    }
+    body:not(.mini-sidebar) {
+        .navbar-header {
+            width: $sidebar_width;
+            flex-shrink:0;
+            .navbar-brand {
+                padding-top: 0px;
+            }
+        }
+    }
+    .mini-sidebar {
+        #main-wrapper:not(.single-column) {
+            .page-wrapper{
+                margin-left: $sidebar_width/4;
+            }
+            .footer{
+                left: $sidebar_width/4;
+            }
+            .permuted .light-logo {
+                display: inline-block;
+            }
+            .light-text {
+                display: none;
+            }
+        }
+        #main-wrapper.single-column {
+            .permuted .light-logo {
+                display: none;
+            }
+            .light-text {
+                display: inline-block;
+            }
+            .navbar-header {
+                width: $sidebar_width;
+                flex-shrink:0;
+            }
+        }
+    }
+    .flex-wrap{
+        flex-wrap:nowrap!important;
+        -webkit-flex-wrap:nowrap!important;
+    }
+    .mini-sidebar .sidebar-nav ul li a {
+        width: 100%;
+        white-space: nowrap;
+    }
+    body:not(.mini-sidebar) .scroll-sidebar {
+        height: calc(100% - 60px) !important;
+    }
+}
+
+
+/*-- ============================================================== 
+ Phone and below ipad(767px) 
+ ============================================================== */
+
+@media(max-width:767px) {
+
+    .mini-sidebar {
+        .sidebar-nav {
+            width: $sidebar_width - $sidebar_padding*2;
+            overflow: visible;
+            ul li a {
+                width: $sidebar_width - $sidebar_padding*2;
+                overflow: hidden;
+                white-space: normal;
+            }
+        }
+        .scroll-sidebar {
+            width: 100% !important;
+        }
+    }
+
+    .scroll-sidebar {
+        height: calc(100% - 60px) !important;
+    }
+    
+    /*Header*/
+    .topbar {
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        .top-navbar {
+            padding-right: 15px;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            -webkit-align-items: center;
+            .navbar-collapse {
+                display: flex;
+                width: 100%;
+            }
+            .navbar-nav {
+                flex-direction: row;
+                > .nav-item.show {
+                    position: static;
+                    .dropdown-menu {
+                        width: 100%;
+                        margin-top: 0px;
+                    }
+                }
+                > .nav-item > .nav-link {
+                    padding-left: .50rem;
+                    padding-right: .50rem;
+                }
+                .dropdown-menu {
+                    position: absolute;
+                }
+            }
+        }
+    }
+    body:not(.mini-sidebar) .navbar-logo {
+        width: $sidebar_width - 2*$logo_padding_h;
+    }
+    .single-column .page-wrapper{
+        margin-top: $topbar_height;
+    }
+    .mega-dropdown {
+        .dropdown-menu {
+            height: 480px;
+            overflow: auto;
+        }
+    }
+    /*Sidebar and wrapper*/
+    .mini-sidebar {
+        .page-wrapper{
+            margin-left: 0;
+            margin-top: $topbar_height;
+        }
+        .light-text {
+            display: none;
+        }
+    }
+    .comment-text{
+        .comment-footer{
+            .action-icons {
+                display: block;
+                padding: 10px 0;
+            } 
+        }
+    }
+    
+    .vtabs .tabs-vertical {
+        width: auto;
+    }
+    /*Footer*/
+    .footer{
+            left: 0px;
+        }
+    .material-icon-list-demo .icons div {
+        width: 100%;
+    }
+    .error-page{
+        .footer{
+            position: fixed;
+            bottom: 0px;
+            z-index: 10;
+        }
+    }
+    .error-box{
+        position: relative;
+        padding-bottom: 60px;
+    }
+    .error-body{
+        padding-top: 10%;
+           h1{
+              font-size:100px;
+              font-weight:600;
+              line-height:100px;
+           }
+        }
+    .login-register{
+        position: relative;
+        overflow: hidden;
+    }
+    .login-box{
+        width: 90%;
+        
+    }
+    .login-sidebar{
+        padding: 10% 0;
+        .login-box{
+            position: relative;
+        }
+    }
+    
+    /*This is for chat page*/
+    .chat-main-box .chat-left-aside {
+        left: -250px;
+        position: absolute;
+        
+        transition: 0.5s ease-in;
+        background: $white;
+        &.open-pnl {
+            left: 0px;
+        }
+        .open-panel {
+            display: block;
+        }
+    }
+    .chat-main-box .chat-right-aside {
+        width: 100%;
+    }
+    /*Timeline*/
+    ul.timeline:before {
+        left: 40px;
+    }
+    ul.timeline>li>.timeline-panel {
+        width:"calc(100% - 90px)";
+        width:"calc(100% - 90px)";
+        width:"calc(100% - 90px)";
+    }
+    ul.timeline>li>.timeline-badge {
+        top: 16px;
+        left: 15px;
+        margin-left: 0;
+    }
+    ul.timeline>li>.timeline-panel {
+        float: right;
+    }
+    ul.timeline>li>.timeline-panel:before {
+        right: auto;
+        left: -15px;
+        border-right-width: 15px;
+        border-left-width: 0;
+    }
+    ul.timeline>li>.timeline-panel:after {
+        right: auto;
+        left: -14px;
+        border-right-width: 14px;
+        border-left-width: 0;
+    }
+    
+    /*Contact app page*/
+    .left-aside{
+        width: 100%;
+        position: relative;
+        border:0px;
+    }
+    .right-aside{
+        margin-left: 0px;
+    }
+    .flex-wrap{
+        flex-wrap:wrap!important;
+        -webkit-flex-wrap:wrap!important;
+    }
+    .chat-list li .chat-content{
+        width: calc(100% - 80px);
+    }
+}
+
+.invisible {
+  visibility: hidden !important; }
+
+.hidden-xs-up {
+  display: none !important; }
+
+@media (max-width: 575px) {
+  .hidden-xs-down {
+    display: none !important; } }
+
+@media (min-width: 576px) {
+  .hidden-sm-up {
+    display: none !important; } }
+
+@media (max-width: 767px) {
+  .hidden-sm-down {
+    display: none !important; } }
+
+@media (min-width: 768px) {
+  .hidden-md-up {
+    display: none !important; } }
+
+@media (max-width: 991px) {
+  .hidden-md-down {
+    display: none !important; } }
+
+@media (min-width: 992px) {
+  .hidden-lg-up {
+    display: none !important; } }
+
+@media (max-width: 1199px) {
+  .hidden-lg-down {
+    display: none !important; } }
+
+@media (min-width: 1200px) {
+  .hidden-xl-up {
+    display: none !important; } }
+
+.hidden-xl-down {
+  display: none !important; }

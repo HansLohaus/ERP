@@ -1,0 +1,43 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+
+// Variables
+@import "variables";
+@import 'style';
+@import 'pages';
+@import 'sidebar';
+@import 'widgets';
+@import 'grid';
+@import 'responsive';
+@import 'material';
+
+// Preloader
+.preloader{
+  width: 100%;
+  height: 100%;
+  top:0px;
+  position: fixed;
+  z-index: 99999;
+  background: #fff;
+  .cssload-speeding-wheel{
+    position: absolute;
+    top: calc(50% - 3.5px);
+    left: calc(50% - 3.5px);
+  }
+}
+
+.modal-content {
+  overflow: hidden;
+}
+
+.modal-primary .modal-header {
+  background-color: #7700F0;
+  h4 {
+    color: white;
+  }
+}
+
+.btn-table-options {
+  font-size: 12pt !important;
+}

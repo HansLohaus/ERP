@@ -1,0 +1,196 @@
+/*****************************************************************************************************
+    ESTILO DE LAS CAJAS DE CONTEO
+*****************************************************************************************************/
+.small-box h3 {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
+}
+.small-box > .inner {
+    padding: 10px;
+}
+.small-box .count {
+    color: white;
+}
+.small-box {
+    border-radius: 2px;
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.small-box > .small-box-footer {
+    position: relative;
+    text-align: center;
+    padding: 3px 0;
+    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+/*****************************************************************************************************
+    COLORES PERSONALIZADOS
+*****************************************************************************************************/
+.bg-aqua {
+    background-color: #00c0ef !important;
+    color: white;
+}
+.bg-yellow {
+    background-color: #f39c12 !important;
+    color: white;
+}
+.bg-green {
+    background-color: #00a65a !important;
+    color: white;
+}
+.bg-red {
+    background-color: #dd4b39 !important;
+    color: white;
+}
+
+/*****************************************************************************************************
+    ESTILOS PARA LAS NOTIFICACIONES
+*****************************************************************************************************/
+.btn-validaciones {
+    background-color: #E24E4E; 
+    color: white; 
+    text-align: center;
+    font-weight: bold;
+    padding-left: 0;
+    padding-right: 0;
+}
+.btn-ediciones {
+    background-color: #C7C7C7; 
+    color: white; 
+    text-align: center;
+    font-weight: bold;
+    padding-left: 0;
+    padding-right: 0;
+}
+.notificacion-inspeccion .btn {
+    color: white; 
+    text-align: center;
+    font-weight: bold;
+    padding-left: 0;
+    padding-right: 0;
+}
+.notificacion-badge {
+    background-color: #696969; 
+}
+.notificacion-badge.active {
+    background-color: #FF1D1D; 
+}
+#notificacion-boton {
+    position: relative;
+}
+#notificacion-cantidad {
+    position: absolute;
+    left:-5px;
+    top:8px;
+    opacity: 0.7;
+    font-size: 11px;
+}
+#notificacion-mensajes .mail-contnet {
+    position: relative; 
+    margin-left:10px;
+}
+
+/***********************************************************************
+    FIX VERSION MOVIL
+***********************************************************************/
+body.mini-sidebar div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    justify-content: flex-start !important;
+}
+body.mini-sidebar .dataTables_wrapper .dataTables_paginate {
+    float: left !important;
+}
+
+.hidden-xs-up {
+  display: none !important; }
+
+@media (max-width: 575px) {
+  .hidden-xs-down {
+    display: none !important; } }
+
+@media (min-width: 576px) {
+  .hidden-sm-up {
+    display: none !important; } }
+
+@media (max-width: 767px) {
+  .hidden-sm-down {
+    display: none !important; } }
+
+@media (min-width: 768px) {
+  .hidden-md-up {
+    display: none !important; } }
+
+@media (max-width: 991px) {
+  .hidden-md-down {
+    display: none !important; } }
+
+@media (min-width: 992px) {
+  .hidden-lg-up {
+    display: none !important; } }
+
+@media (max-width: 1199px) {
+  .hidden-lg-down {
+    display: none !important; } }
+
+@media (min-width: 1200px) {
+  .hidden-xl-up {
+    display: none !important; } }
+
+.hidden-xl-down {
+  display: none !important; }
+
+@media (max-width: 767px) {
+  #vista-seccion {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
+
+/***********************************************************************
+    CURSORES
+***********************************************************************/
+.alias {cursor: alias;}
+.all-scroll {cursor: all-scroll;}
+.auto {cursor: auto;}
+.cell {cursor: cell;}
+.context-menu {cursor: context-menu;}
+.col-resize {cursor: col-resize;}
+.copy {cursor: copy;}
+.crosshair {cursor: crosshair;}
+.default {cursor: default;}
+.e-resize {cursor: e-resize;}
+.ew-resize {cursor: ew-resize;}
+.grab {cursor: grab;}
+.grabbing {cursor: grabbing;}
+.help {cursor: help;}
+.move {cursor: move;}
+.n-resize {cursor: n-resize;}
+.ne-resize {cursor: ne-resize;}
+.nesw-resize {cursor: nesw-resize;}
+.ns-resize {cursor: ns-resize;}
+.nw-resize {cursor: nw-resize;}
+.nwse-resize {cursor: nwse-resize;}
+.no-drop {cursor: no-drop;}
+.none {cursor: none;}
+.not-allowed {cursor: not-allowed;}
+.pointer {cursor: pointer;}
+.progress {cursor: progress;}
+.row-resize {cursor: row-resize;}
+.s-resize {cursor: s-resize;}
+.se-resize {cursor: se-resize;}
+.sw-resize {cursor: sw-resize;}
+.text {cursor: text;}
+.url {cursor: url(myBall.cur),auto;}
+.w-resize {cursor: w-resize;}
+.wait {cursor: wait;}
+.zoom-in {cursor: zoom-in;}
+.zoom-out {cursor: zoom-out;}
