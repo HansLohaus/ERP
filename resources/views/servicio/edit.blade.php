@@ -38,6 +38,7 @@
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<div class="form-group">
+											<label>Id Cliente</label>
 										<input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm" value="{{$servicio->tipo_entidad_id}}">
 									</div>
 										{{-- <select name="cliente_id" id="cliente_id" class="form-control input-sm" required="required" value="{{$servicio->cliente_id}}">
@@ -49,21 +50,25 @@
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
+										<label>Nombre</label>
 										<input type="text" name="nombre" id="nombre" class="form-control input-sm" value="{{$servicio->nombre}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
+										<label>Fecha de inicio</label>
 										<input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control input-sm" value="{{$servicio->fecha_inicio}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
+										<label>Fecha de termino</label>
 										<input type="date" name="fecha_fin" id="fecha_fin" class="form-control input-sm" value="{{$servicio->fecha_fin}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
+										<label>Tipo de servicio</label>
 										<select name="tipo" id="tipo" class="form-control input-sm">
   										   <option>{{$servicio->tipo}}</option>
   										   <option value="servicio">servicio</option>
@@ -77,6 +82,7 @@
 								</div>
 								<br>
 								<div class="col-xs-6 col-sm-6 col-md-6">
+									<label>Estado del servicio</label>
 									<select name="estado" id="estado" class="form-control input-sm" >
 										<option >{{$servicio->estado}}</option>
   										   <option value="activo">activo</option>
@@ -88,15 +94,18 @@
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
+										<label>Número de propuesta</label>
 										<input type="text" name="numero_propuesta" id="numero_propuesta" class="form-control input-sm" value="{{$servicio->numero_propuesta}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
+										<label>Condición de pago</label>
 										<input type="text" name="condicion_pago" id="condicion_pago" class="form-control input-sm" value="{{$servicio->condicion_pago}}">
 									</div>
 								</div>
 							</div>
+							<br>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
 									<input type="submit"  value="Actualizar" class="btn btn-success btn-block">

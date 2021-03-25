@@ -37,50 +37,60 @@
 								<div class="row">
              						<div class="col-xs-6 col-sm-6 col-md-6">
              					   		<div class="form-group">
+                                            <label>Id Cliente</label>
              					     	<input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control 	input-sm" value="{{$factura->tipo_entidad_id}}">
 	             					</div>
                   					 </div>
              					 	<div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
+                                    <label>Id Servicio</label>
              					     <input type="text" name="servicio_id" id="servicio_id" class="form-control 	input-sm" value="{{$factura->servicio_id}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
+                                    <label>Número de Folio</label>
              					     <input type="text" name="folio" id="folio" class="form-control input-sm" value="{{$factura->folio}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
+                                    <label>Tipo de DTE</label>
              					     <input type="text" name="tipo_dte" id="tipo_dte" class="form-control input-sm" value="{{$factura->tipo_dte}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
+                                    <label>Fecha de emisión</label>
              					     <input type="date" name="fecha_emision" id="fecha_emision" class="	form-control input-sm" value="{{$factura->fecha_emision}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
+                                    <label>Total del monto neto</label>
              					     <input type="text" name="total_neto" id="total_neto" class="form-control 	input-sm" value="{{$factura->total_neto}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
+                                    <label>Total del monto exento</label>
              					     <input type="text" name="total_exento" id="total_exento" class="form-control input-sm" value="{{$factura->total_exento}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
+                                    <label>Total del monto IVA</label>
              					     <input type="text" name="total_iva" id="total_iva" class="form-control 	input-sm" value="{{$factura->total_iva}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
+                                    <label>Monto total</label>
              					     <input type="text" name="total_monto_total" id="total_monto_total" class="	form-control input-sm" value="{{$factura->total_monto_total}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <label>Estado de la factura</label>
              					 	<select name="estado" id="estado" class="form-control input-sm" >
 										<option >{{$factura->estado}}</option>
   										   <option value="pagado">pagado</option>
@@ -92,6 +102,7 @@
              					   </div> --}}
              					 </div>
               				</div>
+                            <br>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
 									<input type="submit"  value="Actualizar" class="btn btn-success btn-block">

@@ -27,7 +27,7 @@ class CreateServiciosTable extends Migration
             $table->softDeletes();//deleted_at
         });
         Schema::table('servicios', function ($table) {
-            $table->foreign('tipo_entidad_id')->references('id')->on('tipo_entidades');
+            $table->foreign('tipo_entidad_id')->references('id')->on('tipo_entidades')->onDelete('cascade');
         });
     }
 

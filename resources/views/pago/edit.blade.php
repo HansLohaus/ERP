@@ -37,30 +37,52 @@
 							<div class="row">
                				 <div class="col-xs-6 col-sm-6 col-md-6">
                				   <div class="form-group">
+               				   	<label>Id Fatura</label>
                				     <input type="text" name="factura_id" id="factura_id" class="form-control input-sm" value="{{$pago->factura_id}}">
                				   </div>
                				 </div>
+                       <div class="col-xs-6 col-sm-6 col-md-6">
+                         <div class="form-group">
+                          <label>Id boleta/liquidacion</label>
+                           <input type="text" name="boleta_liquidacion_id" id="boleta_liquidacion_id" class="form-control input-sm" value="{{$pago->boleta_liquidacion_id}}">
+                         </div>
+                       </div>
+                       <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="form-group">
+                            <label>ingreso/egreso</label>
+                            <select name="ine" id="ine" class="form-control input-sm">
+                                 <option>{{$pago->ine}}</option>
+                                 <option value="ingreso">ingreso</option>
+                                 <option value="egreso">egreso</option>
+                               </select>
+                          </div>
+                        </div>
                				 <div class="col-xs-6 col-sm-6 col-md-6">
                				   <div class="form-group">
+               				   	<label>Fecha de pago</label>
                				     <input type="date" name="fecha_pago" id="fecha_pago" class="form-control input-sm" value="{{$pago->fecha_pago}}">
                				   </div>
                				 </div>
                				 <div class="col-xs-6 col-sm-6 col-md-6">
                				   <div class="form-group">
+               				   	<label>Monto</label>
                				     <input type="text" name="monto" id="monto" class="form-control input-sm" value="{{$pago->monto}}">
                				   </div>
                				 </div>
                				 <div class="col-xs-6 col-sm-6 col-md-6">
                				   <div class="form-group">
+               				   	<label>Monto total de transferencia</label>
                				     <input type="text" name="monto_total_transf" id="monto_total_transf" class="form-control input-sm" value="{{$pago->monto_total_transf}}">
                				   </div>
                				 </div>
                				 <div class="col-xs-6 col-sm-6 col-md-6">
                				   <div class="form-group">
+               				   	<label>Descripción de Movimiento</label>
                				     <input type="text" name="descrip_movimiento" id="descrip_movimiento" class="form-control input-sm" value="{{$pago->descrip_movimiento}}">
                				   </div>
                				 </div>
               				</div>
+              				<br>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
 									<input type="submit"  value="Actualizar" class="btn btn-success btn-block">

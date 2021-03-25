@@ -17,5 +17,9 @@
 
 <li> <a class="waves-effect waves-dark" href="{{route('pagos.index')}}" aria-expanded="false"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">Pagos</span></a></li>
 
+<li> <a class="waves-effect waves-dark" href="{{route('trabajadores.index')}}" aria-expanded="false"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">Trabajadores</span></a></li>
+
+<li> <a class="waves-effect waves-dark" href="{{route('boletasliquidaciones.index')}}" aria-expanded="false"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">BoletasLiquidaciones</span></a></li>
+
 <li> <a class="waves-effect waves-dark" href="{{route('ayuda')}}" aria-expanded="false"><i class="fa fa-info-circle"></i><span class="hide-menu">Ayuda</span></a>
 </li>

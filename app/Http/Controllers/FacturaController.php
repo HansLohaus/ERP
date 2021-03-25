@@ -14,9 +14,11 @@ class FacturaController extends Controller
      */
     public function index()
     {
-        $facturas=Factura::orderBy('id', 'asc')->paginate(10);
+        $facturas_clientes=Factura::with(['cliente.entidad'])->has('cliente')->orderBy('id', 'asc')->get();
+        $facturas_proveedores=Factura::with(['proveedor.entidad'])->has('proveedor')->orderBy('id', 'asc')->get();
         return view('factura.index', [
-            'facturas'=>$facturas
+            'facturas_clientes'=>$facturas_clientes,
+            'facturas_proveedores'=>$facturas_proveedores
         ]);
     }
 

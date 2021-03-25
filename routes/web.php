@@ -50,3 +50,5 @@ Route::resource('facturas','FacturaController');
 Route::resource('pagos','PagoController');
 Route::resource('entidades','EntidadController');
 Route::resource('tipoentidades','TipoEntidadController');
+Route::resource('trabajadores','TrabajadorController');
+Route::resource('boletasliquidaciones','BoletaLiquidacionController');

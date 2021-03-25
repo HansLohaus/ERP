@@ -56,7 +56,7 @@
                   <form action="{{action('ClienteController@destroy', $cliente->id)}}" method="post">
                    {{csrf_field()}}
                    <input name="_method" type="hidden" value="DELETE">
-                   <button class="btn btn-danger" type="submit" onclick="return confirm('Se eliminaran todos los servicios y facturas asociados al cliente, ¿Seguro que quieres eliminar? ')"><i class="bi bi-trash"></i></button>
+                   <button class="btn btn-danger" type="submit" onclick="return confirm('Se eliminaran todos los servicios y facturas asociados al cliente, ¿Seguro que quieres eliminar?')"><i class="bi bi-trash"></i></button>
                   </form>
                  </td>
                </tr>
@@ -66,51 +66,51 @@
           </table>
           		{{-- popup --}}
 				<div class="modal fade" id="mas_info">
-                   <div class="modal-dialog modal-l">
-                      	<div class="modal-content">
-                           <div class="modal-header">
-                           <button type="button" class="close" data-dismiss="modal">
-                           <span>×</span>
-                           </button>
-                           <h4>Cerrar</h4>
-                           </div>
-                           <div class="modal-body">
-               			   <form role="form">
-							{{ csrf_field() }}
-							<input name="_method" type="hidden" value="PATCH">
-							<div class="row">
-								<table>
-								  <tr>
-								    <th>Nombre contacto financiero:</th>
-								    <td class="nombre_contacto_fin"></td>
-								  </tr>
-								  <tr>
-								    <th>Nombre contacto tecnico:</th>
-								    <td  class="nombre_contacto_tec"></td>
-								  </tr>
-								  <tr>
-								    <th>Fono contacto financiero:</th>
-								    <td class="fono_contacto_fin"></td>
-								  </tr>
-								  <tr>
-								    <th>Fono contacto tecnico:</th>
-								    <td class="fono_contacto_tec"></td>
-								  </tr>
-								  <tr>
-								    <th>Email contacto financiero:</th>
-								    <td class="email_contacto_fin"></td>
-								  </tr>
-								  <tr>
-								    <th>Email contacto tecnico:</th>
-								    <td class="email_contacto_tec"></td>
-								  </tr>
-								</table>
-							</div>
-							</form>
-                           </div>
-                       </div>
+           <div class="modal-dialog modal-l">
+              	<div class="modal-content">
+                   <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal">
+                   <span>×</span>
+                   </button>
+                   <h4>Cerrar</h4>
                    </div>
-               </div>
+                   <div class="modal-body">
+       			    <form role="form">
+			          	{{ csrf_field() }}
+			          	<input name="_method" type="hidden" value="PATCH">
+			          	<div class="row">
+			          		<table class="table">
+			          		  <tr>
+			          		    <th>Nombre contacto financiero:</th>
+			          		    <td class="nombre_contacto_fin"></td>
+			          		  </tr>
+			          		  <tr>
+			          		    <th>Nombre contacto tecnico:</th>
+			          		    <td  class="nombre_contacto_tec"></td>
+			          		  </tr>
+			          		  <tr>
+			          		    <th>Fono contacto financiero:</th>
+			          		    <td class="fono_contacto_fin"></td>
+			          		  </tr>
+			          		  <tr>
+			          		    <th>Fono contacto tecnico:</th>
+			          		    <td class="fono_contacto_tec"></td>
+			          		  </tr>
+			          		  <tr>
+			          		    <th>Email contacto financiero:</th>
+			          		    <td class="email_contacto_fin"></td>
+			          		  </tr>
+			          		  <tr>
+			          		    <th>Email contacto tecnico:</th>
+			          		    <td class="email_contacto_tec"></td>
+			          		  </tr>
+			          		</table>
+			          	</div>
+			          </form>
+              </div>
+            </div>
+          </div>
+        </div>
            		{{-- fin popup --}}
         </div>
       </div>

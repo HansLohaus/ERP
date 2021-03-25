@@ -9,26 +9,15 @@ use Freshwork\ChileanBundle\Rut;
 
 class ClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-
         $clientes=TipoEntidad::clientes()->orderBy('id', 'asc')->paginate(10);
         return view('cliente.index', [
             'clientes'=>$clientes
         ]);
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('cliente.create');
@@ -55,6 +44,7 @@ class ClienteController extends Controller
             'email_contacto_tec'=>'required|email', 
             'activo'=>'required'
         ]);
+
         $entidad=Entidad::where("rut", $request->rut)
             ->where("razon_social", $request->razon_social)
             ->where("nombre_fantasia", $request->nombre_fantasia)->first();

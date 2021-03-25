@@ -36,52 +36,62 @@
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" name="rut" id="rut" class="form-control input-sm" placeholder="rut">
+										<label>Rut</label>
+										<input type="text" name="rut" id="rut" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" name="razon_social" id="razon_social" class="form-control input-sm" placeholder="razon social">
+										<label>Razón Social</label>
+										<input type="text" name="razon_social" id="razon_social" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" name="nombre_fantasia" id="nombre_fantasia" class="form-control input-sm" placeholder="nombre de fantasia">
+										<label>Nmombre de fantasia</label>
+										<input type="text" name="nombre_fantasia" id="nombre_fantasia" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" name="nombre_contacto_fin" id="nombre_contacto_fin" class="form-control input-sm" placeholder="nombre del contacto financiero">
+										<label>Nombre contacto financiero</label>
+										<input type="text" name="nombre_contacto_fin" id="nombre_contacto_fin" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" name="nombre_contacto_tec" id="nombre_contacto_tec" class="form-control input-sm" placeholder="nombre del contacto tecnico">
+										<label>Nombre contacto técnico</label>
+										<input type="text" name="nombre_contacto_tec" id="nombre_contacto_tec" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" name="fono_contacto_fin" id="fono_contacto_fin" class="form-control input-sm" placeholder="fono del contacto financiero">
+										<label>Teléfono contacto financiero</label>
+										<input type="text" name="fono_contacto_fin" id="fono_contacto_fin" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" name="fono_contacto_tec" id="fono_contacto_tec" class="form-control input-sm" placeholder="fono del contacto tecnico">
+										<label>Teléfono contacto técnico</label>
+										<input type="text" name="fono_contacto_tec" id="fono_contacto_tec" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" name="email_contacto_fin" id="email_contacto_fin" class="form-control input-sm" placeholder="email del contacto financiero">
+										<label>Email contacto financiero</label>
+										<input type="text" name="email_contacto_fin" id="email_contacto_fin" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm" placeholder="email del contacto tecnico">
+										<label>Email contacto técnico</label>
+										<input type="text" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" name="activo" id="activo" class="form-control input-sm" placeholder="activo">
+										<label>Activo</label>
+										<input type="text" name="activo" id="activo" class="form-control input-sm">
 									</div>
 								</div>
 							</div>

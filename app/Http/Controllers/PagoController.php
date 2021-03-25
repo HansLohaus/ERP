@@ -39,7 +39,9 @@ class PagoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[ 
-        'factura_id'=>'required', 
+        'factura_id'=>'required',
+        'boleta_liquidacion_id'=>'required',
+        'ine'=>'required',
         'fecha_pago'=>'required', 
         'monto'=>'required', 
         'monto_total_transf'=>'required', 
@@ -83,12 +85,14 @@ class PagoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[ 
-            'factura_id'=>'required', 
-        'fecha_pago'=>'required', 
-        'monto'=>'required', 
-        'monto_total_transf'=>'required', 
-        'descrip_movimiento'=>'required'
-             ]);
+            'factura_id'=>'required',
+            'boleta_liquidacion_id'=>'required',
+            'ine'=>'required',
+            'fecha_pago'=>'required',
+            'monto'=>'required',
+            'monto_total_transf'=>'required',
+            'descrip_movimiento'=>'required'
+        ]);
  
         Pago::find($id)->update($request->all());
         return redirect()->route('pagos.index')->with('success','Registro actualizado satisfactoriamente');

@@ -5,7 +5,6 @@
 @push("header")
 <style type="text/css"></style>
 @endpush
-
 {{-- Breadcrumb --}}
 @section("breadcrumb-title","Facturas")
 @section("breadcrumb")
@@ -36,51 +35,61 @@
               <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm" placeholder="id del cliente">
+                    <label>Id del Cliente</label>
+                    <input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="servicio_id" id="servicio_id" class="form-control input-sm" placeholder="id del servicio">
+                    <label>id del servicio</label>
+                    <input type="text" name="servicio_id" id="servicio_id" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="folio" id="folio" class="form-control input-sm" placeholder="folio">
+                    <label>Folio</label>
+                    <input type="text" name="folio" id="folio" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="tipo_dte" id="tipo_dte" class="form-control input-sm" placeholder="tipo de dte">
+                    <label>Tipo de DTE</label>
+                    <input type="text" name="tipo_dte" id="tipo_dte" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="date" name="fecha_emision" id="fecha_emision" class="form-control input-sm" placeholder="fecha de emision">
+                    <label>Fecha de emisión</label>
+                    <input type="date" name="fecha_emision" id="fecha_emision" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="total_neto" id="total_neto" class="form-control input-sm" placeholder="total monto neto">
+                    <label>Total del monto neto</label>
+                    <input type="text" name="total_neto" id="total_neto" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="total_exento" id="total_exento" class="form-control input-sm" placeholder="total monto exento">
+                    <label>Total del monto exento</label>
+                    <input type="text" name="total_exento" id="total_exento" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="total_iva" id="total_iva" class="form-control input-sm" placeholder="total del iva">
+                    <label>Total del monto IVA</label>
+                    <input type="text" name="total_iva" id="total_iva" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="total_monto_total" id="total_monto_total" class="form-control input-sm" placeholder="monto total">
+                    <label>Monto total</label>
+                    <input type="text" name="total_monto_total" id="total_monto_total" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
+                    <label>Estado de la factura</label>
                     <select name="estado" id="estado" class="form-control input-sm" >
                          <option value="pagado">pagado</option>
                          <option value="impago">impago</option>
@@ -90,17 +99,16 @@
                   </div>
                 </div>
               </div>
+              <br>
               <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                   <input type="submit"  value="Guardar" class="btn btn-success btn-block">
                   <a href="{{ route('facturas.index') }}" class="btn btn-info btn-block" >Atrás</a>
                 </div>  
- 
               </div>
             </form>
           </div>
         </div>
- 
       </div>
     </div>
 @endsection

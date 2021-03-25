@@ -16,6 +16,8 @@ class CreatePagosTable extends Migration
         Schema::create('pagos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('factura_id')->unsigned()->index();
+            $table->bigInteger('boleta_liquidacion_id')->unsigned()->index();
+            $table->enum('ine', ['ingreso', 'egreso']);
             $table->date('fecha_pago');
             $table->bigInteger('monto');
             $table->bigInteger('monto_total_transf');
@@ -26,11 +28,10 @@ class CreatePagosTable extends Migration
         });
 
         Schema::table('pagos', function ($table) {
-            $table->foreign('factura_id')->references('id')->on('facturas');
+            $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('cascade');
+            $table->foreign('boleta_liquidacion_id')->references('id')->on('boletas_liquidaciones')->onDelete('cascade');
         });
-
     }
-
     /**
      * Reverse the migrations.
      *

@@ -14,9 +14,11 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        $servicios=Servicio::orderBy('id', 'asc')->paginate(10);
+        $servicios_clientes=Servicio::with(['cliente.entidad'])->has('cliente')->orderBy('id', 'asc')->get();
+        $servicios_proveedores=Servicio::with(['proveedor.entidad'])->has('proveedor')->orderBy('id', 'asc')->get();
         return view('servicio.index', [
-            'servicios'=>$servicios
+            'servicios_clientes'=>$servicios_clientes,
+            'servicios_proveedores'=>$servicios_proveedores
         ]);
     }
 

@@ -29,8 +29,8 @@ class CreateFacturasTable extends Migration
             $table->softDeletes();//deleted_at
         });
         Schema::table('facturas', function ($table) {
-            $table->foreign('tipo_entidad_id')->references('id')->on('tipo_entidades');
-            $table->foreign('servicio_id')->references('id')->on('servicios');
+            $table->foreign('tipo_entidad_id')->references('id')->on('tipo_entidades')->onDelete('cascade');
+            $table->foreign('servicio_id')->references('id')->on('servicios')->onDelete('cascade');
         });
     }
 

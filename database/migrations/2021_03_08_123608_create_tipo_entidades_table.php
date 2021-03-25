@@ -21,7 +21,7 @@ class CreateTipoEntidadesTable extends Migration
             $table->softDeletes();//deleted_at
         });
         Schema::table('tipo_entidades', function ($table) {
-            $table->foreign('entidad_id')->references('id')->on('entidades');
+            $table->foreign('entidad_id')->references('id')->on('entidades')->onDelete('cascade');
         });
     }
 

@@ -30,4 +30,11 @@ class Factura extends Model
     public function tipoentidad(){
     	return $this->belongsTo('App\TipoEntidad','tipo_entidad_id');
     }
+    public function cliente(){
+        return $this->tipoentidad()->where("tipo", "cliente");
+    }   
+    public function proveedor(){
+        return $this->tipoentidad()->where("tipo", "proveedor");
+    }  
+
 }

@@ -36,30 +36,53 @@
               <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="factura_id" id="factura_id" class="form-control input-sm" placeholder="id factura">
+                    <label>Id Factura</label>
+                    <input type="text" name="factura_id" id="factura_id" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="date" name="fecha_pago" id="fecha_pago" class="form-control input-sm" placeholder="fecha de pago">
+                    <label>Id boleta/liquidacion</label>
+                    <input type="text" name="boleta_liquidacion_id" id="boleta_liquidacion_id" class="form-control input-sm">
+                  </div>
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <label>ingreso/egreso</label>
+                    <select name="ine" id="ine" class="form-control input-sm">
+                         <option value="ingreso">ingreso</option>
+                         <option value="egreso">egreso</option>
+                       </select>
+                  </div>
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <label>Fecha de pago</label>
+                    <input type="date" name="fecha_pago" id="fecha_pago" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="monto" id="monto" class="form-control input-sm" placeholder="monto">
+                    <label>Monto del pago</label>
+                    <input type="text" name="monto" id="monto" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="monto_total_transf" id="monto_total_transf" class="form-control input-sm" placeholder="monto total de transferencia">
+                    <label>Monto total de transferencia</label>
+                    <input type="text" name="monto_total_transf" id="monto_total_transf" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="text" name="descrip_movimiento" id="descrip_movimiento" class="form-control input-sm" placeholder="descripcion del movimiento">
+                    <label>Descripción del movimiento</label>
+                    <input type="text" name="descrip_movimiento" id="descrip_movimiento" class="form-control input-sm">
                   </div>
                 </div>
               </div>
+              <br>
               <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                   <input type="submit"  value="Guardar" class="btn btn-success btn-block">
