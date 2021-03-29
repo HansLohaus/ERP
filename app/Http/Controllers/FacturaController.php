@@ -4,22 +4,78 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Factura;
-
+use App\TipoEntidad;
+use App\Servicio;
 class FacturaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\|Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $facturas_clientes=Factura::with(['cliente.entidad'])->has('cliente')->orderBy('id', 'asc')->get();
-        $facturas_proveedores=Factura::with(['proveedor.entidad'])->has('proveedor')->orderBy('id', 'asc')->get();
-        return view('factura.index', [
-            'facturas_clientes'=>$facturas_clientes,
-            'facturas_proveedores'=>$facturas_proveedores
-        ]);
+        if (!$request->has('filtros')){
+            $facturas_clientes=Factura::with(['cliente.entidad'])->has('cliente')->orderBy('id', 'asc')->get();
+            $facturas_proveedores=Factura::with(['proveedor.entidad'])->has('proveedor')->orderBy('id', 'asc')->get();
+            $servicios=Servicio::orderBy('id', 'asc')->get();
+            return view('factura.index', [
+                'facturas_clientes'=>$facturas_clientes,
+                'facturas_proveedores'=>$facturas_proveedores,
+                'servicios'=>$servicios
+            ]);
+        }else{
+            $pagados=$request->filtros['pagados'];
+            $pendientes=$request->filtros['pendientes'];
+            //se inicializan query
+            $facturas_clientes=Factura::with(['cliente.entidad', 'servicio'])->has('cliente');
+            $facturas_proveedores=Factura::with(['proveedor.entidad', 'servicio'])->has('proveedor');
+
+            if ($pagados=='true') {
+                $facturas_clientes=$facturas_clientes->where('estado','pagado');
+                $facturas_proveedores=$facturas_proveedores->where('estado','pagado');
+            }
+            if ($pendientes=='true') {
+                $facturas_clientes=$facturas_clientes->where('estado', '!=','pagado');
+                $facturas_proveedores=$facturas_proveedores->where('estado', '!=','pagado');
+            }
+            $facturas_clientes=$facturas_clientes->orderBy('id', 'asc')->get();
+            $facturas_proveedores=$facturas_proveedores->orderBy('id', 'asc')->get();
+            foreach ($facturas_clientes as $factura) {
+                $factura->fecha_emision=date_format(date_create($factura->fecha_emision),"d-m-Y");
+                $factura->total_neto=number_format($factura->total_neto);
+                $factura->total_exento=number_format($factura->total_exento);
+                $factura->total_iva=number_format($factura->total_iva);
+                $factura->total_monto_total=number_format($factura->total_monto_total);
+                $factura->edit='<a class="btn btn-primary" href="'.action("FacturaController@edit", $factura->id).'" ><i class="bi bi-pencil"></i></a>';
+                $factura->delete='<form action="'.action('FacturaController@destroy', $factura->id).'" method="post">'.
+                   csrf_field().
+                   '<input name="_method" type="hidden" value="DELETE">'.
+                   '<button class="btn btn-danger" type="submit" onclick=\'return confirm("Se eliminaran todos los pagos asociados a la factura, '.
+                   '¿Seguro que quieres eliminar?")\'><i class="bi bi-trash"></i></button>'.
+                 '</form>';
+            }
+            foreach ($facturas_proveedores as $factura) {
+                $factura->fecha_emision=date_format(date_create($factura->fecha_emision),"d-m-Y");
+                $factura->total_neto=number_format($factura->total_neto);
+                $factura->total_exento=number_format($factura->total_exento);
+                $factura->total_iva=number_format($factura->total_iva);
+                $factura->total_monto_total=number_format($factura->total_monto_total);
+                $factura->edit='<a class="btn btn-primary" href="'.action("FacturaController@edit", $factura->id).'" ><i class="bi bi-pencil"></i></a>';
+                $factura->delete='<form action="'.action('FacturaController@destroy', $factura->id).'" method="post">'.
+                   csrf_field().
+                   '<input name="_method" type="hidden" value="DELETE">'.
+                   '<button class="btn btn-danger" type="submit" onclick=\'return confirm("Se eliminaran todos los pagos asociados a la factura, '.
+                   '¿Seguro que quieres eliminar?")\'><i class="bi bi-trash"></i></button>'.
+                 '</form>';
+            }
+            return response()->json([
+                'facturas_clientes'=>$facturas_clientes,
+                'facturas_proveedores'=>$facturas_proveedores
+            ]);
+        }
+
+        
     }
 
     /**
@@ -29,7 +85,12 @@ class FacturaController extends Controller
      */
     public function create()
     {
-        return view('factura.create');
+        $clientes=TipoEntidad::clientes()->get();
+        $servicios= Servicio::all();
+        return view('factura.create',[
+            'clientes'=>$clientes,
+            'servicios'=>$servicios
+        ]);
     }
 
     /**
@@ -76,8 +137,10 @@ class FacturaController extends Controller
      */
     public function edit($id)
     {
+        $servicios= Servicio::all();
+        $clientes=TipoEntidad::clientes()->get();
         $factura=Factura::findOrFail($id);
-        return  view('factura.edit',compact('factura'));
+        return  view('factura.edit',compact('factura','clientes','servicios'));
     }
 
     /**

@@ -37,16 +37,37 @@
 								<div class="row">
              						<div class="col-xs-6 col-sm-6 col-md-6">
              					   		<div class="form-group">
-                                            <label>Id Cliente</label>
-             					     	<input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control 	input-sm" value="{{$factura->tipo_entidad_id}}">
-	             					</div>
-                  					 </div>
-             					 	<div class="col-xs-6 col-sm-6 col-md-6">
+                                            <label>Cliente</label>
+                                            <select name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
+                                                <option value="" disabled hidden>Seleccione cliente</option>
+                                                @foreach ($clientes as $cliente)
+                                                    <option value="{{ $cliente->id }}">{{ $cliente->entidad->nombre_fantasia }}</option>
+                                                @endforeach
+                                                </select>
+                                            {{-- <label>Id Cliente</label>
+             					     	<input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control 	input-sm" value="{{$factura->tipo_entidad_id}}"> --}}
+	             					     </div>
+                  					</div>
+
+                                     <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Servicio</label>
+                                            <select name="servicio_id" id="servicio_id" class="form-control input-sm">
+                                                <option value="" disabled hidden>Seleccione Servicio</option>
+                                                @foreach ($servicios as $servicio)
+                                                    <option value="{{ $servicio->id }}">{{ $servicio->nombre}}</option>
+                                                @endforeach
+                                            </select>
+                                      </div>
+                                    </div>
+                                
+
+             					 {{-- <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
                                     <label>Id Servicio</label>
-             					     <input type="text" name="servicio_id" id="servicio_id" class="form-control 	input-sm" value="{{$factura->servicio_id}}">
+             					     <input type="text" name="servicio_id" id="servicio_id" class="form-control input-sm" value="{{$factura->servicio_id}}">
              					   </div>
-             					 </div>
+             					 </div> --}}
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
                                     <label>Número de Folio</label>

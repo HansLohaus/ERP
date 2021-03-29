@@ -35,16 +35,38 @@
               <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Id del Cliente</label>
-                    <input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
+                    <label>Cliente</label>
+                    <select name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
+                      <option value="" disabled hidden>Seleccione cliente</option>
+                      @foreach ($clientes as $cliente)
+                        <option value="{{ $cliente->id }}">{{ $cliente->entidad->nombre_fantasia }}</option>
+                      @endforeach
+                    </select>
+                    {{-- <label>Id del Cliente</label>
+                    <input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm"> --}}
+
                   </div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
+
+
+               <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <label>Servicio</label>
+                    <select name="servicio_id" id="servicio_id" class="form-control input-sm">
+                      <option value="" disabled hidden>Seleccione Servicio</option>
+                      @foreach ($servicios as $servicio)
+                        <option value="{{ $servicio->id }}">{{ $servicio->nombre}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+
+                {{-- <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>id del servicio</label>
                     <input type="text" name="servicio_id" id="servicio_id" class="form-control input-sm">
                   </div>
-                </div>
+                </div> --}}
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Folio</label>

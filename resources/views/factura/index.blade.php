@@ -15,6 +15,51 @@
 @endsection
 {{-- Contenido --}}
 @section("content")
+
+
+
+<div class="row">
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="small-box bg-aqua text-center">
+            <div class="inner">
+                <h3 class="count" id="total">0</h3>
+                    <p>Total de Facturas</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer" onclick="filtrarPor('totales')">Mostrar todo <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="small-box bg-red text-center">
+            <div class="inner">
+                <h3 class="count" id="inmediata">0</h3>
+                <p>Facturas pagadas</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer" onclick="filtrarPor('pagados')">Filtrar <i class="fa fa-filter"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="small-box bg-yellow text-center">
+            <div class="inner">
+                <h3 class="count" id="priorizada">0</h3>
+                <p>Facturas pendientes</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer" onclick="filtrarPor('pendientes')">Filtrar <i class="fa fa-filter"></i></a>
+        </div>
+    </div>
+</div>
+
+
+
+
 <div class="input-group">
     <div class="input-group-prepend">
         <span class="input-group-text"><span class="fa fa-filter"></span></span>
@@ -127,8 +172,8 @@
               @if($facturas_clientes->count())  
               @foreach($facturas_clientes as $factura)  
               <tr>
-                <td>{{$factura->cliente->entidad->razon_social}}</td>
-                <td>{{$factura->servicio_id}}</td>
+                <td>{{$factura->cliente->entidad->nombre_fantasia}}</td>
+                <td>{{$factura->servicio->nombre}}</td>
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>
                 <td>{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
@@ -143,13 +188,10 @@
                    {{csrf_field()}}
                    <input name="_method" type="hidden" value="DELETE">
                    <button class="btn btn-danger" type="submit" onclick="return confirm('Se eliminaran todos los pagos asociados a la factura, ¿Seguro que quieres eliminar?')"><i class="bi bi-trash"></i></button>
+                  </form>
                  </td>
                </tr>
-               @endforeach 
-               @else
-               <tr>
-                <td colspan="8">No hay registro !!</td>
-              </tr>
+               @endforeach
               @endif
             </tbody>
           </table>
@@ -186,8 +228,8 @@
               @if($facturas_proveedores->count())  
               @foreach($facturas_proveedores as $factura)  
               <tr>
-                <td>{{$factura->proveedor->entidad->razon_social}}</td>
-                <td>{{$factura->servicio_id}}</td>
+                <td>{{$factura->proveedor->entidad->nombre_fantasia}}</td>
+                <td>{{$factura->servicio->nombre}}</td>
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>
                 <td>{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
@@ -195,7 +237,6 @@
                 <td>{{(number_format($factura->total_exento))}}</td>
                 <td>{{(number_format($factura->total_iva))}}</td>
                 <td>{{(number_format($factura->total_monto_total))}}</td>
-                {{--  <td>{{(number_format(($factura->total_neto)+($factura->total_iva)))}}</td> --}}
                 <td>{{$factura->estado}}</td>
                 <td><a class="btn btn-primary" href="{{action('FacturaController@edit', $factura->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>
@@ -203,13 +244,10 @@
                    {{csrf_field()}}
                    <input name="_method" type="hidden" value="DELETE">
                    <button class="btn btn-danger" type="submit" onclick="return confirm('Se eliminaran todos los pagos asociados a la factura, ¿Seguro que quieres eliminar?')"><i class="bi bi-trash"></i></button>
+                 </form>
                  </td>
                </tr>
                @endforeach 
-               @else
-               <tr>
-                <td colspan="8">No hay registro !!</td>
-              </tr>
               @endif
             </tbody>
           </table>
@@ -224,7 +262,7 @@
 @push("scripts")
 <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
 <script>
-  var datatable_tabla1 = $("#tabla-cliente").dataTable({
+  var datatable_tabla1 = $("#tabla-cliente").DataTable({
     "order" : [[0,"desc"]],
     "bLengthChange" : false, 
     "bInfo":false, 
@@ -242,7 +280,7 @@
     "dom" : "<'table-responsive'tr>p",
 });
 
-var datatable_tabla2 = $("#tabla-proveedor").dataTable({
+var datatable_tabla2 = $("#tabla-proveedor").DataTable({
     "order" : [[0,"desc"]],
     "bLengthChange" : false, 
     "bInfo":false, 
@@ -261,12 +299,88 @@ var datatable_tabla2 = $("#tabla-proveedor").dataTable({
 });
 // Evento para el filtro
   $("#tabla-filtro").on("keyup change",function(){
-    datatable_tabla1.fnFilter(this.value);
+    datatable_tabla1.search(this.value).draw();
 });
 
   $("#tabla-filtro").on("keyup change",function(){
-    datatable_tabla2.fnFilter(this.value);
+    datatable_tabla2.search(this.value).draw();
 });
 </script>
 <script type="text/javascript">
+// Filtros
+var filtro_array = {
+    "pagados" : false,
+    "pendientes" : false
+};
+// Funcion para filtrar
+function filtrarPor(tipo, valor) {
+    if (typeof valor == 'undefined'){
+      if (tipo !=='totales'){
+        if (filtro_array.hasOwnProperty(tipo)){
+          filtro_array[tipo]= !filtro_array[tipo];
+          update_datatable();
+        }
+      }else{
+        filtro_array.pagados=false;
+        filtro_array.pendientes=false;
+        update_datatable();
+      }
+    }
+};
+
+function update_datatable(){
+  $.ajax({
+    url: "{{route('facturas.index')}}",
+    type: 'GET',
+    dataType: 'json',
+    data: {
+      _token: $('meta[name="csrf-token"]').attr('content'),
+      filtros: filtro_array
+    },
+    success: function(response){
+      datatable_tabla1.clear();
+      datatable_tabla2.clear();
+      if (response.hasOwnProperty('facturas_clientes')){
+        $.each(response.facturas_clientes, function(){
+          datatable_tabla1.row.add([
+            this.cliente.entidad.nombre_fantasia,
+            this.servicio.nombre,
+            this.folio,
+            this.tipo_dte,
+            this.fecha_emision,
+            this.total_neto,
+            this.total_exento,
+            this.total_iva,
+            this.total_monto_total,
+            this.estado,
+            this.edit,
+            this.delete
+          ]);
+        });
+        datatable_tabla1.draw();
+      }
+      if (response.hasOwnProperty('facturas_proveedores')){
+        $.each(response.facturas_proveedores, function(){
+          datatable_tabla2.row.add([
+            this.proveedor.entidad.nombre_fantasia,
+            this.servicio.nombre,
+            this.folio,
+            this.tipo_dte,
+            this.fecha_emision,
+            this.total_neto,
+            this.total_exento,
+            this.total_iva,
+            this.total_monto_total,
+            this.estado,
+            this.edit,
+            this.delete
+          ]);
+        });
+        datatable_tabla2.draw();
+      }
+    }
+  })
+}
+</script>
+
 @endpush
