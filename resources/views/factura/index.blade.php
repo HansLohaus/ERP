@@ -78,12 +78,16 @@
           <div class="modal-dialog modal-xl">
                <div class="modal-content">
                   <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">
-                  <span>×</span>
-                  </button>
+                    <button type="button" class="close" data-dismiss="modal">
+                    <span>×</span>
+                    </button>
                   <h4>Cerrar</h4>
                   </div>
                   <div class="modal-body">
+                    <form action="{{ route('facturas.import') }}" method="POST" enctype="multipart/form-data">
+                      <input type="file" class="form-control" name="file" accept=".csv">
+                      {{ csrf_field() }}
+                    </form>
                   </div>
               </div>
           </div>
