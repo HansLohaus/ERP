@@ -35,12 +35,9 @@ class ProveedorController extends Controller
             'fono_contacto_fin'=>'required', 
             'fono_contacto_tec'=>'required', 
             'email_contacto_fin'=>'required|email', 
-            'email_contacto_tec'=>'required|email', 
-            'activo'=>'required'
+            'email_contacto_tec'=>'required|email'
         ]);
-        $entidad=Entidad::where("rut", $request->rut)
-            ->where("razon_social", $request->razon_social)
-            ->where("nombre_fantasia", $request->nombre_fantasia)->first();
+        $entidad=Entidad::where("rut", $request->rut)->first();
         if ($entidad == null) {
             $entidad=Entidad::create([
                 'rut' =>$request->rut,
@@ -51,8 +48,7 @@ class ProveedorController extends Controller
                 'fono_contacto_fin' =>$request->fono_contacto_fin,
                 'fono_contacto_tec' =>$request->fono_contacto_tec,
                 'email_contacto_fin' =>$request->email_contacto_fin,
-                'email_contacto_tec' =>$request->email_contacto_tec,
-                'activo' =>$request->activo
+                'email_contacto_tec' =>$request->email_contacto_tec
             ]);
         }
         $tipoentidad=TipoEntidad::create([
@@ -90,14 +86,10 @@ class ProveedorController extends Controller
             'fono_contacto_fin'=>'required', 
             'fono_contacto_tec'=>'required', 
             'email_contacto_fin'=>'required', 
-            'email_contacto_tec'=>'required', 
-            'activo'=>'required'
+            'email_contacto_tec'=>'required'
         ]);
         $tipoentidad=TipoEntidad::find($id);
-        $entidad=Entidad::where("rut", $request->rut)
-            ->where("razon_social", $request->razon_social)
-            ->where("nombre_fantasia", $request->nombre_fantasia)
-            ->where("id", "!=", $tipoentidad->entidad_id)->first();
+        $entidad=Entidad::where("rut", $request->rut)->where("id", "!=", $tipoentidad->entidad_id)->first();
         if ($entidad !== null) {
             $request->session()->flash('alert-danger', 'los datos del proveedor ya existen en el sistema.');
             return redirect()->route('proveedores.index');
@@ -111,8 +103,7 @@ class ProveedorController extends Controller
             'fono_contacto_fin'=>$request->fono_contacto_fin,
             'fono_contacto_tec'=>$request->fono_contacto_tec,
             'email_contacto_fin'=>$request->email_contacto_fin,
-            'email_contacto_tec'=>$request->email_contacto_tec,
-            'activo'=>$request->activo
+            'email_contacto_tec'=>$request->email_contacto_tec
         ]);
         $request->session()->flash('alert-success', 'Registro actualizado satisfactoriamente');
         return redirect()->route('proveedores.index');

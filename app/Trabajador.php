@@ -15,6 +15,7 @@ class Trabajador extends Model
 		'fecha_nac',
 		'direccion',
 		'cargo',
+		'profesion',
 		'sueldo',
 		'fecha_contrato',
 		'fono',

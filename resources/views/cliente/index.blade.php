@@ -47,7 +47,7 @@
               @if($clientes->count())  
               @foreach($clientes as $cliente)  
               <tr>
-                <td>{{$cliente->entidad->rut}}</td>
+                <td>{{Rut::parse($cliente->entidad->rut)->format()}}</td>
                 <td>{{$cliente->entidad->razon_social}}</td>
                 <td>{{$cliente->entidad->nombre_fantasia}}</td>
                 <td><a data-cliente="{{json_encode($cliente)}}" href="#" class="btn btn-info" data-toggle="modal" data-target="#mas_info">más info</a></td>

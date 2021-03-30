@@ -66,9 +66,8 @@
           <div class="table-container">
             <table id="tabla-ingreso" class="table table-bordred table-striped">
               <thead>
-                  <th>id de factura</th>
-                  <th>id de boleta/liquidacion</th>
-                  <th>ine</th>
+                  <th>Folio</th>
+                  <th>descripcion boleta/liquidacion</th>
                   <th>fecha de pago</th>
                   <th>monto</th>
                   <th>monto total de transferencia</th>
@@ -77,12 +76,11 @@
                   <th>Eliminar</th>
               </thead>
             <tbody>
-              @if($pagos->count())  
-              @foreach($pagos as $pago)  
+              @if($pago_ingresos->count())  
+              @foreach($pago_ingresos as $pago)  
               <tr>
-                <td>{{$pago->factura_id}}</td>
-                <td>{{$pago->boleta_liquidacion_id}}</td>
-                <td>{{$pago->ine}}</td>
+                <td>{{$pago->factura->folio}}</td>
+                <td>{{$pago->boletaliquidacion->descripcion}}</td>
                 <td>{{ date_format(date_create($pago->fecha_pago),"d-m-Y") }}</td>
                 <td>{{(number_format($pago->monto))}}</td>
                 <td>{{(number_format($pago->monto_total_transf))}}</td>
@@ -96,10 +94,6 @@
                  </td>
                </tr>
                @endforeach 
-               @else
-               <tr>
-                <td colspan="8">No hay registro !!</td>
-              </tr>
               @endif
             </tbody>
           </table>
@@ -120,9 +114,8 @@
           <div class="table-container">
             <table id="tabla-egreso" class="table table-bordred table-striped">
               <thead>
-                  <th>id de factura</th>
-                  <th>id de boleta/liquidacion</th>
-                  <th>ine</th>
+                  <th>Folio</th>
+                  <th>descripcion boleta/liquidacion</th>
                   <th>fecha de pago</th>
                   <th>monto</th>
                   <th>monto total de transferencia</th>
@@ -131,12 +124,11 @@
                   <th>Eliminar</th>
               </thead>
             <tbody>
-              @if($pagos->count())  
-              @foreach($pagos as $pago)  
+              @if($pagos_egresos->count())  
+              @foreach($pagos_egresos as $pago)  
               <tr>
-                <td>{{$pago->factura_id}}</td>
-                <td>{{$pago->boleta_liquidacion_id}}</td>
-                <td>{{$pago->ine}}</td>
+                <td>{{$pago->factura->folio}}</td>
+                <td>{{$pago->boletaliquidacion->descripcion}}</td>
                 <td>{{ date_format(date_create($pago->fecha_pago),"d-m-Y") }}</td>
                 <td>{{(number_format($pago->monto))}}</td>
                 <td>{{(number_format($pago->monto_total_transf))}}</td>
@@ -150,10 +142,6 @@
                  </td>
                </tr>
                @endforeach 
-               @else
-               <tr>
-                <td colspan="8">No hay registro !!</td>
-              </tr>
               @endif
             </tbody>
           </table>

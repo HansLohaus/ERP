@@ -35,18 +35,30 @@
 							{{ csrf_field() }}
 							<input name="_method" type="hidden" value="PATCH">
 							<div class="row">
-               				 <div class="col-xs-6 col-sm-6 col-md-6">
-               				   <div class="form-group">
-               				   	<label>Id Fatura</label>
-               				     <input type="text" name="factura_id" id="factura_id" class="form-control input-sm" value="{{$pago->factura_id}}">
-               				   </div>
-               				 </div>
-                       <div class="col-xs-6 col-sm-6 col-md-6">
-                         <div class="form-group">
-                          <label>Id boleta/liquidacion</label>
-                           <input type="text" name="boleta_liquidacion_id" id="boleta_liquidacion_id" class="form-control input-sm" value="{{$pago->boleta_liquidacion_id}}">
-                         </div>
-                       </div>
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="form-group">
+                              <label>Folio de la factura</label>
+                              <select name="factura_id" id="factura_id" class="form-control input-sm">
+                                  <option value="" disabled hidden>Seleccione Folio</option>
+                                  @foreach ($facturas as $factura)
+                                      <option value="{{ $factura->id }}">{{ $factura->folio}}</option>
+                                  @endforeach
+                              </select>
+                        </div>
+                      </div>
+
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="form-group">
+                              <label>boleta/liquidacion</label>
+                              <select name="boleta_liquidacion_id" id="boleta_liquidacion_id" class="form-control input-sm">
+                                  <option value="" disabled hidden>Seleccione Folio</option>
+                                  @foreach ($boletasliquidaciones as $boliq)
+                                      <option value="{{ $boliq->id }}">{{ $boliq->descripcion}}</option>
+                                  @endforeach
+                              </select>
+                        </div>
+                      </div>
+
                        <div class="col-xs-6 col-sm-6 col-md-6">
                           <div class="form-group">
                             <label>ingreso/egreso</label>

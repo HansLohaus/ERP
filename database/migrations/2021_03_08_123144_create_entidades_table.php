@@ -24,7 +24,7 @@ class CreateEntidadesTable extends Migration
             $table->string('fono_contacto_tec', 15)->nullable();
             $table->string('email_contacto_fin', 50)->nullable();
             $table->string('email_contacto_tec', 50)->nullable();
-            $table->tinyInteger('activo');
+            $table->tinyInteger('activo')->default(1);
             $table->timestamps();// created_at, updated_at
             $table->softDeletes();//deleted_at
         });

@@ -47,7 +47,7 @@
               @if($proveedores->count())  
               @foreach($proveedores as $proveedor)  
               <tr>
-                <td>{{$proveedor->entidad->rut}}</td>
+                <td>{{Rut::parse($proveedor->entidad->rut)->format()}}</td>
                 <td>{{$proveedor->entidad->razon_social}}</td>
                 <td>{{$proveedor->entidad->nombre_fantasia}}</td>
                 <td><a data-proveedor="{{json_encode($proveedor)}}" href="#" class="btn btn-info" data-toggle="modal" data-target="#mas_info">más info</a></td>

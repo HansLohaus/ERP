@@ -88,12 +88,6 @@
 										<input type="text" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm">
 									</div>
 								</div>
-								<div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
-										<label>Activo</label>
-										<input type="text" name="activo" id="activo" class="form-control input-sm">
-									</div>
-								</div>
 							</div>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">

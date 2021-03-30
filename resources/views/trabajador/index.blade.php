@@ -81,15 +81,11 @@
                 <form action="{{action('TrabajadorController@destroy', $trabajador->id)}}" method="post">
                 {{csrf_field()}}
                 <input name="_method" type="hidden" value="DELETE">
-                <button class="btn btn-danger" type="submit" onclick="return confirm('¿Seguro que quieres eliminar?')"><i class="bi bi-trash"></i></button>
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Se eliminaran todas las boletas o liquidaciones asociados al trabajador, ¿Seguro que quieres eliminar?')"><i class="bi bi-trash"></i></button>
                 </form>
                 </td>
                 </tr>
-                @endforeach 
-                @else
-                <tr>
-                <td colspan="8">No hay registro !!</td>
-                </tr>
+                @endforeach
                 @endif
             </tbody>
           	</table>
@@ -130,11 +126,11 @@
 			          		  <td class="fecha_contrato"></td>
 			          		</tr>
 			          		<tr>
-			          		  <th>Email:</th>
+			          		  <th>Email Alternativo:</th>
 			          		  <td class="email_alt"></td>
 			          		</tr>
 			          		<tr>
-			          		  <th>Numero:</th>
+			          		  <th>Numero cuenta bancaria:</th>
 			          		  <td class="numero_cuenta_banc"></td>
 			          		</tr>
 			          		<tr>

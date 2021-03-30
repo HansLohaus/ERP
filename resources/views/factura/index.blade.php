@@ -34,7 +34,7 @@
     <div class="col-lg-4 col-sm-6 col-xs-12">
         <div class="small-box bg-red text-center">
             <div class="inner">
-                <h3 class="count" id="inmediata">0</h3>
+                <h3 class="count" id="pagada">0</h3>
                 <p>Facturas pagadas</p>
             </div>
             <div class="icon">
@@ -46,7 +46,7 @@
     <div class="col-lg-4 col-sm-6 col-xs-12">
         <div class="small-box bg-yellow text-center">
             <div class="inner">
-                <h3 class="count" id="priorizada">0</h3>
+                <h3 class="count" id="pendiente">0</h3>
                 <p>Facturas pendientes</p>
             </div>
             <div class="icon">
@@ -140,8 +140,8 @@
         </div> --}}
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-cliente-tab" data-toggle="tab" href="#nav-cliente" role="tab" aria-controls="nav-cliente" aria-selected="true">Cliente</a>
-    <a class="nav-item nav-link" id="nav-proveedor-tab" data-toggle="tab" href="#nav-proveedor" role="tab" aria-controls="nav-proveedor" aria-selected="false">Proveedor</a>
+    <a class="nav-item nav-link active" id="nav-cliente-tab" data-toggle="tab" href="#nav-cliente" role="tab" aria-controls="nav-cliente" aria-selected="true" onclick="actualizarContadores('cliente')">Cliente</a>
+    <a class="nav-item nav-link" id="nav-proveedor-tab" data-toggle="tab" href="#nav-proveedor" role="tab" aria-controls="nav-proveedor" aria-selected="false" onclick="actualizarContadores('proveedor')">Proveedor</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
@@ -156,7 +156,7 @@
             <table id="tabla-cliente" class="table table-bordred table-striped" cellspacing="0">
               <thead>
                   <th>Cliente</th>
-                  <th>id del servicio</th>
+                  <th>Servicio</th>
                   <th>folio</th>
                   <th>tipo de dte</th>
                   <th>fecha de emision</th>
@@ -212,7 +212,7 @@
             <table id="tabla-proveedor" class="table table-bordred table-striped" cellspacing="0">
               <thead>
                   <th>Proveedor</th>
-                  <th>id del servicio</th>
+                  <th>Servicio</th>
                   <th>folio</th>
                   <th>tipo de dte</th>
                   <th>fecha de emision</th>
@@ -381,6 +381,24 @@ function update_datatable(){
     }
   })
 }
+function actualizarContadores(tipo){
+    $.ajax({
+        url: "{{route('facturas.index')}}",
+        type: 'GET',
+        dataType: 'json',
+        data: {
+          _token: $('meta[name="csrf-token"]').attr('content'),
+          totales: tipo
+        },
+        success: function(response){
+            $('#total').html(response.facturas);
+            $('#pagada').html(response.pagadas);
+            $('#pendiente').html(response.pendientes);
+        }
+    });
+}
+
+actualizarContadores('cliente');
 </script>
 
 @endpush

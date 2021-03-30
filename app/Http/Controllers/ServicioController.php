@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Servicio;
-
+use App\TipoEntidad;
 class ServicioController extends Controller
 {
     /**
@@ -16,10 +16,13 @@ class ServicioController extends Controller
     {
         $servicios_clientes=Servicio::with(['cliente.entidad'])->has('cliente')->orderBy('id', 'asc')->get();
         $servicios_proveedores=Servicio::with(['proveedor.entidad'])->has('proveedor')->orderBy('id', 'asc')->get();
+        $servicios=Servicio::all();
         return view('servicio.index', [
             'servicios_clientes'=>$servicios_clientes,
-            'servicios_proveedores'=>$servicios_proveedores
+            'servicios_proveedores'=>$servicios_proveedores,
+            'servicios'=>$servicios
         ]);
+
     }
 
     /**
@@ -29,7 +32,10 @@ class ServicioController extends Controller
      */
     public function create()
     {
-        return view('servicio.create');
+        $clientes=TipoEntidad::clientes()->get();
+        return view('servicio.create',[
+            'clientes'=>$clientes
+        ]);
     }
 
     /**
@@ -73,8 +79,9 @@ class ServicioController extends Controller
      */
     public function edit($id)
     {
+        $clientes=TipoEntidad::clientes()->get();
          $servicio=Servicio::findOrFail($id);
-        return  view('servicio.edit',compact('servicio'));
+        return  view('servicio.edit',compact('servicio','clientes'));
     }
 
     /**

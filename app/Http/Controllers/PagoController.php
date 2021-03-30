@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pago;
-
+use App\Factura;
+use App\BoletaLiquidacion;
 class PagoController extends Controller
 {
     /**
@@ -14,9 +15,14 @@ class PagoController extends Controller
      */
     public function index()
     {
+        $pago_ingresos=Pago::where('ine','ingreso')->orderBy('id', 'asc')->get();
+        $pagos_egresos=Pago::where('ine','egreso')->orderBy('id', 'asc')->get();
+
         $pagos=Pago::orderBy('id', 'asc')->paginate(10);
         return view('pago.index', [
-            'pagos'=>$pagos
+            'pagos'=>$pagos,
+            'pago_ingresos'=>$pago_ingresos,
+            'pagos_egresos'=>$pagos_egresos
         ]);
     }
 
@@ -27,7 +33,12 @@ class PagoController extends Controller
      */
     public function create()
     {
-        return view('pago.create');
+        $facturas=Factura::all();
+        $boletasliquidaciones=BoletaLiquidacion::all();
+        return view('pago.create',[
+            'facturas'=>$facturas,
+            'boletasliquidaciones'=>$boletasliquidaciones
+        ]);
     }
 
     /**
@@ -71,8 +82,10 @@ class PagoController extends Controller
      */
     public function edit($id)
     {
+         $facturas=Factura::all();
+        $boletasliquidaciones=BoletaLiquidacion::all();
          $pago=Pago::findOrFail($id);
-        return  view('pago.edit',compact('pago'));
+        return  view('pago.edit',compact('pago','facturas','boletasliquidaciones'));
     }
 
     /**

@@ -59,7 +59,7 @@
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>fecha de nacimiento</label>
-                    <input type="text" name="fecha_nac" id="fecha_nac" class="form-control input-sm">
+                    <input type="date" name="fecha_nac" id="fecha_nac" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">

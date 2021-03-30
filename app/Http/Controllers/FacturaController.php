@@ -15,7 +15,23 @@ class FacturaController extends Controller
      */
     public function index(Request $request)
     {
-        if (!$request->has('filtros')){
+        if ($request->has('totales')){
+            if ($request->totales=='cliente') {
+                $facturas=Factura::has('cliente')->count();
+                $pagadas=Factura::has('cliente')->where('estado','pagado')->count();
+                $pendientes=Factura::has('cliente')->where('estado', '!=','pagado')->count();
+            }elseif ($request->totales=='proveedor') {
+                $facturas=Factura::has('proveedor')->count();
+                $pagadas=Factura::has('proveedor')->where('estado','pagado')->count();
+                $pendientes=Factura::has('proveedor')->where('estado', '!=','pagado')->count();
+            }
+            return response()->json([
+                'facturas'=>$facturas,
+                'pagadas'=>$pagadas,
+                'pendientes'=>$pendientes
+            ]);
+            
+        }elseif (!$request->has('filtros')){
             $facturas_clientes=Factura::with(['cliente.entidad'])->has('cliente')->orderBy('id', 'asc')->get();
             $facturas_proveedores=Factura::with(['proveedor.entidad'])->has('proveedor')->orderBy('id', 'asc')->get();
             $servicios=Servicio::orderBy('id', 'asc')->get();

@@ -35,19 +35,29 @@
 						<form method="POST" action="{{ route('servicios.store') }}"  role="form">
 							{{ csrf_field() }}
 							<div class="row">
+
 								<div class="col-xs-6 col-sm-6 col-md-6">
+             				     <div class="form-group">
+             				       <label>Cliente</label>
+             				       <select name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
+             				         <option value="" disabled hidden>Seleccione cliente</option>
+             				         @foreach ($clientes as $cliente)
+             				           <option value="{{ $cliente->id }}">{{ $cliente->entidad->nombre_fantasia }}</option>
+             				         @endforeach
+             				       </select>
+             				     </div>
+             				   </div>
+
+
+
+								{{-- <div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<div class="form-group">
 											<label>Id Cliente</label>
 										<input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
 									</div>
-										{{-- <select name="cliente_id" id="cliente_id" class="form-control input-sm" required="required">
-											@foreach ($clientes->get())
-												<option value="{{$clientes}}"></option>
-											@endforeach
-										</select> --}}
 									</div>
-								</div>
+								</div> --}}
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Nombre</label>

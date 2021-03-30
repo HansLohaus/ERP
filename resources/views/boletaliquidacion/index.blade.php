@@ -48,19 +48,17 @@
                		<th>Descripcion</th>
                		<th>Monto total</th>
                		<th>Monto liquido</th>
-               		<th>boleta_liq</th>
                		<th>Editar</th>
                		<th>Eliminar</th>
             	</thead>
             <tbody>
-                @if($boletasliquidaciones->count())  
-                @foreach($boletasliquidaciones as $boletaliquidacion)  
+                @if($boletas->count())  
+                @foreach($boletas as $boletaliquidacion)  
                 <tr>
-                <td>{{$boletaliquidacion->trabajador_id}}</td>
+                <td>{{$boletaliquidacion->trabajador->nombres}} {{$boletaliquidacion->trabajador->apellidoP}}</td>
                 <td>{{$boletaliquidacion->descripcion}}</td>
                 <td>{{(number_format($boletaliquidacion->monto_total))}}</td>
                 <td>{{(number_format($boletaliquidacion->monto_liquido))}}</td>
-                <td>{{$boletaliquidacion->boleta_liq}}</td>
                 <td><a class="btn btn-primary" href="{{action('BoletaLiquidacionController@edit', $boletaliquidacion->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>
                 <form action="{{action('BoletaLiquidacionController@destroy', $boletaliquidacion->id)}}" method="post">
@@ -99,20 +97,18 @@
                		<th>Descripcion</th>
                		<th>Monto total</th>
                		<th>Monto liquido</th>
-               		<th>Boleta liq</th>
                		<th>Información</th>
                		<th>Editar</th>
                		<th>Eliminar</th>
             	</thead>
             <tbody>
-                @if($boletasliquidaciones->count())  
-                @foreach($boletasliquidaciones as $boletaliquidacion)  
+                @if($liquidaciones->count())  
+                @foreach($liquidaciones as $boletaliquidacion)  
                 <tr>
-                <td>{{$boletaliquidacion->trabajador_id}}</td>
+                <td>{{$boletaliquidacion->trabajador->nombres}} {{$boletaliquidacion->trabajador->apellidoP}}</td>
                 <td>{{$boletaliquidacion->descripcion}}</td>
                 <td>{{(number_format($boletaliquidacion->monto_total))}}</td>
                 <td>{{(number_format($boletaliquidacion->monto_liquido))}}</td>
-                <td>{{$boletaliquidacion->boleta_liq}}</td>
                 <td><a data-boletaliquidacion="{{json_encode($boletaliquidacion)}}" href="#" class="btn btn-info" data-toggle="modal" data-target="#mas_info">más info</a></td>
                 <td><a class="btn btn-primary" href="{{action('BoletaLiquidacionController@edit', $boletaliquidacion->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>

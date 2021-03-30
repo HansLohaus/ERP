@@ -4,14 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\BoletaLiquidacion;
-
+use App\Trabajador;
 class BoletaLiquidacionController extends Controller
 {
      public function index()
     {
+        $trabajadores=Trabajador::orderBy('id', 'asc')->get();
         $boletasliquidaciones=BoletaLiquidacion::orderBy('id', 'asc')->paginate(10);
+        
+        $boletas=BoletaLiquidacion::where('boleta_liq','boleta')->orderBy('id', 'asc')->get();
+        $liquidaciones=BoletaLiquidacion::where('boleta_liq','liquidacion')->orderBy('id', 'asc')->get();
+
         return view('boletaliquidacion.index', [
-            'boletasliquidaciones'=>$boletasliquidaciones
+            'boletasliquidaciones'=>$boletasliquidaciones,
+            'trabajadores'=>$trabajadores,
+            'boletas'=>$boletas,
+            'liquidaciones'=>$liquidaciones
         ]);
     }
 
@@ -22,7 +30,10 @@ class BoletaLiquidacionController extends Controller
      */
     public function create()
     {
-        return view('boletaliquidacion.create');
+        $trabajadores=Trabajador::all();
+        return view('boletaliquidacion.create',[
+            'trabajadores'=>$trabajadores
+        ]);
     }
 
     /**
@@ -71,8 +82,9 @@ class BoletaLiquidacionController extends Controller
      */
     public function edit($id)
     {
+         $trabajadores=Trabajador::all();
          $boletaliquidacion=BoletaLiquidacion::findOrFail($id);
-        return  view('boletaliquidacion.edit',compact('boletaliquidacion'));
+        return  view('boletaliquidacion.edit',compact('boletaliquidacion','trabajadores'));
     }
 
     /**

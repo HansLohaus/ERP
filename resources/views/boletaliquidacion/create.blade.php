@@ -35,8 +35,15 @@
               <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>trabajador_id</label>
-                    <input type="text" name="trabajador_id" id="trabajador_id" class="form-control input-sm">
+                    <label>Trabajador</label>
+                    <select name="trabajador_id" id="trabajador_id" class="form-control input-sm">
+                      <option value="" disabled hidden>Seleccione trabajador</option>
+                      @foreach ($trabajadores as $trabajador)
+                        <option value="{{ $trabajador->id }}">{{$trabajador->nombres}} {{$trabajador->apellidoP}}</option>
+                      @endforeach
+                    </select>
+                    {{-- <label>Id del Cliente</label>
+                    <input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm"> --}}
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">

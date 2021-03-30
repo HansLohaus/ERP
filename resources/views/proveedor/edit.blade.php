@@ -89,11 +89,17 @@
 										<input type="text" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm" value="{{$proveedor->entidad->email_contacto_tec}}">
 									</div>
 								</div>
-								<div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
-										<label>Activo</label>
-										<input type="text" name="activo" id="activo" class="form-control input-sm" value="{{$proveedor->entidad->activo}}">
-									</div>
+								<div class="form-check">
+								  <input class="form-check-input" type="radio" name="activo" id="flexRadioDefault1" value="1" checked>
+								  <label class="form-check-label" for="flexRadioDefault1">
+								    activo
+								  </label>
+								</div>
+								<div class="form-check">
+								  <input class="form-check-input" type="radio" name="activo" value="0" id="flexRadioDefault2">
+								  <label class="form-check-label" for="flexRadioDefault2">
+								    inactivo
+								  </label>
 								</div>
 							</div>
 							<div class="row">
