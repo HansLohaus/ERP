@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use App\Factura;
 use App\TipoEntidad;
 use App\Servicio;
+
+use App\Jobs\JobCargaFacturas;
+use File;
 class FacturaController extends Controller
 {
+    use DispatchesJobs;
+    
     /**
      * Display a listing of the resource.
      *
@@ -195,6 +201,26 @@ class FacturaController extends Controller
     {
        Factura::find($id)->delete();
         return redirect()->route('facturas.index')->with('success','Registro eliminado satisfactoriamente');
-   
+    }
+
+    public function import(Request $request) {
+        $file = $request->file("file");
+        $user = Auth::user()->username;
+
+        // Se verifica que la carpeta temporal exista
+        $dir_carga = storage_path("app/temp/carga-factura/".$user->id);
+        if (!File::exists($dir_carga)) {
+            File::makeDirectory($dir_carga, 0775, true);
+        }
+
+        // Se mueve el archivo a la ruta especificada
+        $filename = date("YmdHis").".csv";
+        $file->move($dir_carga,$filename);
+
+        // Se instancia el job
+        dispatch(new JobCargaFacturas($dir_carga."/".$filename));
+
+        // Se vuelve a la vista anterior
+        return back()->withInput();
     }
 }

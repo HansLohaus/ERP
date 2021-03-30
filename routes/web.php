@@ -46,7 +46,10 @@ Route::get('/manual',['as' => 'manual', 'uses' => 'UserController@manuales']);
 Route::resource('clientes','ClienteController');
 Route::resource('proveedores','ProveedorController');
 Route::resource('servicios','ServicioController');
+
 Route::resource('facturas','FacturaController');
+Route::post('/facturas/import','FacturaController@import')->name("facturas.import");
+
 Route::resource('pagos','PagoController');
 Route::resource('entidades','EntidadController');
 Route::resource('tipoentidades','TipoEntidadController');
