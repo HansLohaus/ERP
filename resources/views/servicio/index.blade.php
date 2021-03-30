@@ -78,10 +78,6 @@
                  </td>
                </tr>
                @endforeach 
-               @else
-               <tr>
-                <td colspan="8">No hay registro !!</td>
-              </tr>
               @endif
             </tbody>
           </table>
@@ -134,10 +130,6 @@
                  </td>
                </tr>
                @endforeach 
-               @else
-               <tr>
-                <td colspan="8">No hay registro !!</td>
-              </tr>
               @endif
             </tbody>
           </table>

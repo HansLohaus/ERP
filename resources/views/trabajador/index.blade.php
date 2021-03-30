@@ -41,15 +41,6 @@
                		<th>Cargo</th>
                		<th>Teléfono</th>
                		<th>Email</th>
-{{--                		<th>Sueldo</th>
-               		<th>Fecha_contrato</th>
-               		<th>Email Alternativo</th>
-               		<th>Numero cuenta bancaria</th>
-               		<th>Titular de la cuenta</th>
-               		<th>Banco</th>
-               		<th>Tipo_cuenta</th>
-               		<th>AFP</th>
-               		<th>prevision</th> --}}
                		<th>Informacion</th>
                		<th>Editar</th>
                		<th>Eliminar</th>
@@ -65,15 +56,7 @@
                 <td>{{$trabajador->cargo}}</td>
                 <td>{{$trabajador->fono}}</td>
                 <td>{{$trabajador->email}}</td>
-{{--                 <td>{{(number_format($trabajador->sueldo))}}</td>
-                <td>{{ date_format(date_create($trabajador->fecha_contrato),"d-m-Y") }}</td>
-                <td>{{$trabajador->email_alt}}</td>
-                <td>{{$trabajador->numero_cuenta_banc}}</td>
-                <td>{{$trabajador->titular_cuenta_banc}}</td>
-                <td>{{$trabajador->banco}}</td>
-                <td>{{$trabajador->tipo_cuenta}}</td>
-                <td>{{$trabajador->afp}}</td>
-                <td>{{$trabajador->prevision}}</td> --}}
+
                 
                 <td><a data-trabajador="{{json_encode($trabajador)}}" href="#" class="btn btn-info" data-toggle="modal" data-target="#mas_info">más info</a></td>
                 <td><a class="btn btn-primary" href="{{action('TrabajadorController@edit', $trabajador->id)}}" ><i class="bi bi-pencil"></i></a></td>

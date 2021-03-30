@@ -91,53 +91,6 @@
      {{-- fin popup masivo--}}
     </div>
  </div>
-          {{-- <div class="table-container">
-            <table id="tabla-logs" class="table table-bordred table-striped" cellspacing="0">
-            	<thead>
-               		<th>id del cliente</th>
-               		<th>id del servicio</th>
-               		<th>folio</th>
-               		<th>tipo de dte</th>
-               		<th>fecha de emision</th>
-               		<th>total monto neto</th>
-               		<th>total monto exento</th>
-               		<th>total del iva</th>
-                  <th>monto total</th>
-                  <th>estado</th>
-               		<th>Editar</th>
-               		<th>Eliminar</th>
-            	</thead>
-            <tbody>
-              @if($facturas->count())  
-              @foreach($facturas as $factura)  
-              <tr>
-              	<td>{{$factura->tipo_entidad_id}}</td>
-                <td>{{$factura->servicio_id}}</td>
-                <td>{{$factura->folio}}</td>
-                <td>{{$factura->tipo_dte}}</td>
-                <td>{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
-                <td>{{(number_format($factura->total_neto))}}</td>
-                <td>{{(number_format($factura->total_exento))}}</td>
-                <td>{{(number_format($factura->total_iva))}}</td>
-                <td>{{(number_format($factura->total_monto_total))}}</td>
-                <td>{{$factura->estado}}</td>
-                <td><a class="btn btn-primary" href="{{action('FacturaController@edit', $factura->id)}}" ><i class="bi bi-pencil"></i></a></td>
-                <td>
-                  <form action="{{action('FacturaController@destroy', $factura->id)}}" method="post">
-                   {{csrf_field()}}
-                   <input name="_method" type="hidden" value="DELETE">
-                   <button class="btn btn-danger" type="submit" onclick="return confirm('Seguro que quieres eliminar?')"><i class="bi bi-trash"></i></button>
-                 </td>
-               </tr>
-               @endforeach 
-               @else
-               <tr>
-                <td colspan="8">No hay registro !!</td>
-              </tr>
-              @endif
-            </tbody>
-          </table>
-        </div> --}}
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-cliente-tab" data-toggle="tab" href="#nav-cliente" role="tab" aria-controls="nav-cliente" aria-selected="true" onclick="actualizarContadores('cliente')">Cliente</a>
