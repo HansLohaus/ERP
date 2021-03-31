@@ -180,15 +180,4 @@ class JobCargaFacturas implements ShouldQueue
             $this->handleError($e);
         }
     }
-
-    /**
-     * Valida el tipo de entidad
-     *
-     * @param object $registro
-     * @return boolean
-     */
-    public function tipoEntidadValida(&$registro) {
-        
-        
-    }
 }
