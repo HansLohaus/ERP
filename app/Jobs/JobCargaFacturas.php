@@ -118,6 +118,11 @@ class JobCargaFacturas implements ShouldQueue
                 $registro = str_getcsv($registro, $this->separador);
                 if ($registro !== "") {
 
+                    // Se kimpian los datos
+                    foreach ($registro as $key => $value) {
+                        $registro[$key] = trim(mb_strtolower($value));   
+                    }
+
                     // Se obtiene el registro como colección
                     $registro = (object) [
                         
@@ -135,10 +140,8 @@ class JobCargaFacturas implements ShouldQueue
                         "estado" => $registro[10]
                     ];
 
-                    // Validar los campos del registro
-
                     // Validar tipo entidad antes de hacer esto
-                    if ($this->tipoEntidadValida($registro)) {
+                    if ($registro->tipo_entidad == "cliente" || $registro->tipo_entidad == "proveedor") {
                         $entidad = TipoEntidad::with(["entidad"])->where("tipo",$registro->tipo_entidad)
                         ->whereHas("entidad",function($entidad) use ($registro){
                             $entidad->where("rut",$registro->rut_entidad);
@@ -182,9 +185,10 @@ class JobCargaFacturas implements ShouldQueue
      * Valida el tipo de entidad
      *
      * @param object $registro
-     * @return void
+     * @return boolean
      */
     public function tipoEntidadValida(&$registro) {
+        
         
     }
 }
