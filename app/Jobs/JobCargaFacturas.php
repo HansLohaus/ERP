@@ -125,7 +125,14 @@ class JobCargaFacturas implements ShouldQueue
                         "rut_entidad" => $registro[0],
                         "tipo_entidad" => $registro[1],
                         "nombre_servicio" => $registro[2],
-                        // ...
+                        "folio" => $registro[3],
+                        "tipo_dte" => $registro[4],
+                        "fecha_emision" => $registro[5],
+                        "total_neto" => $registro[6],
+                        "total_exento" => $registro[7],
+                        "total_iva" => $registro[8],
+                        "total_monto_total" => $registro[9],
+                        "estado" => $registro[10]
                     ];
 
                     // Validar los campos del registro
@@ -145,6 +152,14 @@ class JobCargaFacturas implements ShouldQueue
                                 Factura::create([
                                     "tipo_entidad_id" => $entidad->id,
                                     "servicio_id" => $servicio->id,
+                                    "folio" => $registro->folio,
+                                    "tipo_dte" => $registro->tipo_dte,
+                                    "fecha_emision" => $registro->fecha_emision,
+                                    "total_neto" => $registro->total_neto,
+                                    "total_exento" => $registro->total_exento,
+                                    "total_iva" => $registro->total_iva,
+                                    "total_monto_total" => $registro->total_monto_total,
+                                    "estado" => $registro->estado,
                                     // ...
                                 ]);
                             }
@@ -170,6 +185,6 @@ class JobCargaFacturas implements ShouldQueue
      * @return void
      */
     public function tipoEntidadValida(&$registro) {
-
+        
     }
 }

@@ -85,7 +85,8 @@
                   </div>
                   <div class="modal-body">
                     <form action="{{ route('facturas.import') }}" method="POST" enctype="multipart/form-data">
-                      <input type="file" class="form-control" name="file" accept=".csv">
+                      <input type="file" class="form-control" name="file" accept=".csv" required>
+                      <button class="btn btn-info" type="submit">Enviar</button>
                       {{ csrf_field() }}
                     </form>
                   </div>
