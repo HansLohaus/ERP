@@ -14,10 +14,10 @@ use Monolog\Logger;
 use App\Factura;
 use App\TipoEntidad;
 use App\Servicio;
-
 use Exception;
 use File;
 use Log;
+use Rut;
 use DB;
 
 class JobCargaFacturas implements ShouldQueue
@@ -66,6 +66,10 @@ class JobCargaFacturas implements ShouldQueue
             Log::error($exception);
     }
 
+    public function error($mensaje) {
+        $this->log->error($mensaje);
+    }
+
     /**
      * Función que se ejecuta cuando el proceso falla
      * 
@@ -84,6 +88,38 @@ class JobCargaFacturas implements ShouldQueue
         // Se guarda el log
         $this->logError($e);
     }
+
+    public function formatearFecha($fecha){
+        $f=date_create_from_format('Y-m-d',$fecha);
+        if ($f ==false) {
+            $f=date_create_from_format('d-m-Y',$fecha);
+            if ($f ==false) {
+                $f=date_create_from_format('Y/m/d',$fecha);
+                if ($f ==false) {
+                    $f=date_create_from_format('d/m/Y',$fecha);
+                }
+            }
+        }
+        if ($f !== false) {
+            return date_format($f, 'Y-m-d');
+        }else{
+            return false;
+        }
+    }
+
+    public function validarRut($rut){
+        try {
+            $parsed = Rut::parse(trim($rut));
+            return $parsed->validate(); 
+        } catch (\Exception $e) {
+            Log::error($e);
+            return false;
+        }
+    }
+
+
+    
+    
 
     /**
      * Execute the job.
@@ -139,34 +175,54 @@ class JobCargaFacturas implements ShouldQueue
                         "total_monto_total" => $registro[9],
                         "estado" => $registro[10]
                     ];
-
                     // Validar tipo entidad antes de hacer esto
-                    if ($registro->tipo_entidad == "cliente" || $registro->tipo_entidad == "proveedor") {
-                        $entidad = TipoEntidad::with(["entidad"])->where("tipo",$registro->tipo_entidad)
-                        ->whereHas("entidad",function($entidad) use ($registro){
-                            $entidad->where("rut",$registro->rut_entidad);
-                        })->first();
-                        if ($entidad !== null) {
-    
-                            $servicio = Servicio::where("nombre",$registro->nombre_servicio)->first();
-                            if ($servicio !== null) {
-                                
-                                // Ingresar los datos a la tabla facturas
-                                Factura::create([
-                                    "tipo_entidad_id" => $entidad->id,
-                                    "servicio_id" => $servicio->id,
-                                    "folio" => $registro->folio,
-                                    "tipo_dte" => $registro->tipo_dte,
-                                    "fecha_emision" => $registro->fecha_emision,
-                                    "total_neto" => $registro->total_neto,
-                                    "total_exento" => $registro->total_exento,
-                                    "total_iva" => $registro->total_iva,
-                                    "total_monto_total" => $registro->total_monto_total,
-                                    "estado" => $registro->estado,
-                                    // ...
-                                ]);
+                    if ($this->validarRut($registro->rut_entidad)) {
+                        if ($registro->tipo_entidad == "cliente" || $registro->tipo_entidad == "proveedor") {
+                            $entidad = TipoEntidad::with(["entidad"])->where("tipo",$registro->tipo_entidad)
+                            ->whereHas("entidad",function($entidad) use ($registro){
+                                $entidad->where("rut",$registro->rut_entidad);
+                            })->first();
+                            if ($entidad !== null) {
+                                $servicio = Servicio::where("nombre",$registro->nombre_servicio)->first();
+                                if ($servicio !== null) {
+                                    $fecha=$this->formatearFecha($registro->fecha_emision);
+                                    if ($fecha !== false) {
+                                        $existe=Factura::where([
+                                            "tipo_entidad_id" => $entidad->id,
+                                            "servicio_id" => $servicio->id,
+                                            "folio" => $registro->folio,
+                                        ])->exists();
+                                        if ($existe==false) {
+                                            Factura::create([
+                                                "tipo_entidad_id" => $entidad->id,
+                                                "servicio_id" => $servicio->id,
+                                                "folio" => $registro->folio,
+                                                "tipo_dte" => $registro->tipo_dte,
+                                                "fecha_emision" => $fecha,
+                                                "total_neto" => $registro->total_neto,
+                                                "total_exento" => $registro->total_exento,
+                                                "total_iva" => $registro->total_iva,
+                                                "total_monto_total" => $registro->total_monto_total,
+                                                "estado" => $registro->estado,
+                                            ]);
+                                        }else{
+                                            $this->error("la factura ya esta en la bd");
+                                        }
+                                    }else{
+                                        $this->error("fecha emision invalida");
+                                    }
+                                    // Ingresar los datos a la tabla facturas
+                                }else{
+                                    $this->error("servicio no existe");
+                                }
+                            }else{
+                                $this->error("entidad no existe");
                             }
+                        }else{
+                            $this->error("tipo entidad invalido");
                         }
+                    }else{
+                        $this->error("rut invalido");
                     }
                 }
             }

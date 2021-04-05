@@ -40,6 +40,17 @@
                            <h4>Cerrar</h4>
                            </div>
                            <div class="modal-body">
+                            <form action="{{ route('pagos.import') }}" method="POST" enctype="multipart/form-data">
+                              <h4>Cargar Datos:</h4>
+                              <input type="file" class="form-control" name="file" accept=".csv" required>
+                                <label>.</label>
+                                <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">100%</div>
+                                </div>
+                              <br>
+                              <div class="pull-right"><button class="btn btn-info" type="submit">Cargar Datos</button></div>
+                              {{ csrf_field() }}
+                            </form>
                            </div>
                        </div>
                    </div>

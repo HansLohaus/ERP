@@ -10,6 +10,7 @@ use App\Servicio;
 
 use App\Jobs\JobCargaFacturas;
 use File;
+use Auth;
 class FacturaController extends Controller
 {
     use DispatchesJobs;
@@ -205,7 +206,7 @@ class FacturaController extends Controller
 
     public function import(Request $request) {
         $file = $request->file("file");
-        $user = Auth::user()->username;
+        $user = Auth::user();
 
         // Se verifica que la carpeta temporal exista
         $dir_carga = storage_path("app/temp/carga-factura/".$user->id);

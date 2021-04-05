@@ -71,6 +71,9 @@
     <div class="btn-group">
       <a href="{{ route('facturas.create') }}" class="btn btn-info" >Añadir Facturas</a>
     </div>
+    {{-- <div class="btn-group">
+      <a href="{{ route('facturas.import') }}" class="btn btn-info" >Carga masiva</a>
+    </div> --}}
     <div class="btn-group">
       <a href="#" class="btn btn-info" data-toggle="modal" data-target="#masivo">Carga Masiva</a>
       {{-- popup masivo--}}
@@ -85,8 +88,14 @@
                   </div>
                   <div class="modal-body">
                     <form action="{{ route('facturas.import') }}" method="POST" enctype="multipart/form-data">
+                      <h4>Cargar Datos:</h4>
                       <input type="file" class="form-control" name="file" accept=".csv" required>
-                      <button class="btn btn-info" type="submit">Enviar</button>
+                      <label>.</label>
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">100%</div>
+                      </div>
+                      <br>
+                      <div class="pull-right"><button class="btn btn-info" type="submit">Cargar Datos</button></div>
                       {{ csrf_field() }}
                     </form>
                   </div>
@@ -95,6 +104,32 @@
       </div>
      {{-- fin popup masivo--}}
     </div>
+{{--     <div class="btn-group">
+      <a href="#" class="btn btn-info" data-toggle="modal" data-target="#cargadte">Carga DTE</a>
+
+      <div class="modal fade" id="cargadte">
+          <div class="modal-dialog modal-xl">
+               <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                    <span>×</span>
+                    </button>
+                  <h4>Cerrar</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form action="{{ route('dte.import') }}" method="POST" enctype="multipart/form-data">
+                      <h4>Cargar Datos:</h4>
+                      <input type="file" class="form-control" name="file" accept=".csv" required>
+                      <br>
+                      <div class="pull-right"><button class="btn btn-info" type="submit">Cargar Datos</button></div>
+                      {{ csrf_field() }}
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    </div> --}}
  </div>
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">

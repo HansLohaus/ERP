@@ -49,8 +49,11 @@ Route::resource('servicios','ServicioController');
 
 Route::resource('facturas','FacturaController');
 Route::post('/facturas/import','FacturaController@import')->name("facturas.import");
+Route::post('/dte/import','DTEController@import')->name("dte.import");
 
 Route::resource('pagos','PagoController');
+Route::post('/pagos/import','PagoController@import')->name("pagos.import");
+
 Route::resource('entidades','EntidadController');
 Route::resource('tipoentidades','TipoEntidadController');
 Route::resource('trabajadores','TrabajadorController');

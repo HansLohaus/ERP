@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Pago;
 use App\Factura;
 use App\BoletaLiquidacion;
+use Auth;
+use File;
+use App\Jobs\JobCargaPagos;
+
 class PagoController extends Controller
 {
     /**
@@ -121,5 +125,26 @@ class PagoController extends Controller
     {
          Pago::find($id)->delete();
         return redirect()->route('pagos.index')->with('success','Registro eliminado satisfactoriamente');
+    }
+
+    public function import(Request $request) {
+        $file = $request->file("file");
+        $user = Auth::user();
+
+        // Se verifica que la carpeta temporal exista
+        $dir_carga = storage_path("app/temp/carga-pago/".$user->id);
+        if (!File::exists($dir_carga)) {
+            File::makeDirectory($dir_carga, 0775, true);
+        }
+
+        // Se mueve el archivo a la ruta especificada
+        $filename = date("YmdHis").".csv";
+        $file->move($dir_carga,$filename);
+
+        // Se instancia el job
+        dispatch(new JobCargaPagos($dir_carga."/".$filename));
+
+        // Se vuelve a la vista anterior
+        return back()->withInput();
     }
 }
