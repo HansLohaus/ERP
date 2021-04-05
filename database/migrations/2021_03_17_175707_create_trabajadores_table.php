@@ -21,17 +21,17 @@ class CreateTrabajadoresTable extends Migration
             $table->string('rut', 15);
             $table->date('fecha_nac', 50);
             $table->string('direccion', 50);
-            $table->string('cargo', 30);
-            $table->string('profesion', 30);
-            $table->string('sueldo', 45);
-            $table->date('fecha_contrato');
-            $table->string('fono', 15);
-            $table->string('email', 50);
-            $table->string('email_alt', 50);
-            $table->string('numero_cuenta_banc', 50);
-            $table->string('titular_cuenta_banc', 50);
-            $table->string('banco', 50);
-            $table->string('tipo_cuenta', 50);
+            $table->string('cargo', 30)->nullable();
+            $table->string('profesion', 100);
+            $table->string('sueldo', 45)->nullable();
+            $table->date('fecha_contrato')->nullable();
+            $table->string('fono', 15)->nullable();
+            $table->string('email', 50)->nullable();
+            $table->string('email_alt', 50)->nullable();
+            $table->string('numero_cuenta_banc', 50)->nullable();
+            $table->string('titular_cuenta_banc', 50)->nullable();
+            $table->string('banco', 50)->nullable();
+            $table->string('tipo_cuenta', 50)->nullable();
             $table->string('afp', 50);
             $table->string('prevision', 50);
             $table->timestamps();// created_at, updated_at
