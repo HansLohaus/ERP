@@ -49,7 +49,7 @@
 
                       <div class="col-xs-6 col-sm-6 col-md-6">
                           <div class="form-group">
-                              <label>boleta/liquidacion</label>
+                              <label>Descripción de la boleta/liquidacion</label>
                               <select name="boleta_liquidacion_id" id="boleta_liquidacion_id" class="form-control input-sm">
                                   <option value="" disabled hidden>Seleccione Folio</option>
                                   @foreach ($boletasliquidaciones as $boliq)
@@ -61,7 +61,7 @@
 
                        <div class="col-xs-6 col-sm-6 col-md-6">
                           <div class="form-group">
-                            <label>ingreso/egreso</label>
+                            <label>Ingreso/Egreso</label>
                             <select name="ine" id="ine" class="form-control input-sm">
                                  <option>{{$pago->ine}}</option>
                                  <option value="ingreso">ingreso</option>
@@ -77,7 +77,7 @@
                				 </div>
                				 <div class="col-xs-6 col-sm-6 col-md-6">
                				   <div class="form-group">
-               				   	<label>Monto</label>
+               				   	<label>Monto del pago</label>
                				     <input type="text" name="monto" id="monto" class="form-control input-sm" value="{{$pago->monto}}">
                				   </div>
                				 </div>
@@ -89,7 +89,7 @@
                				 </div>
                				 <div class="col-xs-6 col-sm-6 col-md-6">
                				   <div class="form-group">
-               				   	<label>Descripción de Movimiento</label>
+               				   	<label>Descripción del movimiento</label>
                				     <input type="text" name="descrip_movimiento" id="descrip_movimiento" class="form-control input-sm" value="{{$pago->descrip_movimiento}}">
                				   </div>
                				 </div>

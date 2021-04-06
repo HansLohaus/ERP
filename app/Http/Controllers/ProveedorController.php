@@ -12,7 +12,7 @@ class ProveedorController extends Controller
     public function index()
     {
 
-        $proveedores=TipoEntidad::proveedores()->orderBy('id', 'asc')->paginate(10);
+        $proveedores=TipoEntidad::proveedores()->orderBy('id', 'asc')->get();
         return view('proveedor.index', [
             'proveedores'=>$proveedores
         ]);
@@ -85,8 +85,8 @@ class ProveedorController extends Controller
             'nombre_contacto_tec'=>'required', 
             'fono_contacto_fin'=>'required', 
             'fono_contacto_tec'=>'required', 
-            'email_contacto_fin'=>'required', 
-            'email_contacto_tec'=>'required'
+            'email_contacto_fin'=>'required|email', 
+            'email_contacto_tec'=>'required|email'
         ]);
         $tipoentidad=TipoEntidad::find($id);
         $entidad=Entidad::where("rut", $request->rut)->where("id", "!=", $tipoentidad->entidad_id)->first();

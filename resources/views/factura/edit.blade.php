@@ -70,7 +70,7 @@
              					 </div> --}}
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
-                                    <label>Número de Folio</label>
+                                    <label>Folio</label>
              					     <input type="text" name="folio" id="folio" class="form-control input-sm" value="{{$factura->folio}}">
              					   </div>
              					 </div>
@@ -88,35 +88,36 @@
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
-                                    <label>Total del monto neto</label>
+                                    <label>Monto Neto</label>
              					     <input type="text" name="total_neto" id="total_neto" class="form-control 	input-sm" value="{{$factura->total_neto}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
-                                    <label>Total del monto exento</label>
+                                    <label>Monto Exento</label>
              					     <input type="text" name="total_exento" id="total_exento" class="form-control input-sm" value="{{$factura->total_exento}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
-                                    <label>Total del monto IVA</label>
+                                    <label>Monto del Iva</label>
              					     <input type="text" name="total_iva" id="total_iva" class="form-control 	input-sm" value="{{$factura->total_iva}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
-                                    <label>Monto total</label>
+                                    <label>Monto Total</label>
              					     <input type="text" name="total_monto_total" id="total_monto_total" class="	form-control input-sm" value="{{$factura->total_monto_total}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <label>Estado de la factura</label>
+                                    <label>Estado</label>
              					 	<select name="estado" id="estado" class="form-control input-sm" >
 										<option >{{$factura->estado}}</option>
   										   <option value="pagado">pagado</option>
   										   <option value="impago">impago</option>
   										   <option value="abono">abono</option>
+                                           <option value="anulado">anulado</option>
   										 </select>
              					   {{-- <div class="form-group">
              					     <input type="text" name="estado" id="estado" class="form-control input-sm" value="{{$factura->estado}}">

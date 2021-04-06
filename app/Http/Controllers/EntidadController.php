@@ -15,7 +15,7 @@ class EntidadController extends Controller
      */
     public function index()
     {
-        $entidades=Entidad::orderBy('id', 'asc')->paginate(10);
+        $entidades=Entidad::orderBy('id', 'asc')->get();
         return view('entidad.index', [
             'entidades'=>$entidades
         ]);
@@ -96,8 +96,8 @@ class EntidadController extends Controller
             'nombre_contacto_tec'=>'required', 
             'fono_contacto_fin'=>'required', 
             'fono_contacto_tec'=>'required', 
-            'email_contacto_fin'=>'required', 
-            'email_contacto_tec'=>'required', 
+            'email_contacto_fin'=>'required|email', 
+            'email_contacto_tec'=>'required|email', 
             'activo'=>'required'
         ]);
  

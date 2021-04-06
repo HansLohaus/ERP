@@ -48,7 +48,7 @@
 
                       <div class="col-xs-6 col-sm-6 col-md-6">
                           <div class="form-group">
-                              <label>boleta/liquidacion</label>
+                              <label>Descripción de la boleta/liquidacion</label>
                               <select name="boleta_liquidacion_id" id="boleta_liquidacion_id" class="form-control input-sm">
                                   <option value="" disabled hidden>Seleccione Folio</option>
                                   @foreach ($boletasliquidaciones as $boliq)
@@ -60,7 +60,7 @@
 
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>ingreso/egreso</label>
+                    <label>Ingreso/Egreso</label>
                     <select name="ine" id="ine" class="form-control input-sm">
                          <option value="ingreso">ingreso</option>
                          <option value="egreso">egreso</option>

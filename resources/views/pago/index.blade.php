@@ -77,12 +77,12 @@
           <div class="table-container">
             <table id="tabla-ingreso" class="table table-bordred table-striped">
               <thead>
-                  <th>Folio</th>
-                  <th>descripcion boleta/liquidacion</th>
-                  <th>fecha de pago</th>
-                  <th>monto</th>
-                  <th>monto total de transferencia</th>
-                  <th>descripcion de movimiento</th>
+                  <th>Folio de la factura</th>
+                  <th>Descripción de la boleta/liquidacion</th>
+                  <th>Fecha de pago</th>
+                  <th>Monto del pago</th>
+                  <th>Monto total de transferencia</th>
+                  <th>Descripcion de movimiento</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
               </thead>
@@ -110,7 +110,6 @@
           </table>
         </div>
       </div>
-      {{ $pagos->links() }}
     </div>
   </div>
     {{-- fin nav ingreso --}}
@@ -125,12 +124,12 @@
           <div class="table-container">
             <table id="tabla-egreso" class="table table-bordred table-striped">
               <thead>
-                  <th>Folio</th>
-                  <th>descripcion boleta/liquidacion</th>
-                  <th>fecha de pago</th>
-                  <th>monto</th>
-                  <th>monto total de transferencia</th>
-                  <th>descripcion de movimiento</th>
+                  <th>Folio de la factura</th>
+                  <th>Descripción de la boleta/liquidacion</th>
+                  <th>Fecha de pago</th>
+                  <th>Monto del pago</th>
+                  <th>Monto total de transferencia</th>
+                  <th>Descripcion de movimiento</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
               </thead>
@@ -158,7 +157,6 @@
           </table>
         </div>
       </div>
-      {{ $pagos->links() }}
     </div>
   </div>
     {{-- fin nav egreso --}}
@@ -173,7 +171,7 @@
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 30,
+    "iDisplayLength": 10,
     "language": {
         "emptyTable": "No hay pagos en el sistema",
         "paginate": {
@@ -196,7 +194,7 @@ $("#tabla-filtro").on("keyup change",function(){
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 30,
+    "iDisplayLength": 10,
     "language": {
         "emptyTable": "No hay pagos en el sistema",
         "paginate": {

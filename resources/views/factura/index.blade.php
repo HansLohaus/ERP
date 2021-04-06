@@ -15,9 +15,6 @@
 @endsection
 {{-- Contenido --}}
 @section("content")
-
-
-
 <div class="row">
     <div class="col-lg-4 col-sm-6 col-xs-12">
         <div class="small-box bg-aqua text-center">
@@ -56,10 +53,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 <div class="input-group">
     <div class="input-group-prepend">
         <span class="input-group-text"><span class="fa fa-filter"></span></span>
@@ -104,32 +97,6 @@
       </div>
      {{-- fin popup masivo--}}
     </div>
-{{--     <div class="btn-group">
-      <a href="#" class="btn btn-info" data-toggle="modal" data-target="#cargadte">Carga DTE</a>
-
-      <div class="modal fade" id="cargadte">
-          <div class="modal-dialog modal-xl">
-               <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                    <span>×</span>
-                    </button>
-                  <h4>Cerrar</h4>
-                  </div>
-                  <div class="modal-body">
-                    <form action="{{ route('dte.import') }}" method="POST" enctype="multipart/form-data">
-                      <h4>Cargar Datos:</h4>
-                      <input type="file" class="form-control" name="file" accept=".csv" required>
-                      <br>
-                      <div class="pull-right"><button class="btn btn-info" type="submit">Cargar Datos</button></div>
-                      {{ csrf_field() }}
-                    </form>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-    </div> --}}
  </div>
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -150,14 +117,14 @@
               <thead>
                   <th>Cliente</th>
                   <th>Servicio</th>
-                  <th>folio</th>
-                  <th>tipo de dte</th>
-                  <th>fecha de emision</th>
-                  <th>total monto neto</th>
-                  <th>total monto exento</th>
-                  <th>total del iva</th>
-                  <th>monto total</th>
-                  <th>estado</th>
+                  <th>Folio</th>
+                  <th>Tipo de DTE</th>
+                  <th>Fecha de emisión</th>
+                  <th>Monto Neto</th>
+                  <th>Monto Exento</th>
+                  <th>Monto del Iva</th>
+                  <th>Monto Total</th>
+                  <th>Estado</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
               </thead>
@@ -206,14 +173,14 @@
               <thead>
                   <th>Proveedor</th>
                   <th>Servicio</th>
-                  <th>folio</th>
-                  <th>tipo de dte</th>
-                  <th>fecha de emision</th>
-                  <th>total monto neto</th>
-                  <th>total monto exento</th>
-                  <th>total del iva</th>
-                  <th>monto total</th>
-                  <th>estado</th>
+                  <th>Folio</th>
+                  <th>Tipo de DTE</th>
+                  <th>Fecha de emisión</th>
+                  <th>Monto Neto</th>
+                  <th>Monto Exento</th>
+                  <th>Monto del Iva</th>
+                  <th>Monto Total</th>
+                  <th>Estado</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
               </thead>

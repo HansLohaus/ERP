@@ -24,7 +24,7 @@ class CreateFacturasTable extends Migration
             $table->bigInteger('total_exento')->default(0);
             $table->bigInteger('total_iva')->default(0);
             $table->bigInteger('total_monto_total');
-            $table->enum('estado', ['pagado', 'impago', 'abono']);
+            $table->enum('estado', ['pagado', 'impago', 'abono', 'anulado']);
             $table->timestamps();// created_at, updated_at
             $table->softDeletes();//deleted_at
         });

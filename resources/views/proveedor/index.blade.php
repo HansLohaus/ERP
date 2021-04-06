@@ -39,7 +39,7 @@
                <th>Rut</th>
                <th>Razon social</th>
                <th>Nombre de fantasia</th>
-               <th>Informacion</th>
+               <th>Información</th>
                <th>Editar</th>
                <th>Eliminar</th>
              </thead>
@@ -85,15 +85,15 @@
 						          		    <td class="nombre_contacto_fin"></td>
 						          		  </tr>
 						          		  <tr>
-						          		    <th>Nombre contacto tecnico:</th>
+						          		    <th>Nombre contacto técnico:</th>
 						          		    <td  class="nombre_contacto_tec"></td>
 						          		  </tr>
 						          		  <tr>
-						          		    <th>Fono contacto financiero:</th>
+						          		    <th>Teléfono contacto financiero:</th>
 						          		    <td class="fono_contacto_fin"></td>
 						          		  </tr>
 						          		  <tr>
-						          		    <th>Fono contacto tecnico:</th>
+						          		    <th>Teléfono contacto técnico:</th>
 						          		    <td class="fono_contacto_tec"></td>
 						          		  </tr>
 						          		  <tr>
@@ -101,7 +101,7 @@
 						          		    <td class="email_contacto_fin"></td>
 						          		  </tr>
 						          		  <tr>
-						          		    <th>Email contacto tecnico:</th>
+						          		    <th>Email contacto técnico:</th>
 						          		    <td class="email_contacto_tec"></td>
 						          		  </tr>
 						          		</table>
@@ -114,10 +114,8 @@
            		{{-- fin popup --}}
         </div>
       </div>
-      {{ $proveedores->links() }}
     </div>
   </div>
-
 @endsection
 @push("scripts")
 <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
@@ -127,7 +125,7 @@
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 30,
+    "iDisplayLength": 10,
     "language": {
         "emptyTable": "No hay proveedores en el sistema",
         "paginate": {

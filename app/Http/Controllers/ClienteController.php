@@ -12,7 +12,7 @@ class ClienteController extends Controller
 
     public function index()
     {
-        $clientes=TipoEntidad::clientes()->orderBy('id', 'asc')->paginate(10);
+        $clientes=TipoEntidad::clientes()->orderBy('id', 'asc')->get();
         return view('cliente.index', [
             'clientes'=>$clientes
         ]);
@@ -115,8 +115,8 @@ class ClienteController extends Controller
             'nombre_contacto_tec'=>'required', 
             'fono_contacto_fin'=>'required', 
             'fono_contacto_tec'=>'required', 
-            'email_contacto_fin'=>'required', 
-            'email_contacto_tec'=>'required'
+            'email_contacto_fin'=>'required|email', 
+            'email_contacto_tec'=>'required|email'
 
         ]);
         $tipoentidad=TipoEntidad::find($id);

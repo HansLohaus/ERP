@@ -65,13 +65,13 @@
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Fecha de inicio</label>
+										<label>Fecha de inicio del servicio</label>
 										<input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control input-sm" value="{{$servicio->fecha_inicio}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Fecha de termino</label>
+										<label>Fecha de termino del servicio</label>
 										<input type="date" name="fecha_fin" id="fecha_fin" class="form-control input-sm" value="{{$servicio->fecha_fin}}">
 									</div>
 								</div>

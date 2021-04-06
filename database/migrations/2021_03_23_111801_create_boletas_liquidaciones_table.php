@@ -20,13 +20,13 @@ class CreateBoletasLiquidacionesTable extends Migration
             $table->string('monto_total', 50);
             $table->string('monto_liquido', 50);
             $table->enum('boleta_liq', ['boleta', 'liquidacion']);
-            $table->string('sueldo_base', 50);
-            $table->string('gratificaciones', 50);
-            $table->string('dias_trabajados', 50);
-            $table->string('desc_isapre', 50);
-            $table->string('desc_afp', 50);
-            $table->string('desc_seguro_cesantia', 50);
-            $table->string('impuesto_unico', 50);
+            $table->string('sueldo_base', 50)->nullable();
+            $table->string('gratificaciones', 50)->nullable();
+            $table->string('dias_trabajados', 50)->nullable();
+            $table->string('desc_isapre', 50)->nullable();
+            $table->string('desc_afp', 50)->nullable();
+            $table->string('desc_seguro_cesantia', 50)->nullable();
+            $table->string('impuesto_unico', 50)->nullable();
             $table->timestamps();// created_at, updated_at
             $table->softDeletes();//deleted_at
         });

@@ -39,7 +39,6 @@
                <th>Rut</th>
                <th>Razon social</th>
                <th>Nombre de fantasia</th>
-               <th>Informacion</th>
                <th>Editar</th>
                <th>Eliminar</th>
              </thead>
@@ -114,7 +113,6 @@
            		{{-- fin popup --}}
         </div>
       </div>
-      {{ $clientes->links() }}
     </div>
   </div>
 @endsection
@@ -126,7 +124,7 @@
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 30,
+    "iDisplayLength": 10,
     "language": {
         "emptyTable": "No hay clientes en el sistema",
         "paginate": {

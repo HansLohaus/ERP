@@ -22,7 +22,7 @@ class CreateTrabajadoresTable extends Migration
             $table->date('fecha_nac', 50);
             $table->string('direccion', 50);
             $table->string('cargo', 30)->nullable();
-            $table->string('profesion', 100);
+            $table->string('profesion', 100)->nullable();
             $table->string('sueldo', 45)->nullable();
             $table->date('fecha_contrato')->nullable();
             $table->string('fono', 15)->nullable();
@@ -32,8 +32,8 @@ class CreateTrabajadoresTable extends Migration
             $table->string('titular_cuenta_banc', 50)->nullable();
             $table->string('banco', 50)->nullable();
             $table->string('tipo_cuenta', 50)->nullable();
-            $table->string('afp', 50);
-            $table->string('prevision', 50);
+            $table->string('afp', 50)->nullable();
+            $table->string('prevision', 50)->nullable();
             $table->timestamps();// created_at, updated_at
             $table->softDeletes();//deleted_at
         });

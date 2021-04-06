@@ -47,8 +47,8 @@
               <thead>
                   <th>Cliente</th>
                   <th>Servicio</th>
-                  <th>Fecha de inicio</th>
-                  <th>Fecha de fin</th>
+                  <th>Fecha de inicio del servicio</th>
+                  <th>Fecha de fin del servicio</th>
                   <th>Tipo de servicio</th>
                   <th>Estado del servicio</th>
                   <th>Numero de propuesta</th>
@@ -99,8 +99,8 @@
               <thead>
                   <th>Proveedor</th>
                   <th>Servicio</th>
-                  <th>Fecha de inicio</th>
-                  <th>Fecha de fin</th>
+                  <th>Fecha de inicio del servicio</th>
+                  <th>Fecha de fin del servicio</th>
                   <th>Tipo de servicio</th>
                   <th>Estado del servicio</th>
                   <th>Numero de propuesta</th>
@@ -149,7 +149,7 @@
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 30,
+    "iDisplayLength": 10,
     "language": {
         "emptyTable": "No hay servicios en el sistema",
         "paginate": {
@@ -172,7 +172,7 @@ $("#tabla-filtro").on("keyup change",function(){
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 30,
+    "iDisplayLength": 10,
     "language": {
         "emptyTable": "No hay servicios en el sistema",
         "paginate": {

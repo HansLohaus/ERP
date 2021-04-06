@@ -38,6 +38,7 @@
                		<th>Apellido Paterno</th>
                		<th>Apellido Materno</th>
                		<th>Rut</th>
+                  <th>Fecha Nacimiento</th>
                		<th>Cargo</th>
                		<th>Teléfono</th>
                		<th>Email</th>
@@ -53,10 +54,11 @@
                 <td>{{$trabajador->apellidoP}}</td>
                 <td>{{$trabajador->apellidoM}}</td>
                 <td>{{$trabajador->rut}}</td>
+                <td>{{\Carbon\Carbon::parse($trabajador->fecha_nac)->format('d/m/Y')}}</td>
                 <td>{{$trabajador->cargo}}</td>
                 <td>{{$trabajador->fono}}</td>
                 <td>{{$trabajador->email}}</td>
-
+                
                 
                 <td><a data-trabajador="{{json_encode($trabajador)}}" href="#" class="btn btn-info" data-toggle="modal" data-target="#mas_info">más info</a></td>
                 <td><a class="btn btn-primary" href="{{action('TrabajadorController@edit', $trabajador->id)}}" ><i class="bi bi-pencil"></i></a></td>
@@ -89,12 +91,8 @@
 			          	<div class="row">
 			          		<table class="table">
 			          		<tr>
-			          		  <th>Profesion:</th>
+			          		  <th>Profesión:</th>
 			          		  <td class="profesion"></td>
-			          		</tr>
-			          		<tr>
-			          		  <th>Fecha de nacimiento:</th>
-			          		  <td class="fecha_nac"></td>
 			          		</tr>
 			          		<tr>
 			          		  <th>Dirección</th>
@@ -113,9 +111,13 @@
 			          		  <td class="email_alt"></td>
 			          		</tr>
 			          		<tr>
-			          		  <th>Numero cuenta bancaria:</th>
+			          		  <th>Número cuenta bancaria:</th>
 			          		  <td class="numero_cuenta_banc"></td>
 			          		</tr>
+                    <tr>
+                      <th>Tipo de cuenta:</th>
+                      <td class="tipo_cuenta"></td>
+                    </tr>
 			          		<tr>
 			          		  <th>Titular:</th>
 			          		  <td class="titular_cuenta_banc"></td>
@@ -125,15 +127,11 @@
 			          		  <td class="banco"></td>
 			          		</tr>
 			          		<tr>
-			          		  <th>Tipo de cuenta:</th>
-			          		  <td class="tipo_cuenta"></td>
-			          		</tr>
-			          		<tr>
 			          		  <th>AFP:</th>
 			          		  <td class="afp"></td>
 			          		</tr>
 			          		<tr>
-			          		  <th>prevision:</th>
+			          		  <th>Prevision:</th>
 			          		  <td class="prevision"></td>
 			          		</tr>
 			          		</table>
@@ -146,7 +144,6 @@
            		{{-- fin popup --}}
         	</div>
       	</div>
-      	{{ $trabajadores->links() }}
     </div>
  </div>
 @endsection
@@ -158,7 +155,7 @@
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 30,
+    "iDisplayLength": 10,
     "language": {
         "emptyTable": "No hay clientes en el sistema",
         "paginate": {

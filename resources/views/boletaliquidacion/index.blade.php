@@ -44,10 +44,10 @@
             <div class="table-container">
             <table id="tabla-boleta" class="table table-bordred table-striped">
             	<thead>
-               		<th>Nombre trabajador</th>
-               		<th>Descripcion</th>
+               		<th>Nombre del trabajador</th>
+               		<th>Descripción</th>
                		<th>Monto total</th>
-               		<th>Monto liquido</th>
+               		<th>Monto líquido</th>
                		<th>Editar</th>
                		<th>Eliminar</th>
             	</thead>
@@ -74,7 +74,6 @@
           	</table>
         	</div>
       	</div>
-      	{{ $boletasliquidaciones->links() }}
     </div>
  </div>
 			  	{{-- fin nav boleta --}}
@@ -90,9 +89,9 @@
             <table id="tabla-liquidacion" class="table table-bordred table-striped">
             	<thead>
                		<th>Nombre trabajador</th>
-               		<th>Descripcion</th>
+               		<th>Descripción</th>
                		<th>Monto total</th>
-               		<th>Monto liquido</th>
+               		<th>Monto líquido</th>
                		<th>Información</th>
                		<th>Editar</th>
                		<th>Eliminar</th>
@@ -176,78 +175,13 @@
           </div>
         </div>
            		{{-- fin popup --}}
-
-
-
         	</div>
       	</div>
-      	{{ $boletasliquidaciones->links() }}
     </div>
  </div>
  {{-- fin nav liquidacion --}}
 			  </div>
 			</div>
-{{-- <div class="col-md-12 col-md-offset-2">
-    <div class="panel panel-default">
-        <div class="panel-body">
-			<br>
-			<div class="pull-left"><h3>BoletasLiquidaciones</h3></div>
-            <div class="table-container">
-            <table id="tabla-logs" class="table table-bordred table-striped">
-            	<thead>
-               		<th>trabajador_id</th>
-               		<th>descripcion</th>
-               		<th>monto_total</th>
-               		<th>monto_liquido</th>
-               		<th>boleta_liq</th>
-               		<th>sueldo_base</th>
-               		<th>gratificaciones</th>
-               		<th>dias_trabajados</th>
-               		<th>desc_isapre</th>
-               		<th>desc_afp</th>
-               		<th>desc_seguro_cesantia</th>
-               		<th>impuesto_unico</th>
-               		<th>Editar</th>
-               		<th>Eliminar</th>
-            	</thead>
-            <tbody>
-                @if($boletasliquidaciones->count())  
-                @foreach($boletasliquidaciones as $boletaliquidacion)  
-                <tr>
-                <td>{{$boletaliquidacion->trabajador_id}}</td>
-                <td>{{$boletaliquidacion->descripcion}}</td>
-                <td>{{(number_format($boletaliquidacion->monto_total))}}</td>
-                <td>{{(number_format($boletaliquidacion->monto_liquido))}}</td>
-                <td>{{$boletaliquidacion->boleta_liq}}</td>
-                <td>{{(number_format($boletaliquidacion->sueldo_base))}}</td>
-                <td>{{(number_format($boletaliquidacion->gratificaciones))}}</td>
-                <td>{{$boletaliquidacion->dias_trabajados}}</td>
-                <td>{{$boletaliquidacion->desc_isapre}}</td>
-                <td>{{$boletaliquidacion->desc_afp}}</td>
-                <td>{{$boletaliquidacion->desc_seguro_cesantia}}</td>
-                <td>{{$boletaliquidacion->impuesto_unico}}</td>
-                <td><a class="btn btn-primary" href="{{action('BoletaLiquidacionController@edit', $boletaliquidacion->id)}}" ><i class="bi bi-pencil"></i></a></td>
-                <td>
-                <form action="{{action('BoletaLiquidacionController@destroy', $boletaliquidacion->id)}}" method="post">
-                {{csrf_field()}}
-                <input name="_method" type="hidden" value="DELETE">
-                <button class="btn btn-danger" type="submit" onclick="return confirm('¿Seguro que quieres eliminar?')"><i class="bi bi-trash"></i></button>
-                </form>
-                </td>
-                </tr>
-                @endforeach 
-                @else
-                <tr>
-                <td colspan="8">No hay registro !!</td>
-                </tr>
-                @endif
-            </tbody>
-          	</table>
-        	</div>
-      	</div>
-      	{{ $boletasliquidaciones->links() }}
-    </div>
- </div> --}}
 @endsection
 @push("scripts")
 <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
@@ -257,7 +191,7 @@
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 30,
+    "iDisplayLength": 10,
     "language": {
         "emptyTable": "No hay clientes en el sistema",
         "paginate": {
@@ -281,7 +215,7 @@ $("#tabla-filtro").on("keyup change",function(){
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 30,
+    "iDisplayLength": 10,
     "language": {
         "emptyTable": "No hay clientes en el sistema",
         "paginate": {

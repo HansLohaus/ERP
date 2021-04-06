@@ -92,13 +92,13 @@
 								<div class="form-check">
 								  <input class="form-check-input" type="radio" name="activo" id="flexRadioDefault1" value="1" checked>
 								  <label class="form-check-label" for="flexRadioDefault1">
-								    activo
+								    Activo
 								  </label>
 								</div>
 								<div class="form-check">
 								  <input class="form-check-input" type="radio" name="activo" value="0" id="flexRadioDefault2">
 								  <label class="form-check-label" for="flexRadioDefault2">
-								    inactivo
+								    Inactivo
 								  </label>
 								</div>
 							</div>

@@ -48,71 +48,71 @@
                 </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>descripcion</label>
+                  <label>Descripción</label>
                   <input type="text" name="descripcion" id="descripcion" class="form-control input-sm" value="{{$boletaliquidacion->descripcion}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>monto_total</label>
+                  <label>Monto total</label>
                   <input type="text" name="monto_total" id="monto_total" class="form-control input-sm" value="{{$boletaliquidacion->monto_total}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>monto_liquido</label>
+                  <label>Monto líquido</label>
                   <input type="text" name="monto_liquido" id="monto_liquido" class="form-control input-sm" value="{{$boletaliquidacion->monto_liquido}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>boleta_liq</label>
+                  <label>Tipo</label>
                   <select name="boleta_liq" id="boleta_liq" class="form-control input-sm" >
                     <option>{{$boletaliquidacion->boleta_liq}}</option>
-                         <option value="liquidacion">liquidacion</option>
-                         <option value="boleta">boleta</option>
+                         <option value="liquidacion">Liquidación</option>
+                         <option value="boleta">Boleta</option>
                        </select>
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>sueldo_base</label>
+                  <label>Sueldo base</label>
                   <input type="text" name="sueldo_base" id="sueldo_base" class="form-control input-sm" value="{{$boletaliquidacion->sueldo_base}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>gratificaciones</label>
+                  <label>Gratificaciones</label>
                   <input type="text" name="gratificaciones" id="gratificaciones" class="form-control input-sm" value="{{$boletaliquidacion->gratificaciones}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>dias_trabajados</label>
+                  <label>Días trabajados</label>
                   <input type="text" name="dias_trabajados" id="dias_trabajados" class="form-control input-sm" value="{{$boletaliquidacion->dias_trabajados}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>desc_isapre</label>
+                  <label>Descuento isapre</label>
                   <input type="text" name="desc_isapre" id="desc_isapre" class="form-control input-sm" value="{{$boletaliquidacion->desc_isapre}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>desc_afp</label>
+                  <label>Descuento afp</label>
                   <input type="text" name="desc_afp" id="desc_afp" class="form-control input-sm" value="{{$boletaliquidacion->desc_afp}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>desc_seguro_cesantia</label>
+                  <label>Descuento seguro cesantía</label>
                   <input type="text" name="desc_seguro_cesantia" id="desc_seguro_cesantia" class="form-control input-sm" value="{{$boletaliquidacion->desc_seguro_cesantia}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>impuesto_unico</label>
+                  <label>Impuesto único</label>
                   <input type="text" name="impuesto_unico" id="impuesto_unico" class="form-control input-sm" value="{{$boletaliquidacion->impuesto_unico}}">
                 </div>
               </div>

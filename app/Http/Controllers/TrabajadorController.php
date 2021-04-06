@@ -9,7 +9,7 @@ class TrabajadorController extends Controller
 {
     public function index()
     {
-        $trabajadores=Trabajador::orderBy('id', 'asc')->paginate(10);
+        $trabajadores=Trabajador::orderBy('id', 'asc')->get();
         return view('trabajador.index', [
             'trabajadores'=>$trabajadores
         ]);

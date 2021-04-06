@@ -36,13 +36,13 @@
 	  				<div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6">
               	<div class="form-group">
-                 	<label>nombres</label>
+                 	<label>Nombres</label>
                  	<input type="text" name="nombres" id="nombres" class="form-control input-sm" value="{{$trabajador->nombres}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>apellido paterno</label>
+                  <label>Apellido paterno</label>
                   <input type="text" name="apellidoP" id="apellidoP" class="form-control input-sm" value="{{$trabajador->apellidoP}}">
                 </div>
               </div>
@@ -54,97 +54,97 @@
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>rut</label>
+                  <label>Rut</label>
                   <input type="text" name="rut" id="rut" class="form-control input-sm" value="{{$trabajador->rut}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>fecha de nacimiento</label>
+                  <label>Fecha de nacimiento</label>
                   <input type="date" name="fecha_nac" id="fecha_nac" class="form-control input-sm" value="{{$trabajador->fecha_nac}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>direccion</label>
+                  <label>Dirección</label>
                   <input type="text" name="direccion" id="direccion" class="form-control input-sm" value="{{$trabajador->direccion}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>cargo</label>
+                  <label>Cargo</label>
                   <input type="text" name="cargo" id="cargo" class="form-control input-sm" value="{{$trabajador->cargo}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>profesion</label>
+                  <label>Profesión</label>
                   <input type="text" name="profesion" id="profesion" class="form-control input-sm" value="{{$trabajador->profesion}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>sueldo</label>
+                  <label>Sueldo</label>
                   <input type="text" name="sueldo" id="sueldo" class="form-control input-sm" value="{{$trabajador->sueldo}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>fecha_contrato</label>
+                  <label>Fecha de contrato</label>
                   <input type="date" name="fecha_contrato" id="fecha_contrato" class="form-control input-sm" value="{{$trabajador->fecha_contrato}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>fono</label>
+                  <label>Teléfono</label>
                   <input type="text" name="fono" id="fono" class="form-control input-sm" value="{{$trabajador->fono}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>email</label>
+                  <label>Email</label>
                   <input type="text" name="email" id="email" class="form-control input-sm" value="{{$trabajador->email}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>email_alt</label>
+                  <label>Email alternativo</label>
                   <input type="text" name="email_alt" id="email_alt" class="form-control input-sm" value="{{$trabajador->email_alt}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>numero_cuenta_banc</label>
+                  <label>Número cuenta bancaria</label>
                   <input type="text" name="numero_cuenta_banc" id="numero_cuenta_banc" class="form-control input-sm" value="{{$trabajador->numero_cuenta_banc}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>titular_cuenta_banc</label>
+                  <label>Titular cuenta bancaria</label>
                   <input type="text" name="titular_cuenta_banc" id="titular_cuenta_banc" class="form-control input-sm" value="{{$trabajador->titular_cuenta_banc}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>banco</label>
+                  <label>Banco</label>
                   <input type="text" name="banco" id="banco" class="form-control input-sm" value="{{$trabajador->banco}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>tipo_cuenta</label>
+                  <label>Tipo de cuenta</label>
                   <input type="text" name="tipo_cuenta" id="tipo_cuenta" class="form-control input-sm" value="{{$trabajador->tipo_cuenta}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>afp</label>
+                  <label>Afp</label>
                   <input type="text" name="afp" id="afp" class="form-control input-sm" value="{{$trabajador->afp}}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>prevision</label>
+                  <label>Previsión</label>
                   <input type="text" name="prevision" id="prevision" class="form-control input-sm" value="{{$trabajador->prevision}}">
                 </div>
               </div>

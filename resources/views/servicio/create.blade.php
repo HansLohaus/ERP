@@ -47,17 +47,6 @@
              				       </select>
              				     </div>
              				   </div>
-
-
-
-								{{-- <div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
-										<div class="form-group">
-											<label>Id Cliente</label>
-										<input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
-									</div>
-									</div>
-								</div> --}}
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Nombre</label>
@@ -66,13 +55,13 @@
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Fecha de inicio</label>
+										<label>Fecha de inicio del servicio</label>
 										<input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>fecha de término</label>
+										<label>fecha de término del servicio</label>
 										<input type="date" name="fecha_fin" id="fecha_fin" class="form-control input-sm">
 									</div>
 								</div>
@@ -92,7 +81,6 @@
   										   <option value="activo">activo</option>
   										   <option value="inactivo">inactivo</option>
   										 </select>
-										{{-- <input type="text" name="estado" id="estado" class="form-control input-sm" placeholder="estado del servicio"> --}}
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">

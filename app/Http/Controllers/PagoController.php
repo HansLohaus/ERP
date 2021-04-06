@@ -22,7 +22,7 @@ class PagoController extends Controller
         $pago_ingresos=Pago::where('ine','ingreso')->orderBy('id', 'asc')->get();
         $pagos_egresos=Pago::where('ine','egreso')->orderBy('id', 'asc')->get();
 
-        $pagos=Pago::orderBy('id', 'asc')->paginate(10);
+        $pagos=Pago::orderBy('id', 'asc')->get();
         return view('pago.index', [
             'pagos'=>$pagos,
             'pago_ingresos'=>$pago_ingresos,
