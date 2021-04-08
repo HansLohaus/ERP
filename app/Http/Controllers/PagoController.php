@@ -17,17 +17,42 @@ class PagoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pago_ingresos=Pago::where('ine','ingreso')->orderBy('id', 'asc')->get();
-        $pagos_egresos=Pago::where('ine','egreso')->orderBy('id', 'asc')->get();
 
-        $pagos=Pago::orderBy('id', 'asc')->get();
-        return view('pago.index', [
+        if ($request->has('totales')){
+                $pagos=Pago::count();
+                $pagos_ingresos=Pago::where('ine','ingreso')->count();
+                $pagos_egresos=Pago::where('ine','egreso')->count();
+                $sum_ingresos=Pago::where('ine','ingreso')->sum('monto');
+                $sum_egresos=Pago::where('ine','egreso')->sum('monto');
+                $utilidades=$sum_ingresos-$sum_egresos;
+                $format_ingresos=number_format($sum_ingresos);
+                $format_egresos=number_format($sum_egresos);
+                $format_utilidades=number_format($utilidades);
+            return response()->json([
+                'pagos'=>$pagos,
+                'pagos_ingresos'=>$pagos_ingresos,
+                'pagos_egresos'=>$pagos_egresos,
+                'sum_ingresos'=>$sum_ingresos,
+                'sum_egresos'=>$sum_egresos,
+                'utilidades'=>$utilidades,
+                'format_ingresos'=>$format_ingresos,
+                'format_egresos'=>$format_egresos,
+                'format_utilidades'=>$format_utilidades
+            ]);
+
+        }elseif (!$request->has('filtros')){
+            $pagos_ingresos=Pago::where('ine','ingreso')->orderBy('id', 'asc')->get();
+            $pagos_egresos=Pago::where('ine','egreso')->orderBy('id', 'asc')->get();
+            $pagos=Pago::orderBy('id', 'asc')->get();
+
+            return view('pago.index', [
             'pagos'=>$pagos,
-            'pago_ingresos'=>$pago_ingresos,
+            'pagos_ingresos'=>$pagos_ingresos,
             'pagos_egresos'=>$pagos_egresos
-        ]);
+            ]);
+        }
     }
 
     /**

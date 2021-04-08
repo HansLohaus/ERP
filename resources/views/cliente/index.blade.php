@@ -69,6 +69,7 @@
            <div class="modal-dialog modal-l">
               	<div class="modal-content">
                    <div class="modal-header">
+                    <h5 class="razon_social"></h5>
                    <button type="button" class="close" data-dismiss="modal">
                    <span>×</span>
                    </button>
@@ -79,7 +80,7 @@
 			          	{{ csrf_field() }}
 			          	<input name="_method" type="hidden" value="PATCH">
 			          	<div class="row">
-			          		<table class="table">
+			          		<table class="table table-striped">
 			          		  <tr>
 			          		    <th>Nombre contacto financiero:</th>
 			          		    <td class="nombre_contacto_fin"></td>

@@ -28,17 +28,41 @@ class FacturaController extends Controller
                 $pagadas=Factura::has('cliente')->where('estado','pagado')->count();
                 $pendientes=Factura::has('cliente')->whereIn('estado',['impago','abono'])->count();
                 $anuladas=Factura::has('cliente')->where('estado','anulado')->count();
+                $sumatotales=Factura::has('cliente')->sum('total_neto');
+                $sumapagadas=Factura::has('cliente')->where('estado','pagado')->sum('total_neto');
+                $sumapendientes=Factura::has('cliente')->whereIn('estado',['impago','abono'])->sum('total_neto');
+                $sumaanuladas=Factura::has('cliente')->where('estado','anulado')->sum('total_neto');
+                $format_totales=number_format($sumatotales);
+                $format_pagadas=number_format($sumapagadas);
+                $format_pendientes=number_format($sumapendientes);
+                $format_anuladas=number_format($sumaanuladas);
             }elseif ($request->totales=='proveedor') {
                 $facturas=Factura::has('proveedor')->count();
                 $pagadas=Factura::has('proveedor')->where('estado','pagado')->count();
                 $pendientes=Factura::has('proveedor')->whereIn('estado',['impago','abono'])->count();
                 $anuladas=Factura::has('proveedor')->where('estado','anulado')->count();
+                $sumatotales=Factura::has('proveedor')->sum('total_neto');
+                $sumapagadas=Factura::has('proveedor')->where('estado','pagado')->sum('total_neto');
+                $sumapendientes=Factura::has('proveedor')->whereIn('estado',['impago','abono'])->sum('total_neto');
+                $sumaanuladas=Factura::has('proveedor')->where('estado','anulado')->sum('total_neto');
+                $format_totales=number_format($sumatotales);
+                $format_pagadas=number_format($sumapagadas);
+                $format_pendientes=number_format($sumapendientes);
+                $format_anuladas=number_format($sumaanuladas);
             }
             return response()->json([
                 'facturas'=>$facturas,
                 'pagadas'=>$pagadas,
                 'pendientes'=>$pendientes,
-                'anuladas'=>$anuladas
+                'anuladas'=>$anuladas,
+                'sumatotales'=>$sumatotales,
+                'sumapagadas'=>$sumapagadas,
+                'sumapendientes'=>$sumapendientes,
+                'sumaanuladas'=>$sumaanuladas,
+                'format_totales'=>$format_totales,
+                'format_pagadas'=>$format_pagadas,
+                'format_pendientes'=>$format_pendientes,
+                'format_anuladas'=>$format_anuladas
             ]);
             
         }elseif (!$request->has('filtros')){

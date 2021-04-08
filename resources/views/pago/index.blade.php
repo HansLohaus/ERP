@@ -20,24 +20,27 @@
     <div class="col-lg-4 col-sm-6 col-xs-12">
         <div class="small-box bg-green text-center">
             <div class="inner">
-                <h3 class="count" id="">0</h3>
-                <p>Total de Ingresos (<label class="count" id="ingresos">0</label>)</p>
+                <h3 class="count" id="sumingreso">0</h3>
+                <p>Total de Ingresos</p>
+                <h5 class="count" id="ingreso">0</h5>
             </div>
         </div>
     </div>
     <div class="col-lg-4 col-sm-6 col-xs-12">
         <div class="small-box bg-red text-center">
             <div class="inner">
-                <h3 class="count" id="">0</h3>
-                <p>Total de Egresos (<label class="count" id="egresos">0</label>)</p>
+                <h3 class="count" id="sumegreso">0</h3>
+                <p>Total de Egresos</p>
+                <h5 class="count" id="egreso">0</h5>
             </div>
         </div>
     </div>
     <div class="col-lg-4 col-sm-6 col-xs-12">
         <div class="small-box bg-aqua text-center">
             <div class="inner">
-                <h3 class="count" id="">0</h3>
+                <h3 class="count" id="utilidad">0</h3>
                 <p>Utilidad</p>
+                <h5 class="count" id="total">0</h5>
             </div>
         </div>
     </div>
@@ -92,8 +95,8 @@
 
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-ingreso-tab" data-toggle="tab" href="#nav-ingreso" role="tab" aria-controls="nav-ingreso" aria-selected="true">Ingreso</a>
-    <a class="nav-item nav-link" id="nav-egreso-tab" data-toggle="tab" href="#nav-egreso" role="tab" aria-controls="nav-egreso" aria-selected="false">Egreso</a>
+    <a class="nav-item nav-link active" id="nav-ingreso-tab" data-toggle="tab" href="#nav-ingreso" role="tab" aria-controls="nav-ingreso" aria-selected="true" onclick="actualizarContadores('ingreso')">Ingreso</a>
+    <a class="nav-item nav-link" id="nav-egreso-tab" data-toggle="tab" href="#nav-egreso" role="tab" aria-controls="nav-egreso" aria-selected="false" onclick="actualizarContadores('egreso')">Egreso</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
@@ -117,8 +120,8 @@
                   <th>Eliminar</th>
               </thead>
             <tbody>
-              @if($pago_ingresos->count())  
-              @foreach($pago_ingresos as $pago)  
+              @if($pagos_ingresos->count())  
+              @foreach($pagos_ingresos as $pago)  
               <tr>
                 <td>{{$pago->factura->folio}}</td>
                 <td>{{$pago->boletaliquidacion->descripcion}}</td>
@@ -132,6 +135,7 @@
                    {{csrf_field()}}
                    <input name="_method" type="hidden" value="DELETE">
                    <button class="btn btn-danger" type="submit" onclick="return confirm('¿Seguro que quieres eliminar?')"><i class="bi bi-trash"></i></button>
+                 </form>
                  </td>
                </tr>
                @endforeach 
@@ -241,6 +245,76 @@ $("#tabla-filtro").on("keyup change",function(){
     datatable_tabla2.fnFilter(this.value);
 });
 </script>
-<script type="text/javascript"> 
+
+<script type="text/javascript">
+// Filtros
+function update_datatable(){
+  $.ajax({
+    url: "{{route('pagos.index')}}",
+    type: 'GET',
+    dataType: 'json',
+    data: {
+      _token: $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function(response){
+      datatable_tabla1.clear();
+      datatable_tabla2.clear();
+      if (response.hasOwnProperty('pagos_ingresos')){
+        $.each(response.pago_ingresos, function(){
+          datatable_tabla1.row.add([
+            this.factura.folio,
+            this.boletaliquidacion.descripcion,
+            this.fecha_pago,
+            this.monto,
+            this.monto_total_transf,
+            this.descrip_movimiento,
+            this.edit,
+            this.delete
+          ]);
+        });
+        datatable_tabla1.draw();
+      }
+      if (response.hasOwnProperty('pagos_egresos')){
+        $.each(response.pago_egresos, function(){
+          datatable_tabla2.row.add([
+            this.factura.folio,
+            this.boletaliquidacion.descripcion,
+            this.fecha_pago,
+            this.monto,
+            this.monto_total_transf,
+            this.descrip_movimiento,
+            this.edit,
+            this.delete
+          ]);
+        });
+        datatable_tabla2.draw();
+      }
+    }
+  })
+}
+function actualizarContadores(tipo){
+    $.ajax({
+        url: "{{route('pagos.index')}}",
+        type: 'GET',
+        dataType: 'json',
+        data: {
+          _token: $('meta[name="csrf-token"]').attr('content'),
+          totales: tipo
+        },
+        success: function(response){
+            $('#total').html(response.pagos);
+            $('#ingreso').html(response.pagos_ingresos);
+            $('#egreso').html(response.pagos_egresos);
+            $('#sumingreso').html(response.format_ingresos);
+            $('#sumegreso').html(response.format_egresos);
+            $('#utilidad').html(response.format_utilidades);
+            
+
+        }
+    });
+}
+
+actualizarContadores('ingreso');
 </script>
+
 @endpush

@@ -79,7 +79,7 @@
 						          	{{ csrf_field() }}
 						          	<input name="_method" type="hidden" value="PATCH">
 						          	<div class="row">
-						          		<table class="table">
+						          		<table class="table table-striped">
 						          		  <tr>
 						          		    <th>Nombre contacto financiero:</th>
 						          		    <td class="nombre_contacto_fin"></td>

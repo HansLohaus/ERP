@@ -79,6 +79,9 @@
            <div class="modal-dialog modal-l">
               	<div class="modal-content">
                    <div class="modal-header">
+                    <h5 class="nombres"></h5>&nbsp;
+                    <h5 class="apellidoP"></h5>&nbsp;
+                    <h5 class="apellidoM"></h5>
                    <button type="button" class="close" data-dismiss="modal">
                    <span>×</span>
                    </button>
@@ -89,7 +92,7 @@
 			          	{{ csrf_field() }}
 			          	<input name="_method" type="hidden" value="PATCH">
 			          	<div class="row">
-			          		<table class="table">
+			          		<table class="table table-striped">
 			          		<tr>
 			          		  <th>Profesión:</th>
 			          		  <td class="profesion"></td>

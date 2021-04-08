@@ -19,8 +19,9 @@
     <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="small-box bg-aqua text-center">
             <div class="inner">
-                <h3 class="count" id="">0</h3>
-                    <p>Total de Facturas (<label class="count" id="total">0</label>)</p>
+                <h3 class="count" id="sumatotal">0</h3>
+                    <p>Total de Facturas</p>
+                    <h4 class="count" id="total">0</h4>
             </div>
             <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -31,8 +32,9 @@
     <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="small-box bg-green text-center">
             <div class="inner">
-                <h3 class="count" id="">0</h3>
-                <p>Facturas pagadas (<label class="count" id="pagada">0</label>)</p>
+                <h3 class="count" id="sumapagada">0</h3>
+                <p>Facturas pagadas</p>
+                <h4 class="count" id="pagada">0</h4>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -43,8 +45,9 @@
     <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="small-box bg-yellow text-center">
             <div class="inner">
-                <h3 class="count" id="">0</h3>
-                <p>Facturas pendientes (<label class="count" id="pendiente">0</label>)</p>
+                <h3 class="count" id="sumapendiente">0</h3>
+                <p>Facturas pendientes</p>
+                <h4 class="count" id="pendiente">0</h4>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -55,8 +58,9 @@
     <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="small-box bg-red text-center">
             <div class="inner">
-                <h3 class="count" id="">0</h3>
-                <p>Facturas anuladas (<label class="count" id="anulada">0</label>)</p>
+                <h3 class="count" id="sumaanulada">0</h3>
+                <p>Facturas anuladas</p>
+                <h4 class="count" id="anulada">0</h4>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -66,10 +70,19 @@
     </div>
 </div>
 <div class="input-group">
-    <div class="input-group-prepend">
+    <div class="input-group-append">
         <span class="input-group-text"><span class="fa fa-filter"></span></span>
     </div>
     <input type="text" id="tabla-filtro" class="form-control" placeholder="Filtrar por...">
+    <div class="input-group-append">
+      <select class="btn btn-success" type="button" name="select">
+        <option value="todos">todos</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+      </select>
+        
+    </div>
 </div>
 <br>
    <div class="pull-right">
@@ -369,6 +382,11 @@ function actualizarContadores(tipo){
             $('#pagada').html(response.pagadas);
             $('#pendiente').html(response.pendientes);
             $('#anulada').html(response.anuladas);
+            $('#sumatotal').html(response.format_totales);
+            $('#sumapagada').html(response.format_pagadas);
+            $('#sumapendiente').html(response.format_pendientes);
+            $('#sumaanulada').html(response.format_anuladas);
+            
         }
     });
 }
