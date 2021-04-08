@@ -45,7 +45,6 @@
                               </select>
                         </div>
                       </div>
-
                       <div class="col-xs-6 col-sm-6 col-md-6">
                           <div class="form-group">
                               <label>Descripción de la boleta/liquidacion</label>
@@ -57,7 +56,6 @@
                               </select>
                         </div>
                       </div>
-
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Ingreso/Egreso</label>
@@ -77,13 +75,13 @@
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Monto del pago</label>
-                    <input type="text" name="monto" id="monto" class="form-control input-sm">
+                    <input type="number" name="monto" id="monto" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Monto total de transferencia</label>
-                    <input type="text" name="monto_total_transf" id="monto_total_transf" class="form-control input-sm">
+                    <input type="number" name="monto_total_transf" id="monto_total_transf" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">

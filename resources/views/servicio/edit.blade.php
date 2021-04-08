@@ -36,27 +36,16 @@
 							<input name="_method" type="hidden" value="PATCH">
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label>Cliente</label>
-                    <select name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
-                      <option value="" disabled hidden>Seleccione cliente</option>
-                      @foreach ($clientes as $cliente)
-                        <option value="{{ $cliente->id }}">{{ $cliente->entidad->nombre_fantasia }}</option>
-                      @endforeach
-                    </select>
-                    {{-- <label>Id del Cliente</label>
-                    <input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm"> --}}
-
-                  </div>
-                </div>
-								{{-- <div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
-										<div class="form-group">
-											<label>Id Cliente</label>
-										<input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm" value="{{$servicio->tipo_entidad_id}}">
-									</div>
-									</div>
-								</div> --}}
+               				        <div class="form-group">
+               				        	<label>Cliente</label>
+               				        	<select name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
+               				          		<option value="" disabled hidden>Seleccione cliente</option>
+               				          		@foreach ($clientes as $cliente)
+               				            	<option value="{{ $cliente->id }}">{{ $cliente->entidad->nombre_fantasia }}</option>
+               				          		@endforeach
+               				        	</select>
+               				      	</div>
+               				    </div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Nombre</label>
@@ -84,27 +73,20 @@
   										   <option value="proyecto">proyecto</option>
   										 </select>
 									</div>
-
-									{{-- <div class="form-group">
-										<input type="text" name="tipo" id="tipo" class="form-control input-sm" value="{{$servicio->tipo}}">
-									</div> --}}
 								</div>
 								<br>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<label>Estado del servicio</label>
 									<select name="estado" id="estado" class="form-control input-sm" >
 										<option >{{$servicio->estado}}</option>
-  										   <option value="activo">activo</option>
-  										   <option value="inactivo">inactivo</option>
-  										 </select>
-									{{-- <div class="form-group">
-										<input type="text" name="estado" id="estado" class="form-control input-sm" value="{{$servicio->estado}}">
-									</div> --}}
+  										<option value="activo">activo</option>
+  										<option value="inactivo">inactivo</option>
+  									</select>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Número de propuesta</label>
-										<input type="text" name="numero_propuesta" id="numero_propuesta" class="form-control input-sm" value="{{$servicio->numero_propuesta}}">
+										<input type="number" name="numero_propuesta" id="numero_propuesta" class="form-control input-sm" value="{{$servicio->numero_propuesta}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
@@ -120,13 +102,10 @@
 									<input type="submit"  value="Actualizar" class="btn btn-success btn-block">
 									<a href="{{ route('servicios.index') }}" class="btn btn-info btn-block" >Atrás</a>
 								</div>	
- 
 							</div>
 						</form>
-						
 					</div>
 				</div>
- 
 			</div>
 		</div>
 @endsection

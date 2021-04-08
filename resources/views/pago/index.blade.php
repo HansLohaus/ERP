@@ -14,6 +14,36 @@
 @endsection
 {{-- Contenido --}}
 @section("content")
+
+
+<div class="row">
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="small-box bg-green text-center">
+            <div class="inner">
+                <h3 class="count" id="">0</h3>
+                <p>Total de Ingresos (<label class="count" id="ingresos">0</label>)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="small-box bg-red text-center">
+            <div class="inner">
+                <h3 class="count" id="">0</h3>
+                <p>Total de Egresos (<label class="count" id="egresos">0</label>)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="small-box bg-aqua text-center">
+            <div class="inner">
+                <h3 class="count" id="">0</h3>
+                <p>Utilidad</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="input-group">
     <div class="input-group-prepend">
         <span class="input-group-text"><span class="fa fa-filter"></span></span>

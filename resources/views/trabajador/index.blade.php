@@ -53,8 +53,8 @@
                 <td>{{$trabajador->nombres}}</td>
                 <td>{{$trabajador->apellidoP}}</td>
                 <td>{{$trabajador->apellidoM}}</td>
-                <td>{{$trabajador->rut}}</td>
-                <td>{{\Carbon\Carbon::parse($trabajador->fecha_nac)->format('d/m/Y')}}</td>
+                <td>{{Rut::parse($trabajador->rut)->format()}}</td>
+                <td>{{\Carbon\Carbon::parse($trabajador->fecha_nac)->format('d-m-Y')}}</td>
                 <td>{{$trabajador->cargo}}</td>
                 <td>{{$trabajador->fono}}</td>
                 <td>{{$trabajador->email}}</td>

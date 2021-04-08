@@ -37,56 +37,56 @@
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Rut</label>
+										<label>Rut (Formato: sin puntos con guión. Ejemplo: 12345678-9):</label>
 										<input type="text" name="rut" id="rut" class="form-control input-sm" value="{{$proveedor->entidad->rut}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Razón social</label>
+										<label>Razón social:</label>
 										<input type="text" name="razon_social" id="razon_social" class="form-control input-sm" value="{{$proveedor->entidad->razon_social}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label></label>Nombre de fantasia
+										<label>Nombre de fantasia:</label>
 										<input type="text" name="nombre_fantasia" id="nombre_fantasia" class="form-control input-sm" value="{{$proveedor->entidad->nombre_fantasia}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Nombre contacto financiero</label>
+										<label>Nombre contacto financiero:</label>
 										<input type="text" name="nombre_contacto_fin" id="nombre_contacto_fin" class="form-control input-sm" value="{{$proveedor->entidad->nombre_contacto_fin}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Nombre contacto técnico</label>
+										<label>Nombre contacto técnico:</label>
 										<input type="text" name="nombre_contacto_tec" id="nombre_contacto_tec" class="form-control input-sm" value="{{$proveedor->entidad->nombre_contacto_tec}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Teléfono contacto financiero</label>
-										<input type="text" name="fono_contacto_fin" id="fono_contacto_fin" class="form-control input-sm" value="{{$proveedor->entidad->fono_contacto_fin}}">
+										<label>Teléfono contacto financiero (Formato sin signo ni separaciones. Ejemplo: 56912341234):</label>
+										<input type="tel" name="fono_contacto_fin" id="fono_contacto_fin" class="form-control input-sm" pattern="[0-9]{11}" value="{{$proveedor->entidad->fono_contacto_fin}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Teléfono contacto técnico</label>
-										<input type="text" name="fono_contacto_tec" id="fono_contacto_tec" class="form-control input-sm" value="{{$proveedor->entidad->fono_contacto_tec}}">
+										<label>Teléfono contacto técnico (Formato sin signo ni separaciones. Ejemplo: 56912341234):</label>
+										<input type="tel" name="fono_contacto_tec" id="fono_contacto_tec" class="form-control input-sm" pattern="[0-9]{11}" value="{{$proveedor->entidad->fono_contacto_tec}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Email contacto financiero</label>
-										<input type="text" name="email_contacto_fin" id="email_contacto_fin" class="form-control input-sm" value="{{$proveedor->entidad->email_contacto_fin}}">
+										<label>Email contacto financiero:</label>
+										<input type="email" name="email_contacto_fin" id="email_contacto_fin" class="form-control input-sm" value="{{$proveedor->entidad->email_contacto_fin}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Email contacto técnico</label>
-										<input type="text" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm" value="{{$proveedor->entidad->email_contacto_tec}}">
+										<label>Email contacto técnico:</label>
+										<input type="email" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm" value="{{$proveedor->entidad->email_contacto_tec}}">
 									</div>
 								</div>
 								<div class="form-check">

@@ -26,16 +26,19 @@ class FacturaController extends Controller
             if ($request->totales=='cliente') {
                 $facturas=Factura::has('cliente')->count();
                 $pagadas=Factura::has('cliente')->where('estado','pagado')->count();
-                $pendientes=Factura::has('cliente')->where('estado', '!=','pagado')->count();
+                $pendientes=Factura::has('cliente')->whereIn('estado',['impago','abono'])->count();
+                $anuladas=Factura::has('cliente')->where('estado','anulado')->count();
             }elseif ($request->totales=='proveedor') {
                 $facturas=Factura::has('proveedor')->count();
                 $pagadas=Factura::has('proveedor')->where('estado','pagado')->count();
-                $pendientes=Factura::has('proveedor')->where('estado', '!=','pagado')->count();
+                $pendientes=Factura::has('proveedor')->whereIn('estado',['impago','abono'])->count();
+                $anuladas=Factura::has('proveedor')->where('estado','anulado')->count();
             }
             return response()->json([
                 'facturas'=>$facturas,
                 'pagadas'=>$pagadas,
-                'pendientes'=>$pendientes
+                'pendientes'=>$pendientes,
+                'anuladas'=>$anuladas
             ]);
             
         }elseif (!$request->has('filtros')){
@@ -50,6 +53,7 @@ class FacturaController extends Controller
         }else{
             $pagados=$request->filtros['pagados'];
             $pendientes=$request->filtros['pendientes'];
+            $anuladas=$request->filtros['anuladas'];
             //se inicializan query
             $facturas_clientes=Factura::with(['cliente.entidad', 'servicio'])->has('cliente');
             $facturas_proveedores=Factura::with(['proveedor.entidad', 'servicio'])->has('proveedor');
@@ -59,8 +63,12 @@ class FacturaController extends Controller
                 $facturas_proveedores=$facturas_proveedores->where('estado','pagado');
             }
             if ($pendientes=='true') {
-                $facturas_clientes=$facturas_clientes->where('estado', '!=','pagado');
-                $facturas_proveedores=$facturas_proveedores->where('estado', '!=','pagado');
+                $facturas_clientes=$facturas_clientes->whereIn('estado',['impago','abono']);
+                $facturas_proveedores=$facturas_proveedores->whereIn('estado',['impago','abono']);
+            }
+            if ($anuladas=='true') {
+                $facturas_clientes=$facturas_clientes->where('estado','anulado');
+                $facturas_proveedores=$facturas_proveedores->where('estado','anulado');
             }
             $facturas_clientes=$facturas_clientes->orderBy('id', 'asc')->get();
             $facturas_proveedores=$facturas_proveedores->orderBy('id', 'asc')->get();

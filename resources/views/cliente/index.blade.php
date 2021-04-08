@@ -34,11 +34,12 @@
 	           </div>
           </div>
           <div class="table-container">
-            <table id="tabla-logs" class="table table-bordred table-striped">
+            <table id="tabla-cliente" class="table table-bordred table-striped">
              <thead>
                <th>Rut</th>
                <th>Razon social</th>
                <th>Nombre de fantasia</th>
+               <th>Información</th>
                <th>Editar</th>
                <th>Eliminar</th>
              </thead>
@@ -119,7 +120,7 @@
 @push("scripts")
 <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
 <script>
-  var datatable_tabla = $("#tabla-logs").dataTable({
+  var datatable_tabla = $("#tabla-cliente").DataTable({
     "order" : [[0,"desc"]],
     "bLengthChange" : false, 
     "bInfo":false, 
@@ -139,7 +140,7 @@
 
 // Evento para el filtro
 $("#tabla-filtro").on("keyup change",function(){
-    datatable_tabla.fnFilter(this.value);
+    datatable_tabla.search(this.value).draw();
 });
 </script>
 <script type="text/javascript"> 

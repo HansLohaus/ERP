@@ -55,13 +55,13 @@
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Monto total</label>
-                    <input type="text" name="monto_total" id="monto_total" class="form-control input-sm">
+                    <input type="number" name="monto_total" id="monto_total" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Monto líquido</label>
-                    <input type="text" name="monto_liquido" id="monto_liquido" class="form-control input-sm">
+                    <input type="number" name="monto_liquido" id="monto_liquido" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
@@ -76,43 +76,43 @@
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Sueldo base</label>
-                    <input type="text" name="sueldo_base" id="sueldo_base" class="form-control input-sm">
+                    <input type="number" name="sueldo_base" id="sueldo_base" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Gratificaciones</label>
-                    <input type="text" name="gratificaciones" id="gratificaciones" class="form-control input-sm">
+                    <input type="number" name="gratificaciones" id="gratificaciones" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Días trabajados</label>
-                    <input type="text" name="dias_trabajados" id="dias_trabajados" class="form-control input-sm">
+                    <input type="number" name="dias_trabajados" id="dias_trabajados" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Descuento isapre</label>
-                    <input type="text" name="desc_isapre" id="desc_isapre" class="form-control input-sm">
+                    <input type="number" name="desc_isapre" id="desc_isapre" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Descuento afp</label>
-                    <input type="text" name="desc_afp" id="desc_afp" class="form-control input-sm">
+                    <input type="number" name="desc_afp" id="desc_afp" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Descuento seguro cesantía</label>
-                    <input type="text" name="desc_seguro_cesantia" id="desc_seguro_cesantia" class="form-control input-sm">
+                    <input type="number" name="desc_seguro_cesantia" id="desc_seguro_cesantia" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Impuesto único</label>
-                    <input type="text" name="impuesto_unico" id="impuesto_unico" class="form-control input-sm">
+                    <input type="number" name="impuesto_unico" id="impuesto_unico" class="form-control input-sm">
                   </div>
                 </div>
               </div>

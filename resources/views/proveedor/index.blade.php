@@ -34,7 +34,7 @@
 	           </div>
           </div>
           <div class="table-container">
-            <table id="tabla-logs" class="table table-bordred table-striped">
+            <table id="tabla-proveedor" class="table table-bordred table-striped">
              <thead>
                <th>Rut</th>
                <th>Razon social</th>
@@ -120,7 +120,7 @@
 @push("scripts")
 <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
 <script>
-  var datatable_tabla = $("#tabla-logs").dataTable({
+  var datatable_tabla = $("#tabla-proveedor").dataTable({
     "order" : [[0,"desc"]],
     "bLengthChange" : false, 
     "bInfo":false, 

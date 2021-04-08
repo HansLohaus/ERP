@@ -86,7 +86,7 @@
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Número de propuesta</label>
-										<input type="text" name="numero_propuesta" id="numero_propuesta" class="form-control input-sm">
+										<input type="number" name="numero_propuesta" id="numero_propuesta" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">

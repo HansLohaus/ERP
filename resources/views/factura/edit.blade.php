@@ -44,11 +44,8 @@
                                                     <option value="{{ $cliente->id }}">{{ $cliente->entidad->nombre_fantasia }}</option>
                                                 @endforeach
                                                 </select>
-                                            {{-- <label>Id Cliente</label>
-             					     	<input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control 	input-sm" value="{{$factura->tipo_entidad_id}}"> --}}
 	             					     </div>
                   					</div>
-
                                      <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label>Servicio</label>
@@ -60,24 +57,16 @@
                                             </select>
                                       </div>
                                     </div>
-                                
-
-             					 {{-- <div class="col-xs-6 col-sm-6 col-md-6">
-             					   <div class="form-group">
-                                    <label>Id Servicio</label>
-             					     <input type="text" name="servicio_id" id="servicio_id" class="form-control input-sm" value="{{$factura->servicio_id}}">
-             					   </div>
-             					 </div> --}}
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
                                     <label>Folio</label>
-             					     <input type="text" name="folio" id="folio" class="form-control input-sm" value="{{$factura->folio}}">
+             					     <input type="number" name="folio" id="folio" class="form-control input-sm" value="{{$factura->folio}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
                                     <label>Tipo de DTE</label>
-             					     <input type="text" name="tipo_dte" id="tipo_dte" class="form-control input-sm" value="{{$factura->tipo_dte}}">
+             					     <input type="number" name="tipo_dte" id="tipo_dte" class="form-control input-sm" value="{{$factura->tipo_dte}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
@@ -89,25 +78,25 @@
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
                                     <label>Monto Neto</label>
-             					     <input type="text" name="total_neto" id="total_neto" class="form-control 	input-sm" value="{{$factura->total_neto}}">
+             					     <input type="number" name="total_neto" id="total_neto" class="form-control 	input-sm" value="{{$factura->total_neto}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
                                     <label>Monto Exento</label>
-             					     <input type="text" name="total_exento" id="total_exento" class="form-control input-sm" value="{{$factura->total_exento}}">
+             					     <input type="number" name="total_exento" id="total_exento" class="form-control input-sm" value="{{$factura->total_exento}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
                                     <label>Monto del Iva</label>
-             					     <input type="text" name="total_iva" id="total_iva" class="form-control 	input-sm" value="{{$factura->total_iva}}">
+             					     <input type="number" name="total_iva" id="total_iva" class="form-control 	input-sm" value="{{$factura->total_iva}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
                                     <label>Monto Total</label>
-             					     <input type="text" name="total_monto_total" id="total_monto_total" class="	form-control input-sm" value="{{$factura->total_monto_total}}">
+             					     <input type="number" name="total_monto_total" id="total_monto_total" class="	form-control input-sm" value="{{$factura->total_monto_total}}">
              					   </div>
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">

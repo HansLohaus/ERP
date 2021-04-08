@@ -16,11 +16,11 @@
 {{-- Contenido --}}
 @section("content")
 <div class="row">
-    <div class="col-lg-4 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="small-box bg-aqua text-center">
             <div class="inner">
-                <h3 class="count" id="total">0</h3>
-                    <p>Total de Facturas</p>
+                <h3 class="count" id="">0</h3>
+                    <p>Total de Facturas (<label class="count" id="total">0</label>)</p>
             </div>
             <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -28,11 +28,11 @@
             <a href="#" class="small-box-footer" onclick="filtrarPor('totales')">Mostrar todo <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
-    <div class="col-lg-4 col-sm-6 col-xs-12">
-        <div class="small-box bg-red text-center">
+    <div class="col-lg-3 col-sm-6 col-xs-12">
+        <div class="small-box bg-green text-center">
             <div class="inner">
-                <h3 class="count" id="pagada">0</h3>
-                <p>Facturas pagadas</p>
+                <h3 class="count" id="">0</h3>
+                <p>Facturas pagadas (<label class="count" id="pagada">0</label>)</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -40,16 +40,28 @@
             <a href="#" class="small-box-footer" onclick="filtrarPor('pagados')">Filtrar <i class="fa fa-filter"></i></a>
         </div>
     </div>
-    <div class="col-lg-4 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="small-box bg-yellow text-center">
             <div class="inner">
-                <h3 class="count" id="pendiente">0</h3>
-                <p>Facturas pendientes</p>
+                <h3 class="count" id="">0</h3>
+                <p>Facturas pendientes (<label class="count" id="pendiente">0</label>)</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
             <a href="#" class="small-box-footer" onclick="filtrarPor('pendientes')">Filtrar <i class="fa fa-filter"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-xs-12">
+        <div class="small-box bg-red text-center">
+            <div class="inner">
+                <h3 class="count" id="">0</h3>
+                <p>Facturas anuladas (<label class="count" id="anulada">0</label>)</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer" onclick="filtrarPor('anuladas')">Filtrar <i class="fa fa-filter"></i></a>
         </div>
     </div>
 </div>
@@ -227,7 +239,7 @@
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 30,
+    "iDisplayLength": 10,
     "language": {
         "emptyTable": "No hay facturas en el sistema",
         "paginate": {
@@ -245,7 +257,7 @@ var datatable_tabla2 = $("#tabla-proveedor").DataTable({
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 30,
+    "iDisplayLength": 10,
     "language": {
         "emptyTable": "No hay facturas en el sistema",
         "paginate": {
@@ -270,7 +282,8 @@ var datatable_tabla2 = $("#tabla-proveedor").DataTable({
 // Filtros
 var filtro_array = {
     "pagados" : false,
-    "pendientes" : false
+    "pendientes" : false,
+    "anuladas" : false
 };
 // Funcion para filtrar
 function filtrarPor(tipo, valor) {
@@ -283,6 +296,7 @@ function filtrarPor(tipo, valor) {
       }else{
         filtro_array.pagados=false;
         filtro_array.pendientes=false;
+        filtro_array.anuladas=false;
         update_datatable();
       }
     }
@@ -354,6 +368,7 @@ function actualizarContadores(tipo){
             $('#total').html(response.facturas);
             $('#pagada').html(response.pagadas);
             $('#pendiente').html(response.pendientes);
+            $('#anulada').html(response.anuladas);
         }
     });
 }

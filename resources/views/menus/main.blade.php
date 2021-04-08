@@ -1,12 +1,16 @@
 @role('superadmin')
 
-<li><a class="waves-effect waves-dark" aria-expanded="false" id="dropdownMenuLink" data-bs-toggle="dropdown"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">Administración</span></a></li>
-
-<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-	<li> <a class="waves-effect waves-dark" href="{{route('usuarios.index')}}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Usuarios</span></a></li>
-	<li> <a class="waves-effect waves-dark" href="{{route('logs')}}" aria-expanded="false"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">Logs</span></a></li>
-	<li> <a class="waves-effect waves-dark" href="{{route('ayuda')}}" aria-expanded="false"><i class="fa fa-info-circle"></i><span class="hide-menu">Ayuda</span></a></li>
-</ul>
+<li>
+    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+        <i class="mdi mdi-format-list-bulleted"></i>
+        <span class="hide-menu">Administración</span>
+    </a>
+    <ul aria-expanded="false" class="collapse">
+    	<li> <a class="waves-effect waves-dark" href="{{route('usuarios.index')}}" aria-expanded="false"><i class="mdi mdi-account"></i><span>Usuarios</span></a></li>
+		<li> <a class="waves-effect waves-dark" href="{{route('logs')}}" aria-expanded="false"><i class="mdi mdi-format-list-bulleted"></i><span>Logs</span></a></li>
+		<li> <a class="waves-effect waves-dark" href="{{route('ayuda')}}" aria-expanded="false"><i class="fa fa-info-circle"></i><span>Ayuda</span></a></li>
+    </ul>
+</li>
 
 @endrole
 

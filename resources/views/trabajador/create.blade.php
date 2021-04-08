@@ -34,105 +34,105 @@
               <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Nombres</label>
+                    <label>Nombres:</label>
                     <input type="text" name="nombres" id="nombres" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Apellido paterno</label>
+                    <label>Apellido paterno:</label>
                     <input type="text" name="apellidoP" id="apellidoP" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Apellido materno</label>
+                    <label>Apellido materno:</label>
                     <input type="text" name="apellidoM" id="apellidoM" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Rut</label>
+                    <label>Rut (Formato: sin puntos con guión. Ejemplo: 12345678-9):</label>
                     <input type="text" name="rut" id="rut" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Fecha de nacimiento</label>
+                    <label>Fecha de nacimiento:</label>
                     <input type="date" name="fecha_nac" id="fecha_nac" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Dirección</label>
+                    <label>Dirección:</label>
                     <input type="text" name="direccion" id="direccion" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Cargo</label>
+                    <label>Cargo:</label>
                     <input type="text" name="cargo" id="cargo" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Profesión</label>
+                    <label>Profesión:</label>
                     <input type="text" name="profesion" id="profesion" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Sueldo</label>
-                    <input type="text" name="sueldo" id="sueldo" class="form-control input-sm">
+                    <label>Sueldo:</label>
+                    <input type="number" name="sueldo" id="sueldo" class="form-control input-sm">
                   </div>
                 </div><div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Fecha de contrato</label>
+                    <label>Fecha de contrato:</label>
                     <input type="date" name="fecha_contrato" id="fecha_contrato" class="form-control input-sm">
                   </div>
                 </div><div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Teléfono</label>
-                    <input type="text" name="fono" id="fono" class="form-control input-sm">
+                    <label>Teléfono (Formato sin signo ni separaciones. Ejemplo: 56912341234):</label>
+                    <input type="tel" name="fono" id="fono" class="form-control input-sm" pattern="[0-9]{11}">
                   </div>
                 </div><div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" name="email" id="email" class="form-control input-sm">
+                    <label>Email:</label>
+                    <input type="email" name="email" id="email" class="form-control input-sm">
                   </div>
                 </div><div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Email Alternativo</label>
-                    <input type="text" name="email_alt" id="email_alt" class="form-control input-sm">
+                    <label>Email Alternativo:</label>
+                    <input type="email" name="email_alt" id="email_alt" class="form-control input-sm">
                   </div>
                 </div><div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Número cuenta bancaria</label>
-                    <input type="text" name="numero_cuenta_banc" id="numero_cuenta_banc" class="form-control input-sm">
+                    <label>Número cuenta bancaria:</label>
+                    <input type="number" name="numero_cuenta_banc" id="numero_cuenta_banc" class="form-control input-sm">
                   </div>
                 </div><div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Titular cuenta bancaria</label>
+                    <label>Titular cuenta bancaria:</label>
                     <input type="text" name="titular_cuenta_banc" id="titular_cuenta_banc" class="form-control input-sm">
                   </div>
                 </div><div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Banco</label>
+                    <label>Banco:</label>
                     <input type="text" name="banco" id="banco" class="form-control input-sm">
                   </div>
                 </div><div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Tipo de cuenta</label>
+                    <label>Tipo de cuenta:</label>
                     <input type="text" name="tipo_cuenta" id="tipo_cuenta" class="form-control input-sm">
                   </div>
                 </div><div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Afp</label>
+                    <label>Afp:</label>
                     <input type="text" name="afp" id="afp" class="form-control input-sm">
                   </div>
                 </div><div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Previsión</label>
+                    <label>Previsión:</label>
                     <input type="text" name="prevision" id="prevision" class="form-control input-sm">
                   </div>
                 </div>

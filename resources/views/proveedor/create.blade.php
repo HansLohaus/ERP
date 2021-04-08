@@ -36,56 +36,56 @@
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Rut</label>
+										<label>Rut (Formato: sin puntos con guión. Ejemplo: 12345678-9):</label>
 										<input type="text" name="rut" id="rut" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Razón Social</label>
+										<label>Razón Social:</label>
 										<input type="text" name="razon_social" id="razon_social" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Nmombre de fantasia</label>
+										<label>Nombre de fantasia:</label>
 										<input type="text" name="nombre_fantasia" id="nombre_fantasia" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Nombre contacto financiero</label>
+										<label>Nombre contacto financiero:</label>
 										<input type="text" name="nombre_contacto_fin" id="nombre_contacto_fin" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Nombre contacto técnico</label>
+										<label>Nombre contacto técnico:</label>
 										<input type="text" name="nombre_contacto_tec" id="nombre_contacto_tec" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Teléfono contacto financiero</label>
-										<input type="text" name="fono_contacto_fin" id="fono_contacto_fin" class="form-control input-sm">
+										<label>Teléfono contacto financiero (Formato sin signo ni separaciones. Ejemplo: 56912341234):</label>
+										<input type="tel" name="fono_contacto_fin" id="fono_contacto_fin" class="form-control input-sm" pattern="[0-9]{11}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Teléfono contacto técnico</label>
-										<input type="text" name="fono_contacto_tec" id="fono_contacto_tec" class="form-control input-sm">
+										<label>Teléfono contacto técnico (Formato sin signo ni separaciones. Ejemplo: 56912341234):</label>
+										<input type="tel" name="fono_contacto_tec" id="fono_contacto_tec" class="form-control input-sm" pattern="[0-9]{11}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Email contacto financiero</label>
-										<input type="text" name="email_contacto_fin" id="email_contacto_fin" class="form-control input-sm">
+										<label>Email contacto financiero:</label>
+										<input type="email" name="email_contacto_fin" id="email_contacto_fin" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label>Email contacto técnico</label>
-										<input type="text" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm">
+										<label>Email contacto técnico:</label>
+										<input type="email" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm">
 									</div>
 								</div>
 							</div>
