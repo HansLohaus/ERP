@@ -14,7 +14,7 @@ class ProveedorSeeder extends Seeder
     public function run()
     {
         $entidad = Entidad::insert([
-            "rut" => "97036000-K",
+            "rut" => "97036000K",
             "razon_social" => "Santander Chile",
             "nombre_fantasia" => "Banco Santander",
             "nombre_contacto_fin" => "",
@@ -27,7 +27,7 @@ class ProveedorSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "78627210-6",
+            "rut" => "786272106",
             "razon_social" => "Hipermercados Tottus S.A.",
             "nombre_fantasia" => "Supermercado Tottus",
             "nombre_contacto_fin" => "",
@@ -40,7 +40,7 @@ class ProveedorSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "96756430-3",
+            "rut" => "967564303",
             "razon_social" => "Chilexpress S.A.",
             "nombre_fantasia" => "Chilexpress",
             "nombre_contacto_fin" => "",
@@ -53,7 +53,7 @@ class ProveedorSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "96806980-2",
+            "rut" => "968069802",
             "razon_social" => "Entel PCS Telecomunicaciones S.A.",
             "nombre_fantasia" => "Entel",
             "nombre_contacto_fin" => "",
@@ -66,7 +66,7 @@ class ProveedorSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "81201000-K",
+            "rut" => "81201000K",
             "razon_social" => "Cencosud Retail",
             "nombre_fantasia" => "Paris",
             "nombre_contacto_fin" => "",
@@ -79,7 +79,7 @@ class ProveedorSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "76226876-0",
+            "rut" => "762268760",
             "razon_social" => "Inversiones y servicios solucionesd Limitada",
             "nombre_fantasia" => "SolucionesD",
             "nombre_contacto_fin" => "",
@@ -92,7 +92,7 @@ class ProveedorSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "76277371-6",
+            "rut" => "762773716",
             "razon_social" => "Virtual Pyme SPA",
             "nombre_fantasia" => "Virtual Pyme",
             "nombre_contacto_fin" => "",
@@ -105,7 +105,7 @@ class ProveedorSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "76568660-1",
+            "rut" => "765686601",
             "razon_social" => "Easy Retail S.A.",
             "nombre_fantasia" => "Easy",
             "nombre_contacto_fin" => "",
@@ -118,7 +118,7 @@ class ProveedorSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "76307949-K",
+            "rut" => "76307949K",
             "razon_social" => "Teknologik Chile SpA",
             "nombre_fantasia" => "Teknologik",
             "nombre_contacto_fin" => "",
@@ -131,7 +131,7 @@ class ProveedorSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "76100240-6",
+            "rut" => "761002406",
             "razon_social" => "Inversiones San Cristobal SPA",
             "nombre_fantasia" => "Inversiones San Cristobal",
             "nombre_contacto_fin" => "",

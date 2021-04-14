@@ -39,9 +39,12 @@
              					   		<div class="form-group">
                                             <label>Cliente</label>
                                             <select name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
-                                                <option value="" disabled hidden>Seleccione cliente</option>
+                                                <option value="{{$factura->cliente->entidad->nombre_fantasia}}" >{{$factura->cliente->entidad->nombre_fantasia}}</option>
                                                 @foreach ($clientes as $cliente)
                                                     <option value="{{ $cliente->id }}">{{ $cliente->entidad->nombre_fantasia }}</option>
+                                                @endforeach
+                                                @foreach ($proveedores as $proveedor)
+                                                    <option value="{{ $proveedor->id }}" data-tag='2'>{{ $proveedor->entidad->nombre_fantasia }}</option>
                                                 @endforeach
                                                 </select>
 	             					     </div>

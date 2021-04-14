@@ -19,9 +19,11 @@
     <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="small-box bg-aqua text-center">
             <div class="inner">
-                <h3 class="count" id="sumatotal">0</h3>
-                    <p>Total de Facturas</p>
-                    <h4 class="count" id="total">0</h4>
+              <h3 class="count">
+                $<span id="sumatotal">0</span>
+              </h3>
+              <p>Total de Facturas</p>
+              <h4 class="count" id="total">0</h4>
             </div>
             <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -32,9 +34,11 @@
     <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="small-box bg-green text-center">
             <div class="inner">
-                <h3 class="count" id="sumapagada">0</h3>
-                <p>Facturas pagadas</p>
-                <h4 class="count" id="pagada">0</h4>
+              <h3 class="count">
+                $<span id="sumapagada">0</span>
+              </h3>
+              <p>Facturas pagadas</p>
+              <h4 class="count" id="pagada">0</h4>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -45,9 +49,11 @@
     <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="small-box bg-yellow text-center">
             <div class="inner">
-                <h3 class="count" id="sumapendiente">0</h3>
-                <p>Facturas pendientes</p>
-                <h4 class="count" id="pendiente">0</h4>
+              <h3 class="count">
+                $<span id="sumapendiente">0</span>
+              </h3>
+              <p>Facturas pendientes</p>
+              <h4 class="count" id="pendiente">0</h4>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -58,9 +64,11 @@
     <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="small-box bg-red text-center">
             <div class="inner">
-                <h3 class="count" id="sumaanulada">0</h3>
-                <p>Facturas anuladas</p>
-                <h4 class="count" id="anulada">0</h4>
+              <h3 class="count">
+                $<span id="sumaanulada">0</span>
+              </h3>
+              <p>Facturas anuladas</p>
+              <h4 class="count" id="anulada">0</h4>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -158,7 +166,7 @@
               @foreach($facturas_clientes as $factura)  
               <tr>
                 <td>{{$factura->cliente->entidad->nombre_fantasia}}</td>
-                <td>{{$factura->servicio->nombre}}</td>
+                <td>{{$factura->servicio ? $factura->servicio->nombre : ''}}</td>
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>
                 <td>{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
@@ -197,7 +205,7 @@
             <table id="tabla-proveedor" class="table table-bordred table-striped" cellspacing="0">
               <thead>
                   <th>Proveedor</th>
-                  <th>Servicio</th>
+                  {{-- <th>Servicio</th> --}}
                   <th>Folio</th>
                   <th>Tipo de DTE</th>
                   <th>Fecha de emisión</th>
@@ -214,7 +222,7 @@
               @foreach($facturas_proveedores as $factura)  
               <tr>
                 <td>{{$factura->proveedor->entidad->nombre_fantasia}}</td>
-                <td>{{$factura->servicio->nombre}}</td>
+                {{-- <td>{{$factura->servicio->nombre}}</td> --}}
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>
                 <td>{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
@@ -331,7 +339,7 @@ function update_datatable(){
         $.each(response.facturas_clientes, function(){
           datatable_tabla1.row.add([
             this.cliente.entidad.nombre_fantasia,
-            this.servicio.nombre,
+            // this.servicio.nombre,
             this.folio,
             this.tipo_dte,
             this.fecha_emision,
@@ -350,7 +358,7 @@ function update_datatable(){
         $.each(response.facturas_proveedores, function(){
           datatable_tabla2.row.add([
             this.proveedor.entidad.nombre_fantasia,
-            this.servicio.nombre,
+            // this.servicio.nombre,
             this.folio,
             this.tipo_dte,
             this.fecha_emision,
@@ -386,7 +394,6 @@ function actualizarContadores(tipo){
             $('#sumapagada').html(response.format_pagadas);
             $('#sumapendiente').html(response.format_pendientes);
             $('#sumaanulada').html(response.format_anuladas);
-            
         }
     });
 }

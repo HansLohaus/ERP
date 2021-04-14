@@ -16,7 +16,7 @@ class CreateServiciosTable extends Migration
         Schema::create('servicios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('tipo_entidad_id')->unsigned()->index();
-            $table->string('nombre', 50);
+            $table->string('nombre', 200);
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->enum('tipo', ['servicio', 'proyecto']);

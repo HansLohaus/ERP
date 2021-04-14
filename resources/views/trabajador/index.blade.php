@@ -79,9 +79,15 @@
            <div class="modal-dialog modal-l">
               	<div class="modal-content">
                    <div class="modal-header">
-                    <h5 class="nombres"></h5>&nbsp;
-                    <h5 class="apellidoP"></h5>&nbsp;
-                    <h5 class="apellidoM"></h5>
+                    <h5>
+                      <span class="nombres"></span>
+                      <span class="apellidoP"></span>
+                      <span class="apellidoM"></span>
+                    </h5>
+
+
+
+                    
                    <button type="button" class="close" data-dismiss="modal">
                    <span>×</span>
                    </button>
@@ -148,7 +154,7 @@
         	</div>
       	</div>
     </div>
- </div>
+</div>
 @endsection
 @push("scripts")
 <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>

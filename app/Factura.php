@@ -13,10 +13,16 @@ class Factura extends Model
 		'folio',
 		'tipo_dte',
 		'fecha_emision',
+        'total_reparto',
 		'total_neto',
 		'total_exento',
 		'total_iva',
 		'total_monto_total',
+        'fecha_recep',
+        'evento_recep',
+        'cod_otro',
+        'valor_otro',
+        'tasa_otro',
 		'estado'
 
     ];

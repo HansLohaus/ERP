@@ -13,6 +13,7 @@
 @endsection
 {{-- Contenido --}}
 @section("content")
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <div class="col-md-12 col-md-offset-2"> 
       @if (count($errors) > 0)
       <div class="alert alert-danger">
@@ -35,20 +36,29 @@
               <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Cliente</label>
-                    <select name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
-                      <option value="" disabled hidden>Seleccione cliente</option>
-                      @foreach ($clientes as $cliente)
-                        <option value="{{ $cliente->id }}">{{ $cliente->entidad->nombre_fantasia }}</option>
-                      @endforeach
+                    <label>Cliente/proveedor</label>
+                    <select id="select1" class="form-control input-sm" >
+                      <option>Seleccione</option>
+                         <option value='1'>cliente</option>
+                         <option value='2'>proveedor</option>
                     </select>
-                    {{-- <label>Id del Cliente</label>
-                    <input type="text" name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm"> --}}
-
                   </div>
                 </div>
-
-
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <label>-</label>
+                    <select name="tipo_entidad_id" id="select2" class="form-control input-sm">
+                      <option value=""  hidden>Seleccione</option>
+                      @foreach ($clientes as $cliente)
+                        <option value="{{ $cliente->id }}" data-tag='1'>{{ $cliente->entidad->nombre_fantasia }}</option>
+                      @endforeach
+                      @foreach ($proveedores as $proveedor)
+                        <option value="{{ $proveedor->id }}" data-tag='2'>{{ $proveedor->entidad->nombre_fantasia }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                
                <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Servicio</label>
@@ -60,13 +70,6 @@
                     </select>
                   </div>
                 </div>
-
-                {{-- <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label>id del servicio</label>
-                    <input type="text" name="servicio_id" id="servicio_id" class="form-control input-sm">
-                  </div>
-                </div> --}}
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Folio</label>
@@ -118,7 +121,6 @@
                          <option value="abono">abono</option>
                          <option value="anulado">anulado</option>
                        </select>
-                    {{-- <input type="text" name="estado" id="estado" class="form-control input-sm" placeholder="estado del servicio"> --}}
                   </div>
                 </div>
               </div>
@@ -137,5 +139,21 @@
 @endsection
 @push("scripts")
 <script type="text/javascript"> 
+</script>
+<script>
+$('#select1').on('change', function() {
+  var selected = $(this).val();
+  $("#select2 option").each(function(item){
+    console.log(selected) ;  
+    var element =  $(this) ; 
+    console.log(element.data("tag")) ; 
+    if (element.data("tag") != selected){
+      element.hide() ; 
+    }else{
+      element.show();
+    }
+  }); 
+    $("#select2").val($("#select2 option:visible:first").val());
+});
 </script>
 @endpush

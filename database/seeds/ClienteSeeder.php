@@ -14,7 +14,7 @@ class ClienteSeeder extends Seeder
     public function run()
     {
         $entidad = Entidad::insert([
-            "rut" => "76252588-7",
+            "rut" => "762525887",
             "razon_social" => "SERVICIOS INTEGRALES DE COBRANZA Y RECUPERACION DE CAPITALES SPA",
             "nombre_fantasia" => "FULLCOB",
             "nombre_contacto_fin" => "Patricio Rojas",
@@ -27,7 +27,7 @@ class ClienteSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "76780080-0",
+            "rut" => "767800800",
             "razon_social" => "SERVICIOS INTEGRALES MARCOS GALLEGUILLOS DELGADO SPA",
             "nombre_fantasia" => "PRADERAS VERDES",
             "nombre_contacto_fin" => "Monica Vargas",
@@ -40,7 +40,7 @@ class ClienteSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "7490679-6",
+            "rut" => "74906796",
             "razon_social" => "RENE ALBERTO GUAMAN ALVAREZ",
             "nombre_fantasia" => "RG",
             "nombre_contacto_fin" => "Veronica Contreras",
@@ -53,7 +53,7 @@ class ClienteSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "76114726-9",
+            "rut" => "761147269",
             "razon_social" => "MULTICOB CHILE SPA",
             "nombre_fantasia" => "MULTICOB",
             "nombre_contacto_fin" => "Mirtha Canaan",
@@ -66,7 +66,7 @@ class ClienteSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "96884180-7",
+            "rut" => "968841807",
             "razon_social" => "SERVICIOS INTEGRALES DE MANTENIMIENTOS TECNICOS SOCIEDAD ANONIMA",
             "nombre_fantasia" => "SIMANTEC",
             "nombre_contacto_fin" => "Moises Araya",
@@ -79,7 +79,7 @@ class ClienteSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "77559020-3",
+            "rut" => "775590203",
             "razon_social" => "COBRANZAS Y CALL CENTER LIMITADA",
             "nombre_fantasia" => "COBYCALL",
             "nombre_contacto_fin" => "Yasna Cruz",
@@ -92,7 +92,7 @@ class ClienteSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "94272000-9",
+            "rut" => "942720009",
             "razon_social" => "AES GENER S A",
             "nombre_fantasia" => "AES GENER",
             "nombre_contacto_fin" => "Ma. Constanza Muñoz",
@@ -105,7 +105,7 @@ class ClienteSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "76224056-4",
+            "rut" => "762240564",
             "razon_social" => "SOCIEDAD DE TELECOMUNICACIONES Y SERVICIOS SPA",
             "nombre_fantasia" => "VOZDGITAL",
             "nombre_contacto_fin" => "Paz Latorre",
@@ -118,7 +118,7 @@ class ClienteSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "78494600-2",
+            "rut" => "784946002",
             "razon_social" => "SOC COMERCIAL LA CABANA LIMITADA",
             "nombre_fantasia" => "PEUMAYEN",
             "nombre_contacto_fin" => "Erica Carevic",
@@ -131,7 +131,7 @@ class ClienteSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "76093809-2",
+            "rut" => "760938092",
             "razon_social" => "DIGITEX CHILE S.A.",
             "nombre_fantasia" => "DIGITEX",
             "nombre_contacto_fin" => "Pamela Abaca",
@@ -144,7 +144,7 @@ class ClienteSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "96813520-1",
+            "rut" => "968135201",
             "razon_social" => "CHILQUINTA ENERGIA S A",
             "nombre_fantasia" => "CHILQUNTA",
             "nombre_contacto_fin" => "",
@@ -157,7 +157,7 @@ class ClienteSeeder extends Seeder
         ]);
 
         $entidad = Entidad::insert([
-            "rut" => "76000769-2",
+            "rut" => "760007692",
             "razon_social" => "SOCIEDAD DE INVERSIONES Y SERVICIOS DUCAL LIMITADA",
             "nombre_fantasia" => "EQUIFAX",
             "nombre_contacto_fin" => "Krassna Fuentes",

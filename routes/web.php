@@ -58,3 +58,4 @@ Route::resource('entidades','EntidadController');
 Route::resource('tipoentidades','TipoEntidadController');
 Route::resource('trabajadores','TrabajadorController');
 Route::resource('boletasliquidaciones','BoletaLiquidacionController');
+Route::resource('gastos','GastoController');

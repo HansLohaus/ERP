@@ -31,4 +31,7 @@ class Trabajador extends Model
     public function boletasliquidaciones(){
     	return $this->hasMany('App\BoletaLiquidacion','trabajador_id');
     }
+    public function pagos(){
+    	return $this->hasMany('App\Pago','trabajador_id');
+    }
 }

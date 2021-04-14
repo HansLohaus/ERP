@@ -33,8 +33,10 @@ class ServicioController extends Controller
     public function create()
     {
         $clientes=TipoEntidad::clientes()->get();
+        $proveedores=TipoEntidad::proveedores()->get();
         return view('servicio.create',[
-            'clientes'=>$clientes
+            'clientes'=>$clientes,
+            'proveedores'=>$proveedores
         ]);
     }
 
@@ -80,8 +82,9 @@ class ServicioController extends Controller
     public function edit($id)
     {
         $clientes=TipoEntidad::clientes()->get();
+        $proveedores=TipoEntidad::proveedores()->get();
          $servicio=Servicio::findOrFail($id);
-        return  view('servicio.edit',compact('servicio','clientes'));
+        return  view('servicio.edit',compact('servicio','clientes','proveedores'));
     }
 
     /**

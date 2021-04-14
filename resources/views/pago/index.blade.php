@@ -20,16 +20,20 @@
     <div class="col-lg-4 col-sm-6 col-xs-12">
         <div class="small-box bg-green text-center">
             <div class="inner">
-                <h3 class="count" id="sumingreso">0</h3>
-                <p>Total de Ingresos</p>
-                <h5 class="count" id="ingreso">0</h5>
+              <h3 class="count">
+                $<span id="sumingreso">0</span>
+              </h3>
+              <p>Total de Ingresos</p>
+              <h5 class="count" id="ingreso">0</h5>
             </div>
         </div>
     </div>
     <div class="col-lg-4 col-sm-6 col-xs-12">
         <div class="small-box bg-red text-center">
             <div class="inner">
-                <h3 class="count" id="sumegreso">0</h3>
+              <h3 class="count">
+                $<span id="sumegreso">0</span>
+              </h3>
                 <p>Total de Egresos</p>
                 <h5 class="count" id="egreso">0</h5>
             </div>
@@ -38,7 +42,9 @@
     <div class="col-lg-4 col-sm-6 col-xs-12">
         <div class="small-box bg-aqua text-center">
             <div class="inner">
-                <h3 class="count" id="utilidad">0</h3>
+              <h3 class="count">
+                $<span id="utilidad">0</span>
+              </h3>
                 <p>Utilidad</p>
                 <h5 class="count" id="total">0</h5>
             </div>

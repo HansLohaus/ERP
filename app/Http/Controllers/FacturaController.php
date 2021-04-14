@@ -23,33 +23,27 @@ class FacturaController extends Controller
     public function index(Request $request)
     {
         if ($request->has('totales')){
-            if ($request->totales=='cliente') {
-                $facturas=Factura::has('cliente')->count();
-                $pagadas=Factura::has('cliente')->where('estado','pagado')->count();
-                $pendientes=Factura::has('cliente')->whereIn('estado',['impago','abono'])->count();
-                $anuladas=Factura::has('cliente')->where('estado','anulado')->count();
-                $sumatotales=Factura::has('cliente')->sum('total_neto');
-                $sumapagadas=Factura::has('cliente')->where('estado','pagado')->sum('total_neto');
-                $sumapendientes=Factura::has('cliente')->whereIn('estado',['impago','abono'])->sum('total_neto');
-                $sumaanuladas=Factura::has('cliente')->where('estado','anulado')->sum('total_neto');
-                $format_totales=number_format($sumatotales);
-                $format_pagadas=number_format($sumapagadas);
-                $format_pendientes=number_format($sumapendientes);
-                $format_anuladas=number_format($sumaanuladas);
-            }elseif ($request->totales=='proveedor') {
-                $facturas=Factura::has('proveedor')->count();
-                $pagadas=Factura::has('proveedor')->where('estado','pagado')->count();
-                $pendientes=Factura::has('proveedor')->whereIn('estado',['impago','abono'])->count();
-                $anuladas=Factura::has('proveedor')->where('estado','anulado')->count();
-                $sumatotales=Factura::has('proveedor')->sum('total_neto');
-                $sumapagadas=Factura::has('proveedor')->where('estado','pagado')->sum('total_neto');
-                $sumapendientes=Factura::has('proveedor')->whereIn('estado',['impago','abono'])->sum('total_neto');
-                $sumaanuladas=Factura::has('proveedor')->where('estado','anulado')->sum('total_neto');
-                $format_totales=number_format($sumatotales);
-                $format_pagadas=number_format($sumapagadas);
-                $format_pendientes=number_format($sumapendientes);
-                $format_anuladas=number_format($sumaanuladas);
-            }
+            $facturas=Factura::has($request->totales)->count();
+            $pagadas=Factura::has($request->totales)->where('estado','pagado')->count();
+            $pendientes=Factura::has($request->totales)->whereIn('estado',['impago','abono'])->count();
+            $anuladas=Factura::has($request->totales)->where('estado','anulado')->count();
+            $sumatotalesN=Factura::has($request->totales)->sum('total_neto');
+            $sumapagadasN=Factura::has($request->totales)->where('estado','pagado')->sum('total_neto');
+            $sumapendientesN=Factura::has($request->totales)->whereIn('estado',['impago','abono'])->sum('total_neto');
+            $sumaanuladasN=Factura::has($request->totales)->where('estado','anulado')->sum('total_neto');
+            $sumatotalesE=Factura::has($request->totales)->sum('total_exento');
+            $sumapagadasE=Factura::has($request->totales)->where('estado','pagado')->sum('total_exento');
+            $sumapendientesE=Factura::has($request->totales)->whereIn('estado',['impago','abono'])->sum('total_exento');
+            $sumaanuladasE=Factura::has($request->totales)->where('estado','anulado')->sum('total_exento');
+            $sumatotales=$sumatotalesN+$sumatotalesE;
+            $sumapagadas=$sumapagadasN+$sumapagadasE;
+            $sumapendientes=$sumapendientesN+$sumapendientesE;
+            $sumaanuladas=$sumaanuladasN+$sumaanuladasE;
+            $format_totales=number_format($sumatotales);
+            $format_pagadas=number_format($sumapagadas);
+            $format_pendientes=number_format($sumapendientes);
+            $format_anuladas=number_format($sumaanuladas);
+            
             return response()->json([
                 'facturas'=>$facturas,
                 'pagadas'=>$pagadas,
@@ -63,16 +57,22 @@ class FacturaController extends Controller
                 'format_pagadas'=>$format_pagadas,
                 'format_pendientes'=>$format_pendientes,
                 'format_anuladas'=>$format_anuladas
+                
             ]);
             
         }elseif (!$request->has('filtros')){
+
             $facturas_clientes=Factura::with(['cliente.entidad'])->has('cliente')->orderBy('id', 'asc')->get();
             $facturas_proveedores=Factura::with(['proveedor.entidad'])->has('proveedor')->orderBy('id', 'asc')->get();
             $servicios=Servicio::orderBy('id', 'asc')->get();
+            
+            
             return view('factura.index', [
                 'facturas_clientes'=>$facturas_clientes,
                 'facturas_proveedores'=>$facturas_proveedores,
                 'servicios'=>$servicios
+                
+            
             ]);
         }else{
             $pagados=$request->filtros['pagados'];
@@ -129,6 +129,7 @@ class FacturaController extends Controller
                 'facturas_proveedores'=>$facturas_proveedores
             ]);
         }
+        $anos = Factura::whereYear('created_at', '=', $year)->get();
 
         
     }
@@ -141,10 +142,12 @@ class FacturaController extends Controller
     public function create()
     {
         $clientes=TipoEntidad::clientes()->get();
+        $proveedores=TipoEntidad::proveedores()->get();
         $servicios= Servicio::all();
         return view('factura.create',[
             'clientes'=>$clientes,
-            'servicios'=>$servicios
+            'servicios'=>$servicios,
+            'proveedores'=>$proveedores
         ]);
     }
 
@@ -194,8 +197,9 @@ class FacturaController extends Controller
     {
         $servicios= Servicio::all();
         $clientes=TipoEntidad::clientes()->get();
+        $proveedores=TipoEntidad::proveedores()->get();
         $factura=Factura::findOrFail($id);
-        return  view('factura.edit',compact('factura','clientes','servicios'));
+        return  view('factura.edit',compact('factura','clientes','servicios','proveedores'));
     }
 
     /**
