@@ -50,7 +50,8 @@ Route::resource('servicios','ServicioController');
 Route::resource('facturas','FacturaController');
 Route::post('/facturas/import','FacturaController@import')->name("facturas.import");
 Route::post('/dte/import','DTEController@import')->name("dte.import");
-
+Route::post('/facturas/export', 'FacturaController@export')->name("facturas.export");
+// Route::post('/facturas/exportP', 'FacturaController@export')->name("facturas.exportP");
 Route::resource('pagos','PagoController');
 Route::post('/pagos/import','PagoController@import')->name("pagos.import");
 

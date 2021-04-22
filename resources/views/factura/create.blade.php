@@ -48,7 +48,7 @@
                   <div class="form-group">
                     <label>-</label>
                     <select name="tipo_entidad_id" id="select2" class="form-control input-sm">
-                      <option value=""  hidden>Seleccione</option>
+                      <option value="" hidden>Seleccione</option>
                       @foreach ($clientes as $cliente)
                         <option value="{{ $cliente->id }}" data-tag='1'>{{ $cliente->entidad->nombre_fantasia }}</option>
                       @endforeach
@@ -63,7 +63,7 @@
                   <div class="form-group">
                     <label>Servicio</label>
                     <select name="servicio_id" id="servicio_id" class="form-control input-sm">
-                      <option value="" disabled hidden>Seleccione Servicio</option>
+                      <option value="" selected hidden>Seleccione Servicio</option>
                       @foreach ($servicios as $servicio)
                         <option value="{{ $servicio->id }}">{{ $servicio->nombre}}</option>
                       @endforeach

@@ -39,7 +39,7 @@
              					   		<div class="form-group">
                                             <label>Cliente</label>
                                             <select name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
-                                                <option value="{{$factura->cliente->entidad->nombre_fantasia}}" >{{$factura->cliente->entidad->nombre_fantasia}}</option>
+                                                <option value="{{$factura->cliente->id}}" >{{$factura->cliente->entidad->nombre_fantasia}} (seleccionado)</option>
                                                 @foreach ($clientes as $cliente)
                                                     <option value="{{ $cliente->id }}">{{ $cliente->entidad->nombre_fantasia }}</option>
                                                 @endforeach
@@ -53,7 +53,7 @@
                                         <div class="form-group">
                                             <label>Servicio</label>
                                             <select name="servicio_id" id="servicio_id" class="form-control input-sm">
-                                                <option value="" disabled hidden>Seleccione Servicio</option>
+                                                <option value=""  ></option>
                                                 @foreach ($servicios as $servicio)
                                                     <option value="{{ $servicio->id }}">{{ $servicio->nombre}}</option>
                                                 @endforeach

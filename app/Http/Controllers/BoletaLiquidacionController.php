@@ -48,15 +48,8 @@ class BoletaLiquidacionController extends Controller
         'trabajador_id'=>'required', 
         'descripcion'=>'required',
         'monto_total'=>'required', 
-        'monto_liquido'=>'required', 
-        'boleta_liq'=>'required', 
-        'sueldo_base'=>'required',
-        'gratificaciones'=>'required', 
-        'dias_trabajados'=>'required', 
-        'desc_isapre'=>'required',
-        'desc_afp'=>'required', 
-        'desc_seguro_cesantia'=>'required', 
-        'impuesto_unico'=>'required'
+        'monto_liquido'=>'required' 
+        
     ]);
         BoletaLiquidacion::create($request->all());
         return redirect()->route('boletasliquidaciones.index')->with('success','Registro creado satisfactoriamente');
@@ -100,15 +93,7 @@ class BoletaLiquidacionController extends Controller
         'trabajador_id'=>'required',
         'descripcion'=>'required',
         'monto_total'=>'required',
-        'monto_liquido'=>'required',
-        'boleta_liq'=>'required',
-        'sueldo_base'=>'required',
-        'gratificaciones'=>'required',
-        'dias_trabajados'=>'required',
-        'desc_isapre'=>'required',
-        'desc_afp'=>'required',
-        'desc_seguro_cesantia'=>'required',
-        'impuesto_unico'=>'required'
+        'monto_liquido'=>'required'
         ]);
  
         BoletaLiquidacion::find($id)->update($request->all());

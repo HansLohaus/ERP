@@ -28,7 +28,10 @@ class Factura extends Model
     ];
     //relationship
     public function pagos(){
-    	return $this->hasMany('App\Pago','factura_id');
+        return $this->belongsToMany('App\Pago','factura_pago');
+    }
+    public function facturas_pagos(){
+    	return $this->hasMany('App\FacturaPago','factura_id');
     }
     public function servicio(){
     	return $this->belongsTo('App\Servicio','servicio_id');

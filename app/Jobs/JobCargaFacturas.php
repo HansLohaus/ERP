@@ -7,12 +7,13 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-
+use \Illuminate\Support\Str;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
 use App\Factura;
 use App\TipoEntidad;
+use App\Entidad;
 use App\Servicio;
 use Exception;
 use File;
@@ -136,7 +137,7 @@ class JobCargaFacturas implements ShouldQueue
     }
 
     public function reedCommon($registro){
-        $registro[1]=preg_replace('/[^\d]/i','', $registro[1]);
+        $registro[1]=preg_replace('/[^\dkK]/i','', $registro[1]);
         $columnas=count($registro);
         if ($columnas==15){
             return $this->reedCliente($registro);
@@ -261,7 +262,18 @@ class JobCargaFacturas implements ShouldQueue
                         ->whereHas("entidad",function($entidad) use ($registro){
                             $entidad->where("rut",$registro->rut_entidad);
                         })->first();
-                        if ($entidad !== null) {
+                            if ($entidad == null) {
+                            $entidad=Entidad::create([
+                                "rut"=> $registro->rut_entidad,
+                                "razon_social"=> $registro->nombre_servicio,
+                                "nombre_fantasia"=> str_limit($registro->nombre_servicio, $limit = 20)
+
+                            ]);
+                            $tipo_entidad=TipoEntidad::create([
+                                "entidad_id"=> $entidad->id,
+                                "tipo"=> $registro->tipo_entidad
+                            ]);
+                        }
                             if ($registro->nombre_servicio) {
                                 $servicio = Servicio::where("nombre",$registro->nombre_servicio)->first();
                             }else{
@@ -303,9 +315,7 @@ class JobCargaFacturas implements ShouldQueue
                                 $this->error("fecha recepcion invalida");
                             }
                             // Ingresar los datos a la tabla facturas
-                        }else{
-                            $this->error("entidad no existe");
-                        }
+                        
                     }else{
                         $this->error("rut invalido");
                     }

@@ -21,9 +21,11 @@ class BoletaLiquidacion extends Model
 		'desc_seguro_cesantia',
 		'impuesto_unico'
     ];
-
     public function pagos(){
-    	return $this->hasMany('App\Pago','boleta_liquidacion_id');
+        return $this->belongsToMany('App\Pago','boleta_liquidacion_pago');
+    }
+    public function boletas_liquidaciones_pagos(){
+    	return $this->hasMany('App\BoletaLiquidacion_Pago','boleta_liquidacion_id');
     }
 
     public function trabajador(){

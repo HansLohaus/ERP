@@ -116,6 +116,49 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        
+        'tipo_entidad_id'  => 'cliente/proveedor',
+        'tipo_dte'  => 'tipo de dte',
+        'fecha_emision'  => 'fecha de emisión',
+        'total_neto'  => 'monto neto',
+        'total_exento'  => 'monto exento',
+        'total_iva'  => 'monto del iva',
+        'total_monto_total'  => 'monto total',
+
+        'pago'  => 'ingreso/egreso',
+        'fecha'  => 'fecha de pago',
+        'monto'  => 'monto del pago',
+        'descrip_movimiento'  => 'descripción del movimiento',
+        'n_doc'  => 'número de documento',
+
+        'trabajador_id'  => 'trabajador',
+        'descripcion'  => 'descripción',
+        'monto_liquido'  => 'monto líquido',
+
+        'fecha_inicio'  => 'fecha de inicio',
+        'fecha_fin'  => 'fecha de término',
+        'numero_propuesta'  => 'número de propuesta',
+        'condicion_pago'  => 'condición de pago',
+        
+        'nombre_contacto_fin'  => 'nombre del contacto finaciero',
+        'nombre_contacto_tec'  => 'nombre del contacto técnico',
+        'fono_contacto_fin'  => 'teléfono del contacto finaciero',
+        'fono_contacto_tec'  => 'teléfono del contacto técnico',
+        'email_contacto_fin'  => 'email del contacto finaciero',
+        'email_contacto_tec'  => 'email del contacto técnico',
+
+        'apellido_p'  => 'apellido paterno',
+        'apellido_m'  => 'apellido materno',
+        'fecha_nac'  => 'fecha de nacimiento',
+        'direccion'  => 'dirección ',
+        'profesion'  => 'profesión',
+        'fecha_contrato'  => 'fecha de contrato',
+        'fono'  => 'teléfono',
+        'email_alt'  => 'email alternativo',
+        'numero_cuenta_banc'  => 'número cuenta bancaria',
+        'titular_cuenta_banc'  => 'titular cuenta bancaria',
+        'tipo_cuenta'  => 'tipo de cuenta',
+    ],
 
 ];

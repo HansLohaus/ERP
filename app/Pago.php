@@ -8,20 +8,25 @@ class Pago extends Model
 {
     protected $table = 'pagos';
     protected $fillable = [
-        'factura_id',
-        'boleta_liquidacion_id',
-        'ine',
-        'fecha_pago', 
-        'monto', 
-        'monto_total_transf',
-        'descrip_movimiento'
+        'pago',
+        'fecha',
+        'monto',
+        'descrip_movimiento', 
+        'n_doc', 
+        'sucursal'
     ];
 //relationship
-    public function boletaliquidacion(){
-        return $this->belongsTo('App\BoletaLiquidacion','boleta_liquidacion_id');
+    public function facturas(){
+        return $this->belongsToMany('App\Factura','factura_pago');
     }
-    public function factura(){
-    	return $this->belongsTo('App\Factura','factura_id');
+    public function boletas(){
+        return $this->belongsToMany('App\BoletaLiquidacion','boleta_liquidacion_pago');
+    }
+    public function facturas_pagos(){
+        return $this->hasMany('App\Factura_Pago','pago_id');
+    }
+    public function boletas_liquidaciones_pagos(){
+        return $this->hasMany('App\BoletaLiquidacion_Pago','pago_id');
     }
 //
     

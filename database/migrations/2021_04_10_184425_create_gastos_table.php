@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePagosTable extends Migration
+class CreateGastosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreatePagosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pagos', function (Blueprint $table) {
+        Schema::create('gastos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->enum('pago', ['C', 'A']);
-            $table->date('fecha');
+            $table->bigInteger('trabajador_id')->unsigned()->index();
             $table->bigInteger('monto');
-            $table->string('descrip_movimiento', 100)->nullable();
-            $table->string('n_doc', 45)->nullable();
-            $table->string('sucursal', 45)->nullable();
+            $table->string('descrip', 100);
             $table->timestamps();// created_at, updated_at
             $table->softDeletes();//deleted_at
         });
+        Schema::table('gastos', function ($table) {
+            $table->foreign('trabajador_id')->references('id')->on('trabajadores')->onDelete('cascade');
+        });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -32,6 +33,6 @@ class CreatePagosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pagos');
+        Schema::dropIfExists('gastos');
     }
 }

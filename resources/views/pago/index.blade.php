@@ -51,8 +51,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="input-group">
     <div class="input-group-prepend">
         <span class="input-group-text"><span class="fa fa-filter"></span></span>
@@ -61,10 +59,63 @@
 </div>
 <br>
 
-          <div class="pull-right">
+          {{-- <div class="pull-right">
 	           <div class="btn-group">
 	             <a href="{{ route('pagos.create') }}" class="btn btn-info" >Añadir Pagos</a>
 	           </div>
+             <div class="btn-group">
+               <a href="#" class="btn btn-info" data-toggle="modal" data-target="#masivo">Carga Masiva</a>
+             </div>
+        <div class="modal fade" id="masivo">
+                   <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal">
+                           <span>×</span>
+                           </button>
+                           <h4>Cerrar</h4>
+                           </div>
+                           <div class="modal-body">
+                            <form action="{{ route('pagos.import') }}" method="POST" enctype="multipart/form-data">
+                              <h4>Cargar Datos:</h4>
+                              <input type="file" class="form-control" name="file" accept=".csv" required>
+                                <label>.</label>
+                                <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">100%</div>
+                                </div>
+                              <br>
+                              <div class="pull-right"><button class="btn btn-info" type="submit">Cargar Datos</button></div>
+                              {{ csrf_field() }}
+                            </form>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+          </div> --}}
+
+
+
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-ingreso-tab" data-toggle="tab" href="#nav-ingreso" role="tab" aria-controls="nav-ingreso" aria-selected="true" onclick="actualizarContadores('ingreso')">Ingreso</a>
+    <a class="nav-item nav-link" id="nav-egreso-tab" data-toggle="tab" href="#nav-egreso" role="tab" aria-controls="nav-egreso" aria-selected="false" onclick="actualizarContadores('egreso')">Egreso</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-ingreso" role="tabpanel" aria-labelledby="nav-ingreso-tab">
+    {{-- nav ingreso --}}
+<div class="col-md-12 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <br>
+          <div class="pull-left"><h3>Ingresos</h3></div>
+
+
+
+          <div class="pull-right">
+             <div class="btn-group">
+               <a href="{{ route('pagos.create') }}" class="btn btn-info" >Añadir Pagos</a>
+             </div>
              <div class="btn-group">
                <a href="#" class="btn btn-info" data-toggle="modal" data-target="#masivo">Carga Masiva</a>
              </div>
@@ -96,23 +147,9 @@
                </div>
               {{-- fin popup masivo--}}
           </div>
+          
 
 
-
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-ingreso-tab" data-toggle="tab" href="#nav-ingreso" role="tab" aria-controls="nav-ingreso" aria-selected="true" onclick="actualizarContadores('ingreso')">Ingreso</a>
-    <a class="nav-item nav-link" id="nav-egreso-tab" data-toggle="tab" href="#nav-egreso" role="tab" aria-controls="nav-egreso" aria-selected="false" onclick="actualizarContadores('egreso')">Egreso</a>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-ingreso" role="tabpanel" aria-labelledby="nav-ingreso-tab">
-    {{-- nav ingreso --}}
-<div class="col-md-12 col-md-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <br>
-          <div class="pull-left"><h3>Ingresos</h3></div>
           <div class="table-container">
             <table id="tabla-ingreso" class="table table-bordred table-striped">
               <thead>
@@ -120,8 +157,9 @@
                   <th>Descripción de la boleta/liquidacion</th>
                   <th>Fecha de pago</th>
                   <th>Monto del pago</th>
-                  <th>Monto total de transferencia</th>
                   <th>Descripcion de movimiento</th>
+                  <th>Número del documento</th>
+                  <th>Sucursal</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
               </thead>
@@ -129,12 +167,13 @@
               @if($pagos_ingresos->count())  
               @foreach($pagos_ingresos as $pago)  
               <tr>
-                <td>{{$pago->factura->folio}}</td>
-                <td>{{$pago->boletaliquidacion->descripcion}}</td>
-                <td>{{ date_format(date_create($pago->fecha_pago),"d-m-Y") }}</td>
+                <td>{{implode(', ',$pago->facturas->pluck('folio')->toArray())}}</td>
+                <td>{{implode(', ',$pago->boletas->pluck('descripcion')->toArray())}}</td>
+                <td>{{ date_format(date_create($pago->fecha),"d-m-Y") }}</td>
                 <td>{{(number_format($pago->monto))}}</td>
-                <td>{{(number_format($pago->monto_total_transf))}}</td>
                 <td>{{$pago->descrip_movimiento}}</td>
+                <td>{{$pago->n_doc}}</td>
+                <td>{{$pago->sucursal}}</td>
                 <td><a class="btn btn-primary" href="{{action('PagoController@edit', $pago->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>
                   <form action="{{action('PagoController@destroy', $pago->id)}}" method="post">
@@ -168,8 +207,9 @@
                   <th>Descripción de la boleta/liquidacion</th>
                   <th>Fecha de pago</th>
                   <th>Monto del pago</th>
-                  <th>Monto total de transferencia</th>
                   <th>Descripcion de movimiento</th>
+                  <th>Número del documento</th>
+                  <th>Sucursal</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
               </thead>
@@ -177,12 +217,13 @@
               @if($pagos_egresos->count())  
               @foreach($pagos_egresos as $pago)  
               <tr>
-                <td>{{$pago->factura->folio}}</td>
-                <td>{{$pago->boletaliquidacion->descripcion}}</td>
-                <td>{{ date_format(date_create($pago->fecha_pago),"d-m-Y") }}</td>
+                <td>{{implode(', ',$pago->facturas->pluck('folio')->toArray())}}</td>
+                <td>{{implode(', ',$pago->boletas->pluck('descripcion')->toArray())}}</td>
+                <td>{{ date_format(date_create($pago->fecha),"d-m-Y") }}</td>
                 <td>{{(number_format($pago->monto))}}</td>
-                <td>{{(number_format($pago->monto_total_transf))}}</td>
                 <td>{{$pago->descrip_movimiento}}</td>
+                <td>{{$pago->n_doc}}</td>
+                <td>{{$pago->sucursal}}</td>
                 <td><a class="btn btn-primary" href="{{action('PagoController@edit', $pago->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>
                   <form action="{{action('PagoController@destroy', $pago->id)}}" method="post">

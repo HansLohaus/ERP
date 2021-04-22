@@ -82,20 +82,19 @@
         <span class="input-group-text"><span class="fa fa-filter"></span></span>
     </div>
     <input type="text" id="tabla-filtro" class="form-control" placeholder="Filtrar por...">
-    <div class="input-group-append">
+    {{-- <div class="input-group-append">
       <select class="btn btn-success" type="button" name="select">
         <option value="todos">todos</option>
         <option value="2021">2021</option>
         <option value="2020">2020</option>
         <option value="2019">2019</option>
       </select>
-        
-    </div>
+    </div> --}}
 </div>
 <br>
    <div class="pull-right">
     <div class="btn-group">
-      <a href="{{ route('facturas.create') }}" class="btn btn-info" >Añadir Facturas</a>
+      <a href="{{ route('facturas.create') }}" class="btn btn-info" >Añadir Factura</a>
     </div>
     {{-- <div class="btn-group">
       <a href="{{ route('facturas.import') }}" class="btn btn-info" >Carga masiva</a>
@@ -129,6 +128,33 @@
           </div>
       </div>
      {{-- fin popup masivo--}}
+    </div>
+    <div class="btn-group">
+      <a href="#" class="btn btn-info" data-toggle="modal" data-target="#descarga">Descarga Masiva</a>
+      {{-- popup descarga--}}
+      <div class="modal fade" id="descarga">
+          <div class="modal-dialog modal-xl">
+               <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                    <span>×</span>
+                    </button>
+                  <h4>Cerrar</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form action="{{ route('facturas.export') }}" method="POST" >
+                      {{ csrf_field() }}
+                      <div class="pull-left"><button class="btn btn-info" type="submit">Descargar Clientes</button></div>
+                    </form>
+                    {{-- <form action="" method="POST" >
+                      {{ csrf_field() }}
+                      <div class="pull-right"><button class="btn btn-info" type="submit">Descargar Proveedores</button></div>
+                    </form> --}}
+                  </div>
+              </div>
+          </div>
+      </div>
+     {{-- fin popup descarga--}}
     </div>
  </div>
 <nav>
@@ -205,7 +231,7 @@
             <table id="tabla-proveedor" class="table table-bordred table-striped" cellspacing="0">
               <thead>
                   <th>Proveedor</th>
-                  {{-- <th>Servicio</th> --}}
+                  <th>Servicio</th>
                   <th>Folio</th>
                   <th>Tipo de DTE</th>
                   <th>Fecha de emisión</th>
@@ -222,7 +248,7 @@
               @foreach($facturas_proveedores as $factura)  
               <tr>
                 <td>{{$factura->proveedor->entidad->nombre_fantasia}}</td>
-                {{-- <td>{{$factura->servicio->nombre}}</td> --}}
+                <td>{{$factura->servicio ? $factura->servicio->nombre : ''}}</td>
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>
                 <td>{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
@@ -260,7 +286,7 @@
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 10,
+    "iDisplayLength": 1000,
     "language": {
         "emptyTable": "No hay facturas en el sistema",
         "paginate": {
@@ -278,7 +304,7 @@ var datatable_tabla2 = $("#tabla-proveedor").DataTable({
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
-    "iDisplayLength": 10,
+    "iDisplayLength": 1000,
     "language": {
         "emptyTable": "No hay facturas en el sistema",
         "paginate": {
@@ -339,7 +365,7 @@ function update_datatable(){
         $.each(response.facturas_clientes, function(){
           datatable_tabla1.row.add([
             this.cliente.entidad.nombre_fantasia,
-            // this.servicio.nombre,
+            this.servicio.nombre,
             this.folio,
             this.tipo_dte,
             this.fecha_emision,
@@ -358,7 +384,7 @@ function update_datatable(){
         $.each(response.facturas_proveedores, function(){
           datatable_tabla2.row.add([
             this.proveedor.entidad.nombre_fantasia,
-            // this.servicio.nombre,
+            this.servicio.nombre,
             this.folio,
             this.tipo_dte,
             this.fecha_emision,
@@ -397,7 +423,6 @@ function actualizarContadores(tipo){
         }
     });
 }
-
 actualizarContadores('cliente');
 </script>
 

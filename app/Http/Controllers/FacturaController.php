@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Factura;
 use App\TipoEntidad;
 use App\Servicio;
-
+use App\Exports\FacturaExport;
+use Excel;
 use App\Jobs\JobCargaFacturas;
 use File;
 use Auth;
@@ -160,8 +161,7 @@ class FacturaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[ 
-        'tipo_entidad_id'=>'required', 
-        'servicio_id'=>'required', 
+        'tipo_entidad_id'=>'required',
         'folio'=>'required', 
         'tipo_dte'=>'required', 
         'fecha_emision'=>'required', 
@@ -213,7 +213,6 @@ class FacturaController extends Controller
     {
         $this->validate($request,[ 
             'tipo_entidad_id'=>'required', 
-            'servicio_id'=>'required', 
             'folio'=>'required', 
             'tipo_dte'=>'required', 
             'fecha_emision'=>'required', 
@@ -260,4 +259,10 @@ class FacturaController extends Controller
         // Se vuelve a la vista anterior
         return back()->withInput();
     }
+
+    public function export() 
+    {
+       return Excel::download(new FacturaExport, 'facturas.xlsx'); 
+    }
+
 }

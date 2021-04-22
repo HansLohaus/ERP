@@ -170,8 +170,8 @@ a.link {
         }
         &.active {
             font-weight: 400;
-            background: $white;
-            color: $themecolor;
+            background: $white
+ ;           color: $themecolor;
         }
     }
 }
@@ -192,3 +192,15 @@ a.link {
         }
     }
 }
+
+.select2{
+    width: 100% !important;
+    height: 38px;
+    .select2-selection{
+        min-height: 38px !important;
+    }
+    .select2-selection__choice{
+        font-size: 16px !important;
+    }
+}
+

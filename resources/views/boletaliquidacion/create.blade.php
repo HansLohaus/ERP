@@ -37,7 +37,7 @@
                   <div class="form-group">
                     <label>Trabajador</label>
                     <select name="trabajador_id" id="trabajador_id" class="form-control input-sm">
-                      <option value="" disabled hidden>Seleccione trabajador</option>
+                      <option value=""  hidden>Seleccione trabajador</option>
                       @foreach ($trabajadores as $trabajador)
                         <option value="{{ $trabajador->id }}">{{$trabajador->nombres}} {{$trabajador->apellidoP}}</option>
                       @endforeach

@@ -13,7 +13,7 @@
         "hisorange/browser-detect": "3.*",
         "intervention/image": "^2.4",
         "laravel/framework": "5.5.*",
-        "maatwebsite/excel": "~2.1.0",
+        "maatwebsite/excel": "^3.1",
         "nao-pon/flysystem-google-drive": "~1.1",
         "rguedes/pdfmerger": "^1.0",
         "spatie/laravel-backup": "^3.0.0",

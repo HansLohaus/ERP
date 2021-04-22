@@ -37,10 +37,10 @@
                <div class="col-xs-6 col-sm-6 col-md-6">
                           <div class="form-group">
                               <label>Folio de la factura</label>
-                              <select name="factura_id" id="factura_id" class="form-control input-sm">
-                                  <option value="" disabled hidden>Seleccione Folio</option>
-                                  @foreach ($facturas as $factura)
-                                      <option value="{{ $factura->id }}">{{ $factura->folio}}</option>
+                              <select name="factura_id" id="factura_id" class="form-control input-sm" >
+                                  <option hidden>Seleccione Folio</option>
+                                  @foreach ($facturas_clientes as $factura)
+                                      <option value="{{ $factura->id }}" data-monto="{{ $factura->total_monto_total }}">{{ $factura->folio}}</option>
                                   @endforeach
                               </select>
                         </div>
@@ -57,39 +57,44 @@
                         </div>
                       </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label>Ingreso/Egreso</label>
-                    <select name="ine" id="ine" class="form-control input-sm">
-                         <option value="ingreso">ingreso</option>
-                         <option value="egreso">egreso</option>
-                       </select>
-                  </div>
+                <div class="form-group">
+                  <label>Ingreso/Egreso</label>
+                  <select name="pago" id="ine" class="form-control input-sm">
+                       <option value="A">ingreso</option>
+                       <option value="C">egreso</option>
+                     </select>
                 </div>
-
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label>Fecha de pago</label>
-                    <input type="date" name="fecha_pago" id="fecha_pago" class="form-control input-sm">
-                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label>Fecha de pago</label>
+                  <input type="date" name="fecha" id="fecha" class="form-control input-sm">
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label>Monto del pago</label>
-                    <input type="number" name="monto" id="monto" class="form-control input-sm">
-                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label>Monto del pago</label>
+                  <input type="number" name="monto" id="monto" class="form-control input-sm">
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label>Monto total de transferencia</label>
-                    <input type="number" name="monto_total_transf" id="monto_total_transf" class="form-control input-sm">
-                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label>Descripción del movimiento</label>
+                  <input type="text" name="descrip_movimiento" id="descrip_movimiento" class="form-control input-sm">
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label>Descripción del movimiento</label>
-                    <input type="text" name="descrip_movimiento" id="descrip_movimiento" class="form-control input-sm">
-                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label>Número de documento</label>
+                  <input type="text" name="n_doc" id="n_doc" class="form-control input-sm">
                 </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label>Sucursal</label>
+                  <input type="text" name="sucursal" id="sucursal" class="form-control input-sm">
+                </div>
+              </div>
               </div>
               <br>
               <div class="row">
@@ -107,5 +112,12 @@
 @endsection
 @push("scripts")
 <script type="text/javascript"> 
+  $("#factura_id").on("change", function(){
+    let monto = $(this).find('option:selected').data('monto');
+    $("#monto").val(monto);
+  });
+</script>
+<script type="text/javascript"> 
+  $(".select2").select2();
 </script>
 @endpush

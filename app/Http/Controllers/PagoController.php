@@ -9,7 +9,7 @@ use App\BoletaLiquidacion;
 use Auth;
 use File;
 use App\Jobs\JobCargaPagos;
-
+use App\FacturaPago;
 class PagoController extends Controller
 {
     /**
@@ -22,10 +22,10 @@ class PagoController extends Controller
 
         if ($request->has('totales')){
                 $pagos=Pago::count();
-                $pagos_ingresos=Pago::where('ine','ingreso')->count();
-                $pagos_egresos=Pago::where('ine','egreso')->count();
-                $sum_ingresos=Pago::where('ine','ingreso')->sum('monto');
-                $sum_egresos=Pago::where('ine','egreso')->sum('monto');
+                $pagos_ingresos=Pago::where('pago','A')->count();
+                $pagos_egresos=Pago::where('pago','C')->count();
+                $sum_ingresos=Pago::where('pago','A')->sum('monto');
+                $sum_egresos=Pago::where('pago','C')->sum('monto');
                 $utilidades=$sum_ingresos-$sum_egresos;
                 $format_ingresos=number_format($sum_ingresos);
                 $format_egresos=number_format($sum_egresos);
@@ -43,14 +43,15 @@ class PagoController extends Controller
             ]);
 
         }elseif (!$request->has('filtros')){
-            $pagos_ingresos=Pago::where('ine','ingreso')->orderBy('id', 'asc')->get();
-            $pagos_egresos=Pago::where('ine','egreso')->orderBy('id', 'asc')->get();
+            $facturas=Factura::orderBy('id', 'asc')->get();
+            $pagos_ingresos=Pago::where('pago','A')->orderBy('id', 'asc')->get();
+            $pagos_egresos=Pago::where('pago','C')->orderBy('id', 'asc')->get();
             $pagos=Pago::orderBy('id', 'asc')->get();
-
             return view('pago.index', [
             'pagos'=>$pagos,
             'pagos_ingresos'=>$pagos_ingresos,
-            'pagos_egresos'=>$pagos_egresos
+            'pagos_egresos'=>$pagos_egresos,
+            'facturas'=>$facturas,
             ]);
         }
     }
@@ -63,10 +64,12 @@ class PagoController extends Controller
     public function create()
     {
         $facturas=Factura::all();
+        $facturas_clientes=Factura::with(['cliente.entidad'])->has('cliente')->orderBy('id', 'asc')->get();
         $boletasliquidaciones=BoletaLiquidacion::all();
         return view('pago.create',[
             'facturas'=>$facturas,
-            'boletasliquidaciones'=>$boletasliquidaciones
+            'boletasliquidaciones'=>$boletasliquidaciones,
+            'facturas_clientes'=>$facturas_clientes,
         ]);
     }
 
@@ -79,13 +82,12 @@ class PagoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[ 
-        'factura_id'=>'required',
-        'boleta_liquidacion_id'=>'required',
-        'ine'=>'required',
-        'fecha_pago'=>'required', 
+        'pago'=>'required',
+        'fecha'=>'required', 
         'monto'=>'required', 
-        'monto_total_transf'=>'required', 
-        'descrip_movimiento'=>'required'
+        'descrip_movimiento'=>'required',
+        'n_doc'=>'required', 
+        'sucursal'=>'required'
     ]);
         Pago::create($request->all());
         return redirect()->route('pagos.index')->with('success','Registro creado satisfactoriamente');
@@ -111,10 +113,12 @@ class PagoController extends Controller
      */
     public function edit($id)
     {
+         
          $facturas=Factura::all();
-        $boletasliquidaciones=BoletaLiquidacion::all();
+         $facturas_clientes=Factura::with(['cliente.entidad'])->has('cliente')->orderBy('id', 'asc')->get();
+         $boletasliquidaciones=BoletaLiquidacion::all();
          $pago=Pago::findOrFail($id);
-        return  view('pago.edit',compact('pago','facturas','boletasliquidaciones'));
+        return  view('pago.edit',compact('pago','facturas','boletasliquidaciones','facturas_clientes'));
     }
 
     /**
@@ -126,16 +130,16 @@ class PagoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $this->validate($request,[ 
-            'factura_id'=>'required',
-            'boleta_liquidacion_id'=>'required',
-            'ine'=>'required',
-            'fecha_pago'=>'required',
-            'monto'=>'required',
-            'monto_total_transf'=>'required',
-            'descrip_movimiento'=>'required'
+            'pago'=>'required',
+            'fecha'=>'required', 
+            'monto'=>'required', 
+            'descrip_movimiento'=>'required',
+            'n_doc'=>'required', 
+            'sucursal'=>'required'
         ]);
- 
+        
         Pago::find($id)->update($request->all());
         return redirect()->route('pagos.index')->with('success','Registro actualizado satisfactoriamente');
     }
