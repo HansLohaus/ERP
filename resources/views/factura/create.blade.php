@@ -116,8 +116,8 @@
                   <div class="form-group">
                     <label>Estado</label>
                     <select name="estado" id="estado" class="form-control input-sm" >
-                         <option value="pagado">pagado</option>
                          <option value="impago">impago</option>
+                         <option value="pagado">pagado</option>
                          <option value="abono">abono</option>
                          <option value="anulado">anulado</option>
                        </select>
@@ -138,7 +138,11 @@
     </div>
 @endsection
 @push("scripts")
-<script type="text/javascript"> 
+<script type="text/javascript">
+  $("input[type=submit]").on('click', function(event) {
+      $(this).prop("disabled", true);
+      $("form").submit();
+  });   
 </script>
 <script>
 $('#select1').on('change', function() {
@@ -156,4 +160,5 @@ $('#select1').on('change', function() {
     $("#select2").val($("#select2 option:visible:first").val());
 });
 </script>
+
 @endpush

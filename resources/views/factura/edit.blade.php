@@ -53,9 +53,9 @@
                                         <div class="form-group">
                                             <label>Servicio</label>
                                             <select name="servicio_id" id="servicio_id" class="form-control input-sm">
-                                                <option value=""  ></option>
+                                                <option value="" hidden>Seleccione Servicio</option>
                                                 @foreach ($servicios as $servicio)
-                                                    <option value="{{ $servicio->id }}">{{ $servicio->nombre}}</option>
+                                                    <option value="{{ $servicio->id }}" {{$servicio->id==$factura->servicio_id ?'selected':''}}>{{ $servicio->nombre}}</option>
                                                 @endforeach
                                             </select>
                                       </div>
@@ -105,7 +105,7 @@
              					 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <label>Estado</label>
              					 	<select name="estado" id="estado" class="form-control input-sm" >
-										<option >{{$factura->estado}}</option>
+										<option value="{{$factura->estado}}" >{{$factura->estado}} (Seleccionado)</option>
   										   <option value="pagado">pagado</option>
   										   <option value="impago">impago</option>
   										   <option value="abono">abono</option>

@@ -146,10 +146,6 @@
                       {{ csrf_field() }}
                       <div class="pull-left"><button class="btn btn-info" type="submit">Descargar Clientes</button></div>
                     </form>
-                    {{-- <form action="" method="POST" >
-                      {{ csrf_field() }}
-                      <div class="pull-right"><button class="btn btn-info" type="submit">Descargar Proveedores</button></div>
-                    </form> --}}
                   </div>
               </div>
           </div>

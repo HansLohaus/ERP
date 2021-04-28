@@ -63,6 +63,7 @@ class PagoController extends Controller
      */
     public function create()
     {
+
         $facturas=Factura::all();
         $facturas_clientes=Factura::with(['cliente.entidad'])->has('cliente')->orderBy('id', 'asc')->get();
         $boletasliquidaciones=BoletaLiquidacion::all();
@@ -81,6 +82,7 @@ class PagoController extends Controller
      */
     public function store(Request $request)
     {
+        
         $this->validate($request,[ 
         'pago'=>'required',
         'fecha'=>'required', 
@@ -89,7 +91,12 @@ class PagoController extends Controller
         'n_doc'=>'required', 
         'sucursal'=>'required'
     ]);
-        Pago::create($request->all());
+       
+        $pago=Pago::create($request->all());
+        $pago->facturas()->sync($request->get('factura_id'));
+        $pago->boletas()->sync($request->get('boleta_liquidacion_id'));
+
+        
         return redirect()->route('pagos.index')->with('success','Registro creado satisfactoriamente');
     }
 
@@ -130,6 +137,7 @@ class PagoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         // dd($request->all());
         $this->validate($request,[ 
             'pago'=>'required',
@@ -140,7 +148,11 @@ class PagoController extends Controller
             'sucursal'=>'required'
         ]);
         
-        Pago::find($id)->update($request->all());
+        $pago=Pago::find($id);
+        $pago->update($request->all());
+        $pago->facturas()->sync($request->get('factura_id'));
+        $pago->boletas()->sync($request->get('boleta_liquidacion_id'));
+
         return redirect()->route('pagos.index')->with('success','Registro actualizado satisfactoriamente');
     }
 

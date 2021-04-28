@@ -40,60 +40,25 @@
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <label>Folio de la factura</label>
+                  @php
+                   $facturas_id= $pago->facturas->pluck('id')->toArray();
+                  @endphp
                   <select name="factura_id[]" id="factura_id" class="form-control input-sm select2 select2-multiple fid" multiple>
-                    <option value="{{implode(', ',$pago->facturas->pluck('folio')->toArray())}}" hidden>{{implode(', ',$pago->facturas->pluck('folio')->toArray())}}</option>
                     @foreach ($facturas_clientes as $factura)
-                    <option value="{{ $factura->id }}">{{ $factura->folio}}</option>
+                    <option value="{{ $factura->id }}" {{in_array($factura->id, $facturas_id)?'selected':''}}>{{ $factura->folio}}</option>
                     @endforeach
                   </select>
-                 {{-- boton --}}
-                  {{-- <span><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">+</button></span> --}}
-                {{-- fin boton --}}
-                {{-- collapse --}}
-                  {{-- <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                      <table class="table table-striped" cellspacing="0">
-                        <thead class="table-primary" >
-                           <th>Folio</th>
-                           <th>Tipo de DTE</th>
-                           <th>Fecha de emisión</th>
-                           <th>Monto Neto</th>
-                           <th>Monto Exento</th>
-                           <th>Monto del Iva</th>
-                           <th>Monto Total</th>
-                           <th>Estado</th>
-                           <th>Seleccionar</th>
-                        </thead>
-                        <tbody>
-                        @if($facturas->count())  
-                        @foreach($facturas as $factura)  
-                          <tr>
-                            <td>{{$factura->folio}}</td>
-                            <td>{{$factura->tipo_dte}}</td>
-                            <td>{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
-                            <td>{{(number_format($factura->total_neto))}}</td>
-                            <td>{{(number_format($factura->total_exento))}}</td>
-                            <td>{{(number_format($factura->total_iva))}}</td>
-                            <td>{{(number_format($factura->total_monto_total))}}</td>
-                            <td>{{$factura->estado}}</td>
-                            
-                          </tr>
-                        @endforeach
-                        @endif
-                        </tbody>
-                      </table>
-                    </div>
-                  </div> --}}
-                {{-- fin collapse --}}
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <label>Descripción de la boleta/liquidacion</label>
-                  <select name="boleta_liquidacion_id" id="boleta_liquidacion_id" class="form-control input-sm">
-                      <option value="{{implode(', ',$pago->boletas->pluck('descripcion')->toArray())}}"  hidden>{{implode(', ',$pago->boletas->pluck('descripcion')->toArray())}}</option>
+                  @php
+                   $boletas_id= $pago->boletas->pluck('id')->toArray();
+                  @endphp
+                  <select name="boleta_liquidacion_id[]" id="boleta_liquidacion_id" class="form-control input-sm select2 select2-multiple fid" multiple>
                       @foreach ($boletasliquidaciones as $boliq)
-                          <option value="{{ $boliq->id }}">{{ $boliq->descripcion}}</option>
+                          <option value="{{ $boliq->id }}" {{in_array($boliq->id, $boletas_id)?'selected':''}}>{{ $boliq->descripcion}}</option>
                       @endforeach
                   </select>
                 </div>

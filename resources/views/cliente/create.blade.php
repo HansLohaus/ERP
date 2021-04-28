@@ -100,11 +100,14 @@
 						</form>
 					</div>
 				</div>
- 
 			</div>
 		</div>
 @endsection
 @push("scripts")
-<script type="text/javascript"> 
+<script type="text/javascript">
+	$("input[type=submit]").on('click', function(event) {
+    	$(this).prop("disabled", true);
+    	$("form").submit();
+	});		
 </script>
 @endpush

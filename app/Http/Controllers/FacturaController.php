@@ -171,7 +171,11 @@ class FacturaController extends Controller
         'total_monto_total'=>'required',
         'estado'=>'required'
     ]);
-        Factura::create($request->all());
+        $factura=$request->all();
+        if (empty($factura['servicio_id'])) {
+            $factura['servicio_id']=null;
+        }
+        Factura::create($factura);
         return redirect()->route('facturas.index')->with('success','Registro creado satisfactoriamente');
     }
 
@@ -211,6 +215,7 @@ class FacturaController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request,[ 
             'tipo_entidad_id'=>'required', 
             'folio'=>'required', 
@@ -222,8 +227,13 @@ class FacturaController extends Controller
             'total_monto_total'=>'required',
             'estado'=>'required'
              ]);
- 
-        Factura::find($id)->update($request->all());
+    
+        $factura=$request->all();
+        if (empty($factura['servicio_id'])) {
+            $factura['servicio_id']=null;
+        }
+        Factura::find($id)->update($factura);
+
         return redirect()->route('facturas.index')->with('success','Registro actualizado satisfactoriamente');
     }
 

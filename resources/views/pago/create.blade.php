@@ -3,6 +3,7 @@
 {{-- Cabecera --}}
 @section("title","Pagos")
 @push("header")
+<link href="{{asset('assets/plugins/select2/dist/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
 <style type="text/css"></style>
 @endpush
 
@@ -37,11 +38,10 @@
                <div class="col-xs-6 col-sm-6 col-md-6">
                           <div class="form-group">
                               <label>Folio de la factura</label>
-                              <select name="factura_id" id="factura_id" class="form-control input-sm" >
-                                  <option hidden>Seleccione Folio</option>
-                                  @foreach ($facturas_clientes as $factura)
-                                      <option value="{{ $factura->id }}" data-monto="{{ $factura->total_monto_total }}">{{ $factura->folio}}</option>
-                                  @endforeach
+                              <select name="factura_id[]" id="factura_id" class="form-control input-sm select2 select2-multiple fid" multiple>
+                                @foreach ($facturas_clientes as $factura)
+                                <option value="{{ $factura->id }}">{{ $factura->folio}}</option>
+                                @endforeach
                               </select>
                         </div>
                       </div>
@@ -49,7 +49,6 @@
                           <div class="form-group">
                               <label>Descripción de la boleta/liquidacion</label>
                               <select name="boleta_liquidacion_id" id="boleta_liquidacion_id" class="form-control input-sm">
-                                  <option value="" disabled hidden>Seleccione Folio</option>
                                   @foreach ($boletasliquidaciones as $boliq)
                                       <option value="{{ $boliq->id }}">{{ $boliq->descripcion}}</option>
                                   @endforeach
@@ -117,7 +116,14 @@
     $("#monto").val(monto);
   });
 </script>
+<script src="{{ asset('assets/plugins/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript"> 
   $(".select2").select2();
+</script>
+<script type="text/javascript">
+  $("input[type=submit]").on('click', function(event) {
+      $(this).prop("disabled", true);
+      $("form").submit();
+  });   
 </script>
 @endpush

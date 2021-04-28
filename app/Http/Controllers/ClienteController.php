@@ -36,15 +36,8 @@ class ClienteController extends Controller
         $this->validate($request,[ 
             'rut'=>'required|cl_rut', 
             'razon_social'=>'required', 
-            'nombre_fantasia'=>'required',
-            'nombre_contacto_fin'=>'required', 
-            'nombre_contacto_tec'=>'required', 
-            'fono_contacto_fin'=>'required', 
-            'fono_contacto_tec'=>'required', 
-            'email_contacto_fin'=>'required|email', 
-            'email_contacto_tec'=>'required|email'
+            'nombre_fantasia'=>'required'
         ]);
-
         $entidad=Entidad::where("rut", $request->rut)->first();
         if ($entidad == null) {
             $entidad=Entidad::create([
@@ -57,13 +50,16 @@ class ClienteController extends Controller
                 'fono_contacto_tec' =>$request->fono_contacto_tec,
                 'email_contacto_fin' =>$request->email_contacto_fin,
                 'email_contacto_tec' =>$request->email_contacto_tec
-
             ]);
+            $tipoentidad=TipoEntidad::create([
+                'entidad_id'=>$entidad->id,
+                'tipo' =>"cliente"
+            ]);
+            $request->session()->flash('alert-success','Se agrego exitosamente.');
+        }else{
+            $request->session()->flash('alert-danger','El rut ya existe en la base de datos.');
         }
-        $tipoentidad=TipoEntidad::create([
-            'entidad_id'=>$entidad->id,
-            'tipo' =>"cliente"
-        ]);
+        
         return redirect()->route('clientes.index')->with('success','Registro creado satisfactoriamente');
     }
 
@@ -110,13 +106,7 @@ class ClienteController extends Controller
         $this->validate($request,[ 
             'rut'=>'required|cl_rut', 
             'razon_social'=>'required', 
-            'nombre_fantasia'=>'required',
-            'nombre_contacto_fin'=>'required', 
-            'nombre_contacto_tec'=>'required', 
-            'fono_contacto_fin'=>'required', 
-            'fono_contacto_tec'=>'required', 
-            'email_contacto_fin'=>'required|email', 
-            'email_contacto_tec'=>'required|email'
+            'nombre_fantasia'=>'required'
 
         ]);
         $tipoentidad=TipoEntidad::find($id);

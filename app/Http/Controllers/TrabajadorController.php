@@ -45,14 +45,7 @@ class TrabajadorController extends Controller
         'sueldo'=>'required', 
         'fecha_contrato'=>'required',
         'fono'=>'required', 
-        'email'=>'required|email', 
-        'email_alt'=>'required|email',
-        'numero_cuenta_banc'=>'required', 
-        'titular_cuenta_banc'=>'required', 
-        'banco'=>'required',
-        'tipo_cuenta'=>'required',
-        'afp'=>'required',
-        'prevision'=>'required'
+        'email'=>'required|email'
     ]);
         Trabajador::create($request->all());
         return redirect()->route('trabajadores.index')->with('success','Registro creado satisfactoriamente');
@@ -103,14 +96,7 @@ class TrabajadorController extends Controller
         'sueldo'=>'required', 
         'fecha_contrato'=>'required',
         'fono'=>'required', 
-        'email'=>'required|email', 
-        'email_alt'=>'required|email',
-        'numero_cuenta_banc'=>'required', 
-        'titular_cuenta_banc'=>'required', 
-        'banco'=>'required',
-        'tipo_cuenta'=>'required',
-        'afp'=>'required',
-        'prevision'=>'required'
+        'email'=>'required|email'
         ]);
  
         Trabajador::find($id)->update($request->all());
