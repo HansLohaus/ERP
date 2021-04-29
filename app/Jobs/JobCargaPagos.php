@@ -124,49 +124,68 @@ class JobCargaPagos implements ShouldQueue
                         // Agregar campos asociados a la factura
                         "folio" => $registro[0],
                         "descripcion" => $registro[1],
-                        "ine" => $registro[2],
-                        "fecha_pago" => $registro[3],
+                        "pago" => $registro[2],
+                        "fecha" => $registro[3],
                         "monto" => $registro[4],
-                        "monto_total_transf" => $registro[5],
-                        "descrip_movimiento" => $registro[6]
+                        "descrip_movimiento" => $registro[5],
+                        "n_doc" => $registro[6],
+                        "sucursal" => $registro[7]
                     ];
 
                     // Validar 
-                    if ($registro->ine == "ingreso" || $registro->ine == "egreso") {
-                        $fecha=$this->formatearFecha($registro->fecha_pago);
+                    // Log::debug($registro->pago);
+                    if ($registro->pago == "c" || $registro->pago == "a") {
+                        $fecha=$this->formatearFecha($registro->fecha);
                         if ($fecha !== false) {
+                            $pago=Pago::create([
+                                "pago" => $registro->pago,
+                                "fecha" => $fecha,
+                                "monto" => $registro->monto,
+                                "descrip_movimiento" => $registro->descrip_movimiento,
+                                "n_doc" => $registro->n_doc,
+                                "sucursal" => $registro->sucursal
+                            ]);
                             if (!empty($registro->folio)) {
-                                $factura=Factura::where("folio", $registro->folio)->first();
-                                if ($factura !== null) {
-                                    $boletaliquidacion=BoletaLiquidacion::where("descripcion", $registro->descripcion)->first();
-                                    if ($boletaliquidacion !== null) {
-                                        $existe=Pago::where([
-                                            "factura_id" => $factura->id,
-                                            "boleta_liquidacion_id" => $boletaliquidacion->id,
-                                            "ine" => $registro->ine,
-                                        ])->exists();
-                                        if ($existe==false) {
-                                            Pago::create([
-                                                "factura_id" => $factura->id,
-                                                "boleta_liquidacion_id" => $boletaliquidacion->id,
-                                                "ine" => $registro->ine,
-                                                "fecha_pago" => $fecha,
-                                                "monto" => $registro->monto,
-                                                "monto_total_transf" => $registro->monto_total_transf,
-                                                "descrip_movimiento" => $registro->descrip_movimiento,
-                                            ]);
-                                        }else{
-                                            $this->error("la pago ya esta en la bd");
-                                        }
-                                    }else{
-                                        $this->error("la boleta/liquidacion no existe");
+                                $facturas_id=explode(',',$registro->folio);
+                                $noexiste=[];
+                                foreach ($facturas_id as $factura) {
+                                    $f=Factura::where("folio", $factura)->exists();
+                                    if ($f==false) {
+                                        $noexiste[]=$factura;
                                     }
-                                }else{
-                                    $this->error("la factura no existe");
+                                }
+                                if (count($noexiste) > 0) {
+                                    $this->error("facturas no existen ".implode(',',$noexiste));
+                                }
+                                if (count($facturas_id) > 0) {
+                                    $facturas=Factura::whereIn("folio", $facturas_id)->get();
+                                    $facturas=$facturas->pluck('id')->toArray();
+                                    $pago->facturas()->sync($facturas);
                                 }
                             }else{
-                                $this->error("folio no posee formato adecuado");
+                                $this->error("folio no existe");
                             }
+                            if (!empty($registro->descripcion)) {
+                                $boletas_id=explode(',',$registro->descripcion);
+                                $noexiste=[];
+                                foreach ($boletas_id as $boleta) {
+                                    $b=BoletaLiquidacion::where("descripcion", $boleta)->exists();
+                                    if ($b==false) {
+                                        $noexiste[]=$boleta;
+                                    }
+                                }
+                                if (count($noexiste) > 0) {
+                                    $this->error("boletas/liquidaciones no existen ".implode(',',$noexiste));
+                                }
+                                if (count($boletas_id) > 0) {
+                                    $boletas=BoletaLiquidacion::whereIn("descripcion", $boletas_id)->get();
+                                    $boletas=$boletas->pluck('id')->toArray();
+                                    $pago->boletas()->sync($boletas);
+                                }
+                            }else{
+                                $this->error("descripcion no existe");
+                            }
+                            
                         }else{
                             $this->error("fecha pago invalida");
                         }

@@ -278,7 +278,7 @@
 <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
 <script>
   var datatable_tabla1 = $("#tabla-cliente").DataTable({
-    "order" : [[0,"desc"]],
+    "order" : [[4,"desc"]],
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,
@@ -296,7 +296,7 @@
 });
 
 var datatable_tabla2 = $("#tabla-proveedor").DataTable({
-    "order" : [[0,"desc"]],
+    "order" : [[4,"desc"]],
     "bLengthChange" : false, 
     "bInfo":false, 
     "bPaginate":true,

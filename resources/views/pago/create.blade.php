@@ -48,11 +48,11 @@
                       <div class="col-xs-6 col-sm-6 col-md-6">
                           <div class="form-group">
                               <label>Descripción de la boleta/liquidacion</label>
-                              <select name="boleta_liquidacion_id" id="boleta_liquidacion_id" class="form-control input-sm">
-                                  @foreach ($boletasliquidaciones as $boliq)
-                                      <option value="{{ $boliq->id }}">{{ $boliq->descripcion}}</option>
-                                  @endforeach
-                              </select>
+                             <select name="boleta_liquidacion_id[]" id="boleta_liquidacion_id" class="form-control input-sm select2 select2-multiple fid" multiple>
+                      @foreach ($boletasliquidaciones as $boliq)
+                          <option value="{{ $boliq->id }}">{{ $boliq->descripcion}}</option>
+                      @endforeach
+                  </select>
                         </div>
                       </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
