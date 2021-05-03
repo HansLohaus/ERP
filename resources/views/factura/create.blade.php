@@ -34,7 +34,7 @@
             <form method="POST" action="{{ route('facturas.store') }}"  role="form">
               {{ csrf_field() }}
               <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label>Cliente/proveedor</label>
                     <select id="select1" class="form-control input-sm" >
@@ -44,7 +44,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label>-</label>
                     <select name="tipo_entidad_id" id="select2" class="form-control input-sm">
@@ -78,38 +78,8 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
-                    <label>Tipo de DTE</label>
-                    <input type="number" name="tipo_dte" id="tipo_dte" class="form-control input-sm">
-                  </div>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
                     <label>Fecha de emisión</label>
                     <input type="date" name="fecha_emision" id="fecha_emision" class="form-control input-sm">
-                  </div>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label>Monto Neto</label>
-                    <input type="number" name="total_neto" id="total_neto" class="form-control input-sm">
-                  </div>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label>Monto Exento</label>
-                    <input type="number" name="total_exento" id="total_exento" class="form-control input-sm">
-                  </div>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label>Monto del Iva</label>
-                    <input type="number" name="total_iva" id="total_iva" class="form-control input-sm">
-                  </div>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <label>Monto Total</label>
-                    <input type="number" name="total_monto_total" id="total_monto_total" class="form-control input-sm">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
@@ -122,6 +92,44 @@
                          <option value="anulado">anulado</option>
                        </select>
                   </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <label>Tipo de DTE</label>
+                    <select name="tipo_dte" id="tipo_dte" class="form-control input-sm" onChange="pagoOnChange(this)">
+                      <option value="" selected hidden>Seleccione DTE</option>
+                      <option value="33">33 (Factura electrónica)</option>
+                      <option value="34">34 (Factura exenta electrónica)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <label>Monto Total</label>
+                    <input type="number"min="0" max="999999999999" value="0" name="total_monto_total" id="total_monto_total" class="form-control input-sm" readonly>
+                  </div>
+                </div>
+                <div id="neto" style="display:none;" class="col-xs-6 col-sm-6 col-md-6">
+                  
+                  <div class="form-group">
+                    <label>Monto Neto</label>
+                    <input type="number" min="0" max="999999999999" value="0" name="total_neto" id="total_neto" class="form-control input-sm sumar">
+                  </div>
+                
+               
+                  <div class="form-group">
+                    <label>Monto del Iva</label>
+                    <input type="number" min="0" max="999999999999" value="0" name="total_iva" id="total_iva" class="form-control input-sm sumar">
+                  </div>
+                
+                </div>
+                <div id="exento" style="display:none;"  class="col-xs-6 col-sm-6 col-md-6">
+                 
+                  <div class="form-group">
+                    <label>Monto Exento</label>
+                    <input type="number" min="0" max="999999999999" value="0" name="total_exento" id="total_exento" class="form-control input-sm sumar">
+                  </div>
+                
                 </div>
               </div>
               <br>
@@ -160,5 +168,34 @@ $('#select1').on('change', function() {
     $("#select2").val($("#select2 option:visible:first").val());
 });
 </script>
+<script type="text/javascript">
+  function pagoOnChange(sel) {
+      if (sel.value=="33"){
+           divC = document.getElementById("neto");
+           divC.style.display="";
 
+           divT = document.getElementById("exento");
+           divT.style.display = "none";
+
+      }else if(sel.value=="34"){
+
+           divC = document.getElementById("neto");
+           divC.style.display="none";
+
+           divT = document.getElementById("exento");
+           divT.style.display = "";
+      }
+}
+</script>
+<script>
+//suma
+items = document.getElementsByClassName("sumar")
+for (var i = 0; i < items.length; i++) {
+ items[i].addEventListener('change', function() {
+  n = document.getElementById("total_monto_total");
+  n.value = parseInt("0"+n.value) + parseInt("0"+this.value) - parseInt("0"+this.defaultValue);
+ this.defaultValue = this.value;
+ });
+};
+</script>
 @endpush

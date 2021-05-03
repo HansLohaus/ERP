@@ -39,7 +39,7 @@
              					   		<div class="form-group">
                                             <label>Cliente</label>
                                             <select name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
-                                                <option value="{{$factura->cliente->id}}" >{{$factura->cliente->entidad->nombre_fantasia}} (seleccionado)</option>
+                                                <option value="{{$factura->cliente->id}}" hidden>{{$factura->cliente->entidad->nombre_fantasia}} (seleccionado)</option>
                                                 @foreach ($clientes as $cliente)
                                                     <option value="{{ $cliente->id }}">{{ $cliente->entidad->nombre_fantasia }}</option>
                                                 @endforeach
@@ -68,53 +68,50 @@
              					 </div>
              					 <div class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
-                                    <label>Tipo de DTE</label>
-             					     <input type="number" name="tipo_dte" id="tipo_dte" class="form-control input-sm" value="{{$factura->tipo_dte}}">
-             					   </div>
-             					 </div>
-             					 <div class="col-xs-6 col-sm-6 col-md-6">
-             					   <div class="form-group">
                                     <label>Fecha de emisión</label>
              					     <input type="date" name="fecha_emision" id="fecha_emision" class="	form-control input-sm" value="{{$factura->fecha_emision}}">
              					   </div>
              					 </div>
-             					 <div class="col-xs-6 col-sm-6 col-md-6">
+                                 <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <label>Estado</label>
+                                    <select name="estado" id="estado" class="form-control input-sm" >
+                                           <option value="pagado" {{$factura->estado=='pagado' ?'selected':''}}>pagado</option>
+                                           <option value="impago" {{$factura->estado=='impago' ?'selected':''}}>impago</option>
+                                           <option value="abono" {{$factura->estado=='abono' ?'selected':''}}>abono</option>
+                                           <option value="anulado" {{$factura->estado=='anulado' ?'selected':''}}>anulado</option>
+                                         </select>
+                                 </div>
+                                 <div class="col-xs-6 col-sm-6 col-md-6">
+                                   <div class="form-group">
+                                    <label>Tipo de DTE</label>
+                                        <select name="tipo_dte" id="tipo_dte" class="form-control input-sm" onChange="pagoOnChange(this)">
+                                            <option value="33" {{$factura->tipo_dte==33 ?'selected':''}}>33</option>
+                                            <option value="34" {{$factura->tipo_dte==34 ?'selected':''}}>34</option>
+                                        </select>
+                                   </div>
+                                 </div>
+                                 <div id="neto" style="display:none;" class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
                                     <label>Monto Neto</label>
-             					     <input type="number" name="total_neto" id="total_neto" class="form-control 	input-sm" value="{{$factura->total_neto}}">
+             					     <input type="number" min="0" max="999999999999" name="total_neto" id="total_neto" class="form-control 	input-sm sumar" value="{{$factura->total_neto}}">
              					   </div>
-             					 </div>
-             					 <div class="col-xs-6 col-sm-6 col-md-6">
+             					 <div class="form-group">
+                                    <label>Monto del Iva</label>
+                                     <input type="number" min="0" max="999999999999" name="total_iva" id="total_iva" class="form-control input-sm sumar" value="{{$factura->total_iva}}">
+                                   </div> 
+                                 </div>
+                                <div id="exento" style="display:none;"  class="col-xs-6 col-sm-6 col-md-6">
              					   <div class="form-group">
                                     <label>Monto Exento</label>
-             					     <input type="number" name="total_exento" id="total_exento" class="form-control input-sm" value="{{$factura->total_exento}}">
-             					   </div>
-             					 </div>
-             					 <div class="col-xs-6 col-sm-6 col-md-6">
-             					   <div class="form-group">
-                                    <label>Monto del Iva</label>
-             					     <input type="number" name="total_iva" id="total_iva" class="form-control 	input-sm" value="{{$factura->total_iva}}">
-             					   </div>
-             					 </div>
-             					 <div class="col-xs-6 col-sm-6 col-md-6">
-             					   <div class="form-group">
+                                     <input type="number" min="0" max="999999999999" name="total_exento" id="total_exento" class="form-control input-sm sumar" value="{{$factura->total_exento}}">
+                                   </div>
+                                </div>                                   
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                   <div class="form-group">
                                     <label>Monto Total</label>
-             					     <input type="number" name="total_monto_total" id="total_monto_total" class="	form-control input-sm" value="{{$factura->total_monto_total}}">
-             					   </div>
-             					 </div>
-             					 <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <label>Estado</label>
-             					 	<select name="estado" id="estado" class="form-control input-sm" >
-										<option value="{{$factura->estado}}" >{{$factura->estado}} (Seleccionado)</option>
-  										   <option value="pagado">pagado</option>
-  										   <option value="impago">impago</option>
-  										   <option value="abono">abono</option>
-                                           <option value="anulado">anulado</option>
-  										 </select>
-             					   {{-- <div class="form-group">
-             					     <input type="text" name="estado" id="estado" class="form-control input-sm" value="{{$factura->estado}}">
-             					   </div> --}}
-             					 </div>
+                                     <input type="number" min="0" max="999999999999" name="total_monto_total" id="total_monto_total" class=" form-control input-sm" value="{{$factura->total_monto_total}}" readonly>
+                                   </div>
+                                 </div>
               				</div>
                             <br>
 							<div class="row">
@@ -133,6 +130,34 @@
 		</div>
 @endsection
 @push("scripts")
-<script type="text/javascript"> 
+<script type="text/javascript">
+  function pagoOnChange(sel) {
+      if (sel.value=="33"){
+           divC = document.getElementById("neto");
+           divC.style.display="";
+
+           divT = document.getElementById("exento");
+           divT.style.display = "none";
+
+      }else if(sel.value=="34"){
+
+           divC = document.getElementById("neto");
+           divC.style.display="none";
+
+           divT = document.getElementById("exento");
+           divT.style.display = "";
+      }
+}
+</script>
+<script>
+//suma
+items = document.getElementsByClassName("sumar")
+for (var i = 0; i < items.length; i++) {
+ items[i].addEventListener('change', function() {
+  n = document.getElementById("total_monto_total");
+  n.value = parseInt("0"+n.value) + parseInt("0"+this.value) - parseInt("0"+this.defaultValue);
+ this.defaultValue = this.value;
+ });
+};
 </script>
 @endpush
