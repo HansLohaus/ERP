@@ -82,23 +82,12 @@
         <span class="input-group-text"><span class="fa fa-filter"></span></span>
     </div>
     <input type="text" id="tabla-filtro" class="form-control" placeholder="Filtrar por...">
-    {{-- <div class="input-group-append">
-      <select class="btn btn-success" type="button" name="select">
-        <option value="todos">todos</option>
-        <option value="2021">2021</option>
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-      </select>
-    </div> --}}
 </div>
 <br>
    <div class="pull-right">
     <div class="btn-group">
       <a href="{{ route('facturas.create') }}" class="btn btn-info" >Añadir Factura</a>
     </div>
-    {{-- <div class="btn-group">
-      <a href="{{ route('facturas.import') }}" class="btn btn-info" >Carga masiva</a>
-    </div> --}}
     <div class="btn-group">
       <a href="#" class="btn btn-info" data-toggle="modal" data-target="#masivo">Carga Masiva</a>
       {{-- popup masivo--}}
@@ -330,6 +319,7 @@ var filtro_array = {
 };
 // Funcion para filtrar
 function filtrarPor(tipo, valor) {
+  // console.log(filtro_array);
     if (typeof valor == 'undefined'){
       if (tipo !=='totales'){
         if (filtro_array.hasOwnProperty(tipo)){
@@ -361,7 +351,7 @@ function update_datatable(){
         $.each(response.facturas_clientes, function(){
           datatable_tabla1.row.add([
             this.cliente.entidad.nombre_fantasia,
-            this.servicio.nombre,
+            this.servicio ? this.servicio.nombre : '',
             this.folio,
             this.tipo_dte,
             this.fecha_emision,
@@ -380,7 +370,7 @@ function update_datatable(){
         $.each(response.facturas_proveedores, function(){
           datatable_tabla2.row.add([
             this.proveedor.entidad.nombre_fantasia,
-            this.servicio.nombre,
+            this.servicio ? this.servicio.nombre : '',
             this.folio,
             this.tipo_dte,
             this.fecha_emision,

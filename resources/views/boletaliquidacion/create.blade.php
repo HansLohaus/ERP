@@ -132,9 +132,8 @@
 @endsection
 @push("scripts")
 <script type="text/javascript">
-  $("input[type=submit]").on('click', function(event) {
-      $(this).prop("disabled", true);
-      $("form").submit();
-  });   
+  $("form").on('submit', function(event) {
+      $('input[type=submit]').prop("disabled", true);
+  });
 </script>
 @endpush
