@@ -12,3 +12,5 @@ Homestead.json
 Homestead.yaml
 .env
 .DS_Store
+composer.lock
+storage/framework/laravel-excel
