@@ -60,12 +60,12 @@
               @if($servicios_clientes->count())  
               @foreach($servicios_clientes as $servicio)  
               <tr>
-                <td>{{$servicio->cliente->entidad->nombre_fantasia}}</td>
-                <td>{{$servicio->nombre}}</td>
+                <td>{{ ucfirst($servicio->cliente->entidad->nombre_fantasia)}}</td>
+                <td>{{ ucfirst($servicio->nombre)}}</td>
                 <td>{{ date_format(date_create($servicio->fecha_inicio),"d-m-Y") }}</td>
                 <td>{{ date_format(date_create($servicio->fecha_fin),"d-m-Y") }} </td>
-                <td>{{$servicio->tipo}}</td>
-                <td>{{$servicio->estado}}</td>
+                <td>{{ucfirst($servicio->tipo) }}</td>
+                <td>{{ucfirst($servicio->estado) }}</td>
                 <td>{{$servicio->numero_propuesta}}</td>
                 <td>{{$servicio->condicion_pago}}</td>
                 <td><a class="btn btn-primary" href="{{action('ServicioController@edit', $servicio->id)}}" ><i class="bi bi-pencil"></i></a></td>

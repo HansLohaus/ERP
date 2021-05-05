@@ -24,10 +24,10 @@
             <td>{{$factura->folio}}</td>
             <td>{{$factura->tipo_dte}}</td>
             <td>{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
-            <td>{{(number_format($factura->total_neto))}}</td>
-            <td>{{(number_format($factura->total_exento))}}</td>
-            <td>{{(number_format($factura->total_iva))}}</td>
-            <td>{{(number_format($factura->total_monto_total))}}</td>
+            <td>{{$factura->total_neto}}</td>
+            <td>{{$factura->total_exento}}</td>
+            <td>{{$factura->total_iva}}</td>
+            <td>{{$factura->total_monto_total}}</td>
             <td>{{$factura->estado}}</td>
         </tr>
     @endforeach

@@ -39,10 +39,10 @@
 								<div class="col-xs-6 col-sm-6 col-md-6">
 				                  <div class="form-group">
 				                    <label>Cliente/proveedor</label>
-				                    <select id="select1" class="form-control input-sm" >
-				                      <option>Seleccione</option>
-				                         <option value='1'>cliente</option>
-				                         <option value='2'>proveedor</option>
+				                    <select name="selector" id="select1" class="form-control input-sm" >
+				                      <option hidden>Seleccione</option>
+				                         <option value='1' {{ old('selector') == '1' ? 'selected' : '' }}>Cliente</option>
+				                         <option value='2' {{ old('selector') == '2' ? 'selected' : '' }}>Proveedor</option>
 				                    </select>
 				                  </div>
 				                </div>
@@ -52,54 +52,39 @@
 				                    <select name="tipo_entidad_id" id="select2" class="form-control input-sm">
 				                      <option value=""  hidden>Seleccione</option>
 				                      @foreach ($clientes as $cliente)
-				                        <option value="{{ $cliente->id }}" data-tag='1'>{{ $cliente->entidad->nombre_fantasia }}</option>
+				                        <option value="{{ $cliente->id }}" data-tag='1' {{ old('tipo_entidad_id') == $cliente->id ? 'selected' : '' }}>{{  ucfirst($cliente->entidad->nombre_fantasia) }}</option>
 				                      @endforeach
 				                      @foreach ($proveedores as $proveedor)
-				                        <option value="{{ $proveedor->id }}" data-tag='2'>{{ $proveedor->entidad->nombre_fantasia }}</option>
+				                        <option value="{{ $proveedor->id }}" data-tag='2' {{ old('tipo_entidad_id') == $proveedor->id ? 'selected' : '' }}>{{  ucfirst($proveedor->entidad->nombre_fantasia) }}</option>
 				                      @endforeach
 				                    </select>
 				                  </div>
 				                </div>
-				                <script>
-				                  $('#select1').on('change', function() {
-				                    var selected = $(this).val();
-				                    $("#select2 option").each(function(item){
-				                      console.log(selected) ;  
-				                      var element =  $(this) ; 
-				                      console.log(element.data("tag")) ; 
-				                      if (element.data("tag") != selected){
-				                        element.hide() ; 
-				                      }else{
-				                        element.show();
-				                      }
-				                    }) ; 
-				                    $("#select2").val($("#select2 option:visible:first").val());
-				                });
-				                </script>
+				                
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Nombre</label>
-										<input type="text" name="nombre" id="nombre" class="form-control input-sm">
+										<input type="text" name="nombre" id="nombre" class="form-control input-sm" value="{{ old('nombre') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Fecha de inicio del servicio</label>
-										<input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control input-sm">
+										<input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control input-sm" value="{{ old('fecha_inicio') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>fecha de término del servicio</label>
-										<input type="date" name="fecha_fin" id="fecha_fin" class="form-control input-sm">
+										<input type="date" name="fecha_fin" id="fecha_fin" class="form-control input-sm" value="{{ old('fecha_fin') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Tipo de servicio</label>
 										<select name="tipo" id="tipo" class="form-control input-sm">
-  										   <option value="servicio">servicio</option>
-  										   <option value="proyecto">proyecto</option>
+  										   <option value="servicio" {{ old('tipo') == 'servicio' ? 'selected' : '' }}>Servicio</option>
+  										   <option value="proyecto" {{ old('tipo') == 'proyecto' ? 'selected' : '' }}>Proyecto</option>
   										 </select>
 									</div>
 								</div>
@@ -107,21 +92,21 @@
 									<div class="form-group">
 										<label>Estado del servicio</label>
 										<select name="estado" id="estado" class="form-control input-sm">
-  										   <option value="activo">activo</option>
-  										   <option value="inactivo">inactivo</option>
+  										   <option value="activo" {{ old('estado') == 'activo' ? 'selected' : '' }}>Activo</option>
+  										   <option value="inactivo" {{ old('estado') == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
   										 </select>
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Número de propuesta</label>
-										<input type="number" name="numero_propuesta" id="numero_propuesta" class="form-control input-sm">
+										<input type="number" name="numero_propuesta" min="0" max="999999999999" id="numero_propuesta" class="form-control input-sm" value="{{ old('numero_propuesta') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Condición de pago</label>
-										<input type="text" name="condicion_pago" id="condicion_pago" class="form-control input-sm">
+										<input type="text" name="condicion_pago" id="condicion_pago" class="form-control input-sm" value="{{ old('condicion_pago') }}">
 									</div>
 								</div>
 							</div>
@@ -142,9 +127,24 @@
 @endsection
 @push("scripts")
 <script type="text/javascript">
-	$("input[type=submit]").on('click', function(event) {
-    	$(this).prop("disabled", true);
-    	$("form").submit();
-	});		
+	$("form").on('submit', function(event) {
+      $('input[type=submit]').prop("disabled", true);
+  });
+</script>
+<script>
+  $('#select1').on('change', function() {
+    var selected = $(this).val();
+    $("#select2 option").each(function(item){
+      console.log(selected) ;  
+      var element =  $(this) ; 
+      console.log(element.data("tag")) ; 
+      if (element.data("tag") != selected){
+        element.hide() ; 
+      }else{
+        element.show();
+      }
+    }) ; 
+    $("#select2").val($("#select2 option:visible:first").val());
+});
 </script>
 @endpush

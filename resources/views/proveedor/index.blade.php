@@ -48,8 +48,8 @@
               @foreach($proveedores as $proveedor)  
               <tr>
                 <td>{{Rut::parse($proveedor->entidad->rut)->format()}}</td>
-                <td>{{$proveedor->entidad->razon_social}}</td>
-                <td>{{$proveedor->entidad->nombre_fantasia}}</td>
+                <td>{{ucfirst($proveedor->entidad->razon_social)}}</td>
+                <td>{{ucfirst($proveedor->entidad->nombre_fantasia)}}</td>
                 <td><a data-proveedor="{{json_encode($proveedor)}}" href="#" class="btn btn-info" data-toggle="modal" data-target="#mas_info">más info</a></td>
                 <td><a class="btn btn-primary" href="{{action('ProveedorController@edit', $proveedor->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>

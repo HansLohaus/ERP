@@ -52,7 +52,7 @@
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label>Descripción de la boleta/liquidacion</label>
+                  <label>Boleta/liquidacion</label>
                   @php
                    $boletas_id= $pago->boletas->pluck('id')->toArray();
                   @endphp
@@ -67,8 +67,8 @@
                 <div class="form-group">
                   <label>Ingreso/Egreso</label>
                   <select name="pago" id="ine" class="form-control input-sm">
-                       <option value="A">ingreso</option>
-                       <option value="C">egreso</option>
+                       <option value="A" {{$pago->pago=='A' ?'selected':''}}>Ingreso</option>
+                       <option value="C" {{$pago->pago=='C' ?'selected':''}}>Egreso</option>
                      </select>
                 </div>
               </div>
@@ -102,11 +102,6 @@
                   <input type="text" name="sucursal" id="sucursal" class="form-control input-sm" value="{{$pago->sucursal}}">
                 </div>
               </div>
-
-
-
-
-
               {{-- <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group">
                 <font size="5">Facturas Relacionadas</font>
@@ -181,11 +176,7 @@
                     </tbody>
                   </table>
                 </div>
-              </div --}}>
-
-
-
-
+              </div> --}}
     				</div>
     				<br>
 						<div class="row">

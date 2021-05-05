@@ -41,7 +41,7 @@
                     <select name="trabajador_id" id="trabajador_id" class="form-control input-sm">
                       <option value="" hidden>Seleccione trabajador</option>
                       @foreach ($trabajadores as $trabajador)
-                        <option value="{{ $trabajador->id }}" {{$trabajador->id==$boletaliquidacion->trabajador_id ?'selected':''}}>{{$trabajador->nombres}} {{$trabajador->apellidoP}}</option>
+                        <option value="{{ $trabajador->id }}" {{$trabajador->id==$boletaliquidacion->trabajador_id ?'selected':''}}>{{ucfirst($trabajador->nombres)}} {{ucfirst($trabajador->apellidoP)}}</option>
                       @endforeach
                     </select>
                   </div>
@@ -68,10 +68,8 @@
                 <div class="form-group">
                   <label>Tipo</label>
                   <select name="boleta_liq" id="boleta_liq" class="form-control input-sm" >
-                    <option value="{{$boletaliquidacion->boleta_liq}}" {{$boletaliquidacion->boleta_liq==$boletaliquidacion->boleta_liq ?'selected':''}} hidden>{{$boletaliquidacion->boleta_liq}}</option>
-                      {{-- <option value="{{$boletaliquidacion->boleta_liq}}">{{$boletaliquidacion->boleta_liq}} (Seleccionado)</option> --}}
-                         <option value="liquidacion">Liquidación</option>
-                         <option value="boleta">Boleta</option>
+                         <option value="liquidacion" {{$boletaliquidacion->boleta_liq=='liquidacion' ?'selected':''}}>Liquidación</option>
+                         <option value="boleta" {{$boletaliquidacion->boleta_liq=='boleta' ?'selected':''}}>Boleta</option>
                        </select>
                 </div>
               </div>

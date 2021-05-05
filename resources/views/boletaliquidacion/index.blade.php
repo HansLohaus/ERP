@@ -55,7 +55,7 @@
                 @if($boletas->count())  
                 @foreach($boletas as $boletaliquidacion)  
                 <tr>
-                <td>{{$boletaliquidacion->trabajador->nombres}} {{$boletaliquidacion->trabajador->apellidoP}}</td>
+                <td>{{ucfirst($boletaliquidacion->trabajador->nombres)}} {{ucfirst($boletaliquidacion->trabajador->apellidoP)}}</td>
                 <td>{{$boletaliquidacion->descripcion}}</td>
                 <td>{{(number_format($boletaliquidacion->monto_total))}}</td>
                 <td>{{(number_format($boletaliquidacion->monto_liquido))}}</td>
@@ -100,7 +100,7 @@
                 @if($liquidaciones->count())  
                 @foreach($liquidaciones as $boletaliquidacion)  
                 <tr>
-                <td>{{$boletaliquidacion->trabajador->nombres}} {{$boletaliquidacion->trabajador->apellidoP}}</td>
+                <td>{{ucfirst($boletaliquidacion->trabajador->nombres)}} {{ucfirst($boletaliquidacion->trabajador->apellidoP)}}</td>
                 <td>{{$boletaliquidacion->descripcion}}</td>
                 <td>{{(number_format($boletaliquidacion->monto_total))}}</td>
                 <td>{{(number_format($boletaliquidacion->monto_liquido))}}</td>

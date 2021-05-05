@@ -39,7 +39,7 @@
                     <select name="trabajador_id" id="trabajador_id" class="form-control input-sm">
                       <option value=""  hidden>Seleccione trabajador</option>
                       @foreach ($trabajadores as $trabajador)
-                        <option value="{{ $trabajador->id }}">{{$trabajador->nombres}} {{$trabajador->apellidoP}}</option>
+                        <option value="{{ $trabajador->id }}" {{ old('trabajador_id') == $trabajador->id ? 'selected' : '' }}>{{ucfirst($trabajador->nombres)}} {{ucfirst($trabajador->apellidoP)}}</option>
                       @endforeach
                     </select>
                     {{-- <label>Id del Cliente</label>
@@ -49,25 +49,25 @@
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Descripción</label>
-                    <input type="text" name="descripcion" id="descripcion" class="form-control input-sm">
+                    <input type="text" name="descripcion" id="descripcion" class="form-control input-sm" value="{{ old('descripcion') }}">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Monto total</label>
-                    <input type="number" min="0" max="999999999999" name="monto_total" id="monto_total" class="form-control input-sm">
+                    <input type="number" min="0" max="999999999999" name="monto_total" id="monto_total" class="form-control input-sm" value="{{ old('monto_total') }}">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Monto líquido</label>
-                    <input type="number" min="0" max="999999999999" name="monto_liquido" id="monto_liquido" class="form-control input-sm">
+                    <input type="number" min="0" max="999999999999" name="monto_liquido" id="monto_liquido" class="form-control input-sm" value="{{ old('monto_liquido') }}">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Tipo</label>
-                    <select name="boleta_liq" id="boleta_liq" class="form-control input-sm" >
+                    <select name="boleta_liq" id="boleta_liq" class="form-control input-sm">
                          <option value="boleta">Boleta</option>
                          <option value="liquidacion">Liquidación</option>
                        </select>
@@ -76,43 +76,43 @@
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Sueldo base</label>
-                    <input type="number" min="0" max="999999999999" name="sueldo_base" id="sueldo_base" class="form-control input-sm">
+                    <input type="number" min="0" max="999999999999" name="sueldo_base" id="sueldo_base" class="form-control input-sm" value="{{ old('sueldo_base') }}">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Gratificaciones</label>
-                    <input type="number" min="0" max="999999999999" name="gratificaciones" id="gratificaciones" class="form-control input-sm">
+                    <input type="number" min="0" max="999999999999" name="gratificaciones" id="gratificaciones" class="form-control input-sm" value="{{ old('gratificaciones') }}">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Días trabajados</label>
-                    <input type="number" min="0" max="999999999999" name="dias_trabajados" id="dias_trabajados" class="form-control input-sm">
+                    <input type="number" min="0" max="999999999999" name="dias_trabajados" id="dias_trabajados" class="form-control input-sm" value="{{ old('dias_trabajados') }}">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Descuento isapre</label>
-                    <input type="number" min="0" max="999999999999" name="desc_isapre" id="desc_isapre" class="form-control input-sm">
+                    <input type="number" min="0" max="999999999999" name="desc_isapre" id="desc_isapre" class="form-control input-sm" value="{{ old('desc_isapre') }}">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Descuento afp</label>
-                    <input type="number" min="0" max="999999999999" name="desc_afp" id="desc_afp" class="form-control input-sm">
+                    <input type="number" min="0" max="999999999999" name="desc_afp" id="desc_afp" class="form-control input-sm" value="{{ old('desc_afp') }}">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Descuento seguro cesantía</label>
-                    <input type="number" min="0" max="999999999999" name="desc_seguro_cesantia" id="desc_seguro_cesantia" class="form-control input-sm">
+                    <input type="number" min="0" max="999999999999" name="desc_seguro_cesantia" id="desc_seguro_cesantia" class="form-control input-sm" value="{{ old('desc_seguro_cesantia') }}">
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <label>Impuesto único</label>
-                    <input type="number" min="0" max="999999999999" name="impuesto_unico" id="impuesto_unico" class="form-control input-sm">
+                    <input type="number" min="0" max="999999999999" name="impuesto_unico" id="impuesto_unico" class="form-control input-sm" value="{{ old('impuesto_unico') }}">
                   </div>
                 </div>
               </div>

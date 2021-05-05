@@ -108,17 +108,11 @@
         <div class="panel-body">
           <br>
           <div class="pull-left"><h3>Ingresos</h3></div>
-
-
-
-                    
-
-
           <div class="table-container">
             <table id="tabla-ingreso" class="table table-bordred table-striped">
               <thead>
                   <th>Folio de la factura</th>
-                  <th>Descripción de la boleta/liquidacion</th>
+                  <th>Boleta/liquidacion</th>
                   <th>Fecha de pago</th>
                   <th>Monto del pago</th>
                   <th>Descripcion de movimiento</th>
@@ -256,7 +250,6 @@ $("#tabla-filtro").on("keyup change",function(){
     datatable_tabla2.fnFilter(this.value);
 });
 </script>
-
 <script type="text/javascript">
 // Filtros
 function update_datatable(){
@@ -324,7 +317,6 @@ function actualizarContadores(tipo){
         }
     });
 }
-
 actualizarContadores('ingreso');
 </script>
 

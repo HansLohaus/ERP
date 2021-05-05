@@ -20,10 +20,10 @@
         <div class="small-box bg-aqua text-center">
             <div class="inner">
               <h3 class="count">
-                $<span id="sumatotal">0</span>
+                $<span id="sumatotalesSA">0</span>
               </h3>
               <p>Total de Facturas</p>
-              <h4 class="count" id="total">0</h4>
+              <h4 class="count" id="totalesSA">0</h4>
             </div>
             <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -180,12 +180,12 @@
                 <td>{{$factura->servicio ? $factura->servicio->nombre : ''}}</td>
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>
-                <td>{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
+                <td data-order="{{$factura->fecha_emision}}" >{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
                 <td>{{(number_format($factura->total_neto))}}</td>
                 <td>{{(number_format($factura->total_exento))}}</td>
                 <td>{{(number_format($factura->total_iva))}}</td>
                 <td>{{(number_format($factura->total_monto_total))}}</td>
-                <td>{{$factura->estado}}</td>
+                <td>{{ucfirst($factura->estado)}}</td>
                 <td><a class="btn btn-primary" href="{{action('FacturaController@edit', $factura->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>
                   <form action="{{action('FacturaController@destroy', $factura->id)}}" method="post">
@@ -232,8 +232,8 @@
               @if($facturas_proveedores->count())  
               @foreach($facturas_proveedores as $factura)  
               <tr>
-                <td>{{$factura->proveedor->entidad->nombre_fantasia}}</td>
-                <td>{{$factura->servicio ? $factura->servicio->nombre : ''}}</td>
+                <td>{{ucfirst($factura->proveedor->entidad->nombre_fantasia)}}</td>
+                <td>{{ucfirst($factura->servicio ? $factura->servicio->nombre : '')}}</td>
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>
                 <td>{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
@@ -241,7 +241,7 @@
                 <td>{{(number_format($factura->total_exento))}}</td>
                 <td>{{(number_format($factura->total_iva))}}</td>
                 <td>{{(number_format($factura->total_monto_total))}}</td>
-                <td>{{$factura->estado}}</td>
+                <td>{{ucfirst($factura->estado)}}</td>
                 <td><a class="btn btn-primary" href="{{action('FacturaController@edit', $factura->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>
                   <form action="{{action('FacturaController@destroy', $factura->id)}}" method="post">
@@ -402,10 +402,14 @@ function actualizarContadores(tipo){
             $('#pagada').html(response.pagadas);
             $('#pendiente').html(response.pendientes);
             $('#anulada').html(response.anuladas);
+            $('#totalesSA').html(response.totalesSA);
             $('#sumatotal').html(response.format_totales);
             $('#sumapagada').html(response.format_pagadas);
             $('#sumapendiente').html(response.format_pendientes);
             $('#sumaanulada').html(response.format_anuladas);
+            $('#sumatotalesSA').html(response.format_sumatotalesSA);
+            
+            
         }
     });
 }

@@ -80,25 +80,25 @@
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Email contacto financiero:</label>
-										<input type="email" name="email_contacto_fin" id="email_contacto_fin" class="form-control input-sm" value="{{$cliente->entidad->email_contacto_fin}}">
+										<input type="text" name="email_contacto_fin" id="email_contacto_fin" class="form-control input-sm" value="{{$cliente->entidad->email_contacto_fin}}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Email contacto técnico:</label>
-										<input type="email" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm" value="{{$cliente->entidad->email_contacto_tec}}">
+										<input type="text" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm" value="{{$cliente->entidad->email_contacto_tec}}">
 									</div>
 								</div>
 								<div class="form-check">
 								  <input class="form-check-input" type="radio" name="activo" id="flexRadioDefault1" value="1" checked>
 								  <label class="form-check-label" for="flexRadioDefault1">
-								    activo
+								    Activo
 								  </label>
 								</div>
 								<div class="form-check">
 								  <input class="form-check-input" type="radio" name="activo" value="0" id="flexRadioDefault2">
 								  <label class="form-check-label" for="flexRadioDefault2">
-								    inactivo
+								    Inactivo
 								  </label>
 								</div>
 							</div>

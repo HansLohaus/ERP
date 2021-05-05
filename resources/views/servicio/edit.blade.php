@@ -41,7 +41,7 @@
                				        	<select name="tipo_entidad_id" id="tipo_entidad_id" class="form-control input-sm">
                				          		<option value="" disabled hidden>Seleccione cliente</option>
                				          		@foreach ($clientes as $cliente)
-               				            	<option value="{{ $cliente->id }}">{{ $cliente->entidad->nombre_fantasia }}</option>
+               				            	<option value="{{ $cliente->id }}" {{$cliente->id==$servicio->tipo_entidad_id ?'selected':''}}>{{  ucfirst($cliente->entidad->nombre_fantasia) }}</option>
                				          		@endforeach
                				        	</select>
                				      	</div>
@@ -68,9 +68,8 @@
 									<div class="form-group">
 										<label>Tipo de servicio</label>
 										<select name="tipo" id="tipo" class="form-control input-sm">
-  										   <option>{{$servicio->tipo}}</option>
-  										   <option value="servicio">servicio</option>
-  										   <option value="proyecto">proyecto</option>
+  										   <option value="servicio" {{$servicio->tipo=='servicio' ?'selected':''}}>Servicio</option>
+  										   <option value="proyecto" {{$servicio->tipo=='proyecto' ?'selected':''}}>Proyecto</option>
   										 </select>
 									</div>
 								</div>
@@ -78,9 +77,8 @@
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<label>Estado del servicio</label>
 									<select name="estado" id="estado" class="form-control input-sm" >
-										<option >{{$servicio->estado}}</option>
-  										<option value="activo">activo</option>
-  										<option value="inactivo">inactivo</option>
+  										<option value="activo" {{$servicio->estado=='activo' ?'selected':''}}>Activo</option>
+  										<option value="inactivo" {{$servicio->estado=='inactivo' ?'selected':''}}>Inactivo</option>
   									</select>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">

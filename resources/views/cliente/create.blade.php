@@ -37,55 +37,55 @@
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Rut (Formato: sin puntos con guión. Ejemplo: 12345678-9):</label>
-										<input type="text" name="rut" id="rut" class="form-control input-sm">
+										<input type="text" name="rut" id="rut" class="form-control input-sm" value="{{ old('rut') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Razón Social:</label>
-										<input type="text" name="razon_social" id="razon_social" class="form-control input-sm">
+										<input type="text" name="razon_social" id="razon_social" class="form-control input-sm" value="{{ old('razon_social') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Nombre de fantasía:</label>
-										<input type="text" name="nombre_fantasia" id="nombre_fantasia" class="form-control input-sm">
+										<input type="text" name="nombre_fantasia" id="nombre_fantasia" class="form-control input-sm" value="{{ old('nombre_fantasia') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Nombre del contacto financiero:</label>
-										<input type="text" name="nombre_contacto_fin" id="nombre_contacto_fin" class="form-control input-sm">
+										<input type="text" name="nombre_contacto_fin" id="nombre_contacto_fin" class="form-control input-sm" value="{{ old('nombre_contacto_fin') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Nombre del contacto técnico:</label>
-										<input type="text" name="nombre_contacto_tec" id="nombre_contacto_tec" class="form-control input-sm">
+										<input type="text" name="nombre_contacto_tec" id="nombre_contacto_tec" class="form-control input-sm" value="{{ old('nombre_contacto_tec') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Teléfono del contacto financiero (Formato sin signo ni separaciones. Ejemplo: 56912341234):</label>
-										<input type="tel" name="fono_contacto_fin" id="fono_contacto_fin" class="form-control input-sm">
+										<input type="tel" name="fono_contacto_fin" id="fono_contacto_fin" class="form-control input-sm" value="{{ old('fono_contacto_fin') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Teléfono del contacto técnico (Formato sin signo ni separaciones. Ejemplo: 56912341234):</label>
-										<input type="tel" name="fono_contacto_tec" id="fono_contacto_tec" class="form-control input-sm">
+										<input type="tel" name="fono_contacto_tec" id="fono_contacto_tec" class="form-control input-sm" value="{{ old('fono_contacto_tec') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Email del contacto financiero:</label>
-										<input type="email" name="email_contacto_fin" id="email_contacto_fin" class="form-control input-sm">
+										<input type="email" name="email_contacto_fin" id="email_contacto_fin" class="form-control input-sm" value="{{ old('email_contacto_fin') }}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
 										<label>Email del contacto técnico:</label>
-										<input type="email" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm">
+										<input type="email" name="email_contacto_tec" id="email_contacto_tec" class="form-control input-sm" value="{{ old('email_contacto_tec') }}">
 									</div>
 								</div>
 							</div>
@@ -105,9 +105,8 @@
 @endsection
 @push("scripts")
 <script type="text/javascript">
-	$("input[type=submit]").on('click', function(event) {
-    	$(this).prop("disabled", true);
-    	$("form").submit();
-	});		
+	$("form").on('submit', function(event) {
+      $('input[type=submit]').prop("disabled", true);
+  });
 </script>
 @endpush

@@ -37,61 +37,61 @@
               <div class="row">
                <div class="col-xs-6 col-sm-6 col-md-6">
                           <div class="form-group">
-                              <label>Folio de la factura</label>
+                              <label>Folio de la factura (dte)</label>
                               <select name="factura_id[]" id="factura_id" class="form-control input-sm select2 select2-multiple fid" multiple>
                                 @foreach ($facturas_clientes as $factura)
-                                <option value="{{ $factura->id }}">{{ $factura->folio}}</option>
+                                <option value="{{ $factura->id }}">{{$factura->folio}}({{$factura->tipo_dte}})</option>
                                 @endforeach
                               </select>
                         </div>
                       </div>
                       <div class="col-xs-6 col-sm-6 col-md-6">
                           <div class="form-group">
-                              <label>Descripción de la boleta/liquidacion</label>
-                             <select name="boleta_liquidacion_id[]" id="boleta_liquidacion_id" class="form-control input-sm select2 select2-multiple fid" multiple>
-                      @foreach ($boletasliquidaciones as $boliq)
-                          <option value="{{ $boliq->id }}">{{ $boliq->descripcion}}</option>
-                      @endforeach
-                  </select>
+                              <label>Boleta/liquidacion</label>
+                              <select name="boleta_liquidacion_id[]" id="boleta_liquidacion_id" class="form-control input-sm select2 select2-multiple fid" multiple>
+                              @foreach ($boletasliquidaciones as $boliq)
+                                  <option value="{{ $boliq->id }}">{{ $boliq->descripcion}}</option>
+                              @endforeach
+                              </select>
                         </div>
                       </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <label>Ingreso/Egreso</label>
                   <select name="pago" id="ine" class="form-control input-sm">
-                       <option value="A">ingreso</option>
-                       <option value="C">egreso</option>
+                       <option value="A" {{ old('pago') == 'A' ? 'selected' : '' }}>Ingreso</option>
+                       <option value="C" {{ old('pago') == 'C' ? 'selected' : '' }}>Egreso</option>
                      </select>
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <label>Fecha de pago</label>
-                  <input type="date" name="fecha" id="fecha" class="form-control input-sm">
+                  <input type="date" name="fecha" id="fecha" class="form-control input-sm" value="{{ old('fecha') }}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <label>Monto del pago</label>
-                  <input type="number" name="monto" id="monto" class="form-control input-sm">
+                  <input type="number" name="monto" id="monto" class="form-control input-sm" value="{{ old('monto') }}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <label>Descripción del movimiento</label>
-                  <input type="text" name="descrip_movimiento" id="descrip_movimiento" class="form-control input-sm">
+                  <input type="text" name="descrip_movimiento" id="descrip_movimiento" class="form-control input-sm" value="{{ old('descrip_movimiento') }}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <label>Número de documento</label>
-                  <input type="text" name="n_doc" id="n_doc" class="form-control input-sm">
+                  <input type="text" name="n_doc" id="n_doc" class="form-control input-sm" value="{{ old('n_doc') }}">
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <label>Sucursal</label>
-                  <input type="text" name="sucursal" id="sucursal" class="form-control input-sm">
+                  <input type="text" name="sucursal" id="sucursal" class="form-control input-sm" value="{{ old('sucursal') }}">
                 </div>
               </div>
               </div>
@@ -121,9 +121,8 @@
   $(".select2").select2();
 </script>
 <script type="text/javascript">
-  $("input[type=submit]").on('click', function(event) {
-      $(this).prop("disabled", true);
-      $("form").submit();
-  });   
+  $("form").on('submit', function(event) {
+      $('input[type=submit]').prop("disabled", true);
+  }); 
 </script>
 @endpush

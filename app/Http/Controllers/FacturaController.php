@@ -28,6 +28,7 @@ class FacturaController extends Controller
             $pagadas=Factura::has($request->totales)->where('estado','pagado')->count();
             $pendientes=Factura::has($request->totales)->whereIn('estado',['impago','abono'])->count();
             $anuladas=Factura::has($request->totales)->where('estado','anulado')->count();
+            $totalesSA=$facturas-$anuladas;
             $sumatotalesN=Factura::has($request->totales)->sum('total_neto');
             $sumapagadasN=Factura::has($request->totales)->where('estado','pagado')->sum('total_neto');
             $sumapendientesN=Factura::has($request->totales)->whereIn('estado',['impago','abono'])->sum('total_neto');
@@ -40,24 +41,28 @@ class FacturaController extends Controller
             $sumapagadas=$sumapagadasN+$sumapagadasE;
             $sumapendientes=$sumapendientesN+$sumapendientesE;
             $sumaanuladas=$sumaanuladasN+$sumaanuladasE;
+            $sumatotalesSA=$sumatotales-$sumaanuladas;
             $format_totales=number_format($sumatotales);
             $format_pagadas=number_format($sumapagadas);
             $format_pendientes=number_format($sumapendientes);
             $format_anuladas=number_format($sumaanuladas);
-            
+            $format_sumatotalesSA=number_format($sumatotalesSA);
             return response()->json([
                 'facturas'=>$facturas,
                 'pagadas'=>$pagadas,
                 'pendientes'=>$pendientes,
                 'anuladas'=>$anuladas,
+                'totalesSA'=>$totalesSA,
                 'sumatotales'=>$sumatotales,
                 'sumapagadas'=>$sumapagadas,
                 'sumapendientes'=>$sumapendientes,
                 'sumaanuladas'=>$sumaanuladas,
+                'sumatotalesSA'=>$sumatotalesSA,
                 'format_totales'=>$format_totales,
                 'format_pagadas'=>$format_pagadas,
                 'format_pendientes'=>$format_pendientes,
-                'format_anuladas'=>$format_anuladas
+                'format_anuladas'=>$format_anuladas,
+                'format_sumatotalesSA'=>$format_sumatotalesSA,
                 
             ]);
             
