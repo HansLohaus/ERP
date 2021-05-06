@@ -74,10 +74,10 @@
                   <div class="col-xs-6 col-sm-6 col-md-6">
                     <label>Estado</label>
                     <select name="estado" id="estado" class="form-control input-sm" >
-                      <option value="Pagado" {{$factura->estado=='Pagado' ?'selected':''}}>Pagado</option>
-                      <option value="Impago" {{$factura->estado=='Impago' ?'selected':''}}>Impago</option>
-                      <option value="Abono" {{$factura->estado=='Abono' ?'selected':''}}>Abono</option>
-                      <option value="Anulado" {{$factura->estado=='Anulado' ?'selected':''}}>Anulado</option>
+                      <option value="pagado" {{$factura->estado=='pagado' ?'selected':''}}>Pagado</option>
+                      <option value="impago" {{$factura->estado=='impago' ?'selected':''}}>Impago</option>
+                      <option value="abono" {{$factura->estado=='abono' ?'selected':''}}>Abono</option>
+                      <option value="anulado" {{$factura->estado=='anulado' ?'selected':''}}>Anulado</option>
                     </select>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6">

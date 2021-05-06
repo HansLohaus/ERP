@@ -58,8 +58,6 @@
                 <td>{{ ucfirst($trabajador->cargo)}}</td>
                 <td>{{$trabajador->fono}}</td>
                 <td>{{$trabajador->email}}</td>
-                
-                
                 <td><a data-trabajador="{{json_encode($trabajador)}}" href="#" class="btn btn-info" data-toggle="modal" data-target="#mas_info">más info</a></td>
                 <td><a class="btn btn-primary" href="{{action('TrabajadorController@edit', $trabajador->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>

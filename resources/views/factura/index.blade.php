@@ -180,12 +180,12 @@
                 <td>{{$factura->servicio ? $factura->servicio->nombre : ''}}</td>
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>
-                <td data-order="{{$factura->fecha_emision}}" >{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
+                <td data-order="{{$factura->fecha_emision}}">{{date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
                 <td>{{(number_format($factura->total_neto))}}</td>
                 <td>{{(number_format($factura->total_exento))}}</td>
                 <td>{{(number_format($factura->total_iva))}}</td>
                 <td>{{(number_format($factura->total_monto_total))}}</td>
-                <td>{{ucfirst($factura->estado)}}</td>
+                <td>{{(ucfirst($factura->estado))}}</td>
                 <td><a class="btn btn-primary" href="{{action('FacturaController@edit', $factura->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>
                   <form action="{{action('FacturaController@destroy', $factura->id)}}" method="post">
@@ -232,16 +232,16 @@
               @if($facturas_proveedores->count())  
               @foreach($facturas_proveedores as $factura)  
               <tr>
-                <td>{{ucfirst($factura->proveedor->entidad->nombre_fantasia)}}</td>
-                <td>{{ucfirst($factura->servicio ? $factura->servicio->nombre : '')}}</td>
+                <td>{{$factura->proveedor->entidad->nombre_fantasia}}</td>
+                <td>{{$factura->servicio ? $factura->servicio->nombre : ''}}</td>
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>
-                <td>{{ date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
+                <td data-order="{{$factura->fecha_emision}}">{{date_format(date_create($factura->fecha_emision),"d-m-Y") }}</td>
                 <td>{{(number_format($factura->total_neto))}}</td>
                 <td>{{(number_format($factura->total_exento))}}</td>
                 <td>{{(number_format($factura->total_iva))}}</td>
                 <td>{{(number_format($factura->total_monto_total))}}</td>
-                <td>{{ucfirst($factura->estado)}}</td>
+                <td>{{(ucfirst($factura->estado))}}</td>
                 <td><a class="btn btn-primary" href="{{action('FacturaController@edit', $factura->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>
                   <form action="{{action('FacturaController@destroy', $factura->id)}}" method="post">
@@ -349,39 +349,43 @@ function update_datatable(){
       datatable_tabla2.clear();
       if (response.hasOwnProperty('facturas_clientes')){
         $.each(response.facturas_clientes, function(){
-          datatable_tabla1.row.add([
-            this.cliente.entidad.nombre_fantasia,
-            this.servicio ? this.servicio.nombre : '',
-            this.folio,
-            this.tipo_dte,
-            this.fecha_emision,
-            this.total_neto,
-            this.total_exento,
-            this.total_iva,
-            this.total_monto_total,
-            this.estado,
-            this.edit,
-            this.delete
-          ]);
+          var fila= '<tr>'+
+            '<td>'+this.cliente.entidad.nombre_fantasia+'</td>'+
+            '<td>'+(this.servicio ? this.servicio.nombre : '')+'</td>'+
+            '<td>'+this.folio+'</td>'+
+            '<td>'+this.tipo_dte+'</td>'+
+            '<td data-order="'+this.fecha_emision_o+'">'+this.fecha_emision+'</td>'+
+            '<td>'+this.total_neto+'</td>'+
+            '<td>'+this.total_exento+'</td>'+
+            '<td>'+this.total_iva+'</td>'+
+            '<td>'+this.total_monto_total+'</td>'+
+            '<td>'+this.estado+'</td>'+
+            '<td>'+this.edit+'</td>'+
+            '<td>'+this.delete+'</td>'+
+          '</tr>';
+          fila = $.parseHTML(fila)[0];
+          datatable_tabla1.row.add(fila);
         });
         datatable_tabla1.draw();
       }
       if (response.hasOwnProperty('facturas_proveedores')){
         $.each(response.facturas_proveedores, function(){
-          datatable_tabla2.row.add([
-            this.proveedor.entidad.nombre_fantasia,
-            this.servicio ? this.servicio.nombre : '',
-            this.folio,
-            this.tipo_dte,
-            this.fecha_emision,
-            this.total_neto,
-            this.total_exento,
-            this.total_iva,
-            this.total_monto_total,
-            this.estado,
-            this.edit,
-            this.delete
-          ]);
+          var fila= '<tr>'+
+            '<td>'+this.proveedor.entidad.nombre_fantasia+'</td>'+
+            '<td>'+(this.servicio ? this.servicio.nombre : '')+'</td>'+
+            '<td>'+this.folio+'</td>'+
+            '<td>'+this.tipo_dte+'</td>'+
+            '<td data-order="'+this.fecha_emision_o+'">'+this.fecha_emision+'</td>'+
+            '<td>'+this.total_neto+'</td>'+
+            '<td>'+this.total_exento+'</td>'+
+            '<td>'+this.total_iva+'</td>'+
+            '<td>'+this.total_monto_total+'</td>'+
+            '<td>'+this.estado+'</td>'+
+            '<td>'+this.edit+'</td>'+
+            '<td>'+this.delete+'</td>'+
+          '</tr>';
+          fila = $.parseHTML(fila)[0];
+          datatable_tabla2.row.add(fila);
         });
         datatable_tabla2.draw();
       }

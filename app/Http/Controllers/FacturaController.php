@@ -103,11 +103,13 @@ class FacturaController extends Controller
             $facturas_clientes=$facturas_clientes->orderBy('id', 'asc')->get();
             $facturas_proveedores=$facturas_proveedores->orderBy('id', 'asc')->get();
             foreach ($facturas_clientes as $factura) {
+                $factura->fecha_emision_o=$factura->fecha_emision;
                 $factura->fecha_emision=date_format(date_create($factura->fecha_emision),"d-m-Y");
                 $factura->total_neto=number_format($factura->total_neto);
                 $factura->total_exento=number_format($factura->total_exento);
                 $factura->total_iva=number_format($factura->total_iva);
                 $factura->total_monto_total=number_format($factura->total_monto_total);
+                $factura->estado=ucfirst($factura->estado);
                 $factura->edit='<a class="btn btn-primary" href="'.action("FacturaController@edit", $factura->id).'" ><i class="bi bi-pencil"></i></a>';
                 $factura->delete='<form action="'.action('FacturaController@destroy', $factura->id).'" method="post">'.
                    csrf_field().
@@ -117,11 +119,13 @@ class FacturaController extends Controller
                  '</form>';
             }
             foreach ($facturas_proveedores as $factura) {
+                $factura->fecha_emision_o=$factura->fecha_emision;
                 $factura->fecha_emision=date_format(date_create($factura->fecha_emision),"d-m-Y");
                 $factura->total_neto=number_format($factura->total_neto);
                 $factura->total_exento=number_format($factura->total_exento);
                 $factura->total_iva=number_format($factura->total_iva);
                 $factura->total_monto_total=number_format($factura->total_monto_total);
+                $factura->estado=ucfirst($factura->estado);
                 $factura->edit='<a class="btn btn-primary" href="'.action("FacturaController@edit", $factura->id).'" ><i class="bi bi-pencil"></i></a>';
                 $factura->delete='<form action="'.action('FacturaController@destroy', $factura->id).'" method="post">'.
                    csrf_field().

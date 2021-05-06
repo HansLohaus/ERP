@@ -38,7 +38,7 @@
                   <div class="form-group">
                     <label>Cliente/proveedor</label>
                     <select name="selector" id="select1" class="form-control input-sm" >
-                      <option>Seleccione</option>
+                      <option hidden>Seleccione</option>
                          <option value='1' {{ old('selector') == '1' ? 'selected' : '' }}>Cliente</option>
                          <option value='2' {{ old('selector') == '2' ? 'selected' : '' }}>Proveedor</option>
                     </select>
