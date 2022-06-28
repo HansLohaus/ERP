@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trabajador extends Model
 {
-    protected $table = 'trabajadores';
-    protected $fillable = [
-        'nombres',
+	protected $table = 'trabajadores';
+	protected $fillable = [
+		'nombres',
 		'apellidoP',
 		'apellidoM',
 		'rut',
@@ -27,11 +27,17 @@ class Trabajador extends Model
 		'tipo_cuenta',
 		'afp',
 		'prevision'
-    ];
-    public function boletasliquidaciones(){
-    	return $this->hasMany('App\BoletaLiquidacion','trabajador_id');
-    }
-    public function pagos(){
-    	return $this->hasMany('App\Pago','trabajador_id');
-    }
+	];
+	public function gastos()
+	{
+		return $this->morphOne('App\Gasto', 'gastable');
+	}
+	public function boletasliquidaciones()
+	{
+		return $this->hasMany('App\BoletaLiquidacion', 'trabajador_id');
+	}
+	public function pagos()
+	{
+		return $this->hasMany('App\Pago', 'trabajador_id');
+	}
 }

@@ -1,7 +1,7 @@
 @extends("app.main")
 
 {{-- Cabecera --}}
-@section("title","Presupuestos")
+@section("title","Servicios")
 @push("header")
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables/datatables.min.css') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
@@ -9,9 +9,9 @@
 @endpush
 
 {{-- Breadcrumb --}}
-@section("breadcrumb-title","Presupuestos")
+@section("breadcrumb-title","Servicios")
 @section("breadcrumb")
-    <li class="breadcrumb-item active">Presupuestos</li>
+    <li class="breadcrumb-item active">Servicios</li>
 
 @endsection
 {{-- Contenido --}}

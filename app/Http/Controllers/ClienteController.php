@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TipoEntidad;
 use App\Entidad;
-use Freshwork\ChileanBundle\Rut;
+use ValidateRequests;
 
 class ClienteController extends Controller
 {
 
     public function index()
     {
-        $clientes=TipoEntidad::clientes()->orderBy('id', 'asc')->get();
+        $clientes=Entidad::has('cliente')->orderBy('id', 'asc')->get();
         return view('cliente.index', [
             'clientes'=>$clientes
         ]);
@@ -42,6 +41,7 @@ class ClienteController extends Controller
         if ($entidad == null) {
             $entidad=Entidad::create([
                 'rut' =>$request->rut,
+                'id_tipo_entidad' => 1,
                 'razon_social' =>$request->razon_social,
                 'nombre_fantasia' =>$request->nombre_fantasia,
                 'nombre_contacto_fin' =>$request->nombre_contacto_fin,
@@ -50,10 +50,6 @@ class ClienteController extends Controller
                 'fono_contacto_tec' =>$request->fono_contacto_tec,
                 'email_contacto_fin' =>$request->email_contacto_fin,
                 'email_contacto_tec' =>$request->email_contacto_tec
-            ]);
-            $tipoentidad=TipoEntidad::create([
-                'entidad_id'=>$entidad->id,
-                'tipo' =>"cliente"
             ]);
             $request->session()->flash('alert-success','Se agrego exitosamente.');
         }else{
@@ -86,9 +82,7 @@ class ClienteController extends Controller
     public function edit($id)
     {
 
-        $cliente=TipoEntidad::with([
-            "entidad"    
-        ])->findOrFail($id);
+        $cliente=Entidad::findOrFail($id);
         return  view('cliente.edit',compact('cliente'));
     }
 
@@ -101,21 +95,17 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
         $this->validate($request,[ 
             'rut'=>'required|cl_rut', 
             'razon_social'=>'required', 
             'nombre_fantasia'=>'required'
-
         ]);
-        $tipoentidad=TipoEntidad::find($id);
-        $entidad=Entidad::where("rut", $request->rut)->where("id", "!=", $tipoentidad->entidad_id)->first();
+        $entidad=Entidad::where("rut", $request->rut)->first();
         if ($entidad !== null) {
             $request->session()->flash('alert-danger', 'los datos del cliente ya existen en el sistema.');
             return redirect()->route('clientes.index');
         }
-        Entidad::where("id", $tipoentidad->entidad_id)->update([
+        Entidad::where("id", $entidad->id)->update([
             'rut'=>$request->rut,
             'razon_social'=>$request->razon_social,
             'nombre_fantasia'=>$request->nombre_fantasia,
@@ -140,7 +130,7 @@ class ClienteController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        TipoEntidad::findOrFail($id)->delete();
+        Entidad::findOrFail($id)->delete();
 
          $request->session()->flash('alert-success', 'Registro eliminado satisfactoriamente');
         return redirect()->route('clientes.index');

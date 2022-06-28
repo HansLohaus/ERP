@@ -15,7 +15,7 @@ class CreateServiciosTable extends Migration
     {
         Schema::create('servicios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('tipo_entidad_id')->unsigned()->index();
+            $table->bigInteger('tipo_entidades_id')->unsigned()->index();
             $table->string('nombre', 200);
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
@@ -27,7 +27,7 @@ class CreateServiciosTable extends Migration
             $table->softDeletes();//deleted_at
         });
         Schema::table('servicios', function ($table) {
-            $table->foreign('tipo_entidad_id')->references('id')->on('tipo_entidades')->onDelete('cascade');
+            $table->foreign('tipo_entidades_id')->references('id')->on('tipo_entidades')->onDelete('cascade');
         });
     }
 

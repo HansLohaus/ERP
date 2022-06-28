@@ -15,7 +15,7 @@ class CreateFacturasTable extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('tipo_entidad_id')->unsigned()->index();
+            $table->bigInteger('entidad_id')->unsigned()->index();
             $table->bigInteger('servicio_id')->unsigned()->index()->nullable();
             $table->Integer('folio');
             $table->Integer('tipo_dte');
@@ -35,7 +35,7 @@ class CreateFacturasTable extends Migration
             $table->softDeletes();//deleted_at
         });
         Schema::table('facturas', function ($table) {
-            $table->foreign('tipo_entidad_id')->references('id')->on('tipo_entidades')->onDelete('cascade');
+            $table->foreign('entidad_id')->references('id')->on('entidades')->onDelete('cascade');
             $table->foreign('servicio_id')->references('id')->on('servicios')->onDelete('cascade');
         });
     }

@@ -26,4 +26,7 @@ class Cliente extends Model
     public function servicios(){
     	return $this->hasMany('App\Servicio','tipo_entidad_id');
     }
+	public function gastos(){
+		return $this->morphMany('App\Gasto','gastable');
+	}
 }

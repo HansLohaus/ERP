@@ -1001,6 +1001,10 @@
                 "tools",
                 "validation"
             ],
+            "support": {
+                "issues": "https://github.com/freshworkstudio/ChileanBundle/issues",
+                "source": "https://github.com/freshworkstudio/ChileanBundle/tree/master"
+            },
             "time": "2019-01-04T04:17:40+00:00"
         },
         {
@@ -7280,5 +7284,5 @@
         "php": ">=5.6.4"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

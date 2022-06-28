@@ -15,13 +15,9 @@ class CreateTipoEntidadesTable extends Migration
     {
         Schema::create('tipo_entidades', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('entidad_id')->unsigned()->index();
-            $table->enum('tipo', ['cliente', 'proveedor']);
+            $table->string('tipo', 10);
             $table->timestamps();// created_at, updated_at
             $table->softDeletes();//deleted_at
-        });
-        Schema::table('tipo_entidades', function ($table) {
-            $table->foreign('entidad_id')->references('id')->on('entidades')->onDelete('cascade');
         });
     }
 

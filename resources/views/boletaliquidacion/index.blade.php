@@ -1,7 +1,7 @@
 @extends("app.main")
 
 {{-- Cabecera --}}
-@section("title","BoletasLiquidaciones")
+@section("title","Boletas y Liquidaciones")
 @push("header")
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables/datatables.min.css') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
@@ -9,9 +9,9 @@
 </style>
 @endpush
 {{-- Breadcrumb --}}
-@section("breadcrumb-title","BoletasLiquidaciones")
+@section("breadcrumb-title","Boletas y Liquidaciones")
 @section("breadcrumb")
-    <li class="breadcrumb-item active">BoletasLiquidaciones</li>
+    <li class="breadcrumb-item active">Boletas y Liquidaciones</li>
 @endsection
 {{-- Contenido --}}
 @section("content")
@@ -24,13 +24,13 @@
 		<br>
 		<div class="pull-right">
 			<div class="btn-group">
-			    <a href="{{ route('boletasliquidaciones.create') }}" class="btn btn-info" >Añadir BoletasLiquidaciones</a>
+			    <a href="{{ route('boletasliquidaciones.create') }}" class="btn btn-info" >Añadir Boleta o Liquidación</a>
 			</div>
 		</div>
             <nav>
 			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 			    <a class="nav-item nav-link active" id="nav-boletas-tab" data-toggle="tab" href="#nav-boletas" role="tab" aria-controls="nav-boletas" aria-selected="true">Boletas</a>
-			    <a class="nav-item nav-link" id="nav-liquidacion-tab" data-toggle="tab" href="#nav-liquidacion" role="tab" aria-controls="nav-liquidacion" aria-selected="false">Liquidacion</a>
+			    <a class="nav-item nav-link" id="nav-liquidacion-tab" data-toggle="tab" href="#nav-liquidacion" role="tab" aria-controls="nav-liquidacion" aria-selected="false">Liquidación</a>
 			  </div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">

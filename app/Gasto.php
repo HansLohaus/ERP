@@ -8,12 +8,15 @@ class Gasto extends Model
 {
     protected $table = 'gastos';
     protected $fillable = [
-        'trabajador_id',
         'monto',
-		'descrip'
+		'descrip',
+        'path',
+        'reembolso',
+        'fecha_gasto'
     ];
 
-    public function gasto(){
-    	return $this->belongsTo('App\Gasto','trabajador_id');
-    } 
+    public function gastable(){
+        return $this->morphTo();
+    }
+
 }

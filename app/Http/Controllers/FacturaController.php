@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use App\Factura;
-use App\TipoEntidad;
+use App\Entidad;
 use App\Servicio;
 use App\Exports\FacturaExport;
 use Excel;
@@ -68,8 +68,8 @@ class FacturaController extends Controller
             
         }elseif (!$request->has('filtros')){
 
-            $facturas_clientes=Factura::with(['cliente.entidad'])->has('cliente')->orderBy('id', 'asc')->get();
-            $facturas_proveedores=Factura::with(['proveedor.entidad'])->has('proveedor')->orderBy('id', 'asc')->get();
+            $facturas_clientes=Factura::with(['cliente'])->has('cliente')->orderBy('id', 'asc')->get();
+            $facturas_proveedores=Factura::with(['proveedor'])->has('proveedor')->orderBy('id', 'asc')->get();
             $servicios=Servicio::orderBy('id', 'asc')->get();
             
             

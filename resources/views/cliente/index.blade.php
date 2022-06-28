@@ -47,9 +47,9 @@
               @if($clientes->count())  
               @foreach($clientes as $cliente)  
               <tr>
-                <td>{{Rut::parse($cliente->entidad->rut)->format()}}</td>
-                <td>{{ucfirst($cliente->entidad->razon_social)}}</td>
-                <td>{{ucfirst($cliente->entidad->nombre_fantasia)}}</td>
+                <td>{{Rut::parse($cliente->rut)->format()}}</td>
+                <td>{{ucfirst($cliente->razon_social)}}</td>
+                <td>{{ucfirst($cliente->nombre_fantasia)}}</td>
                 <td><a data-cliente="{{json_encode($cliente)}}" href="#" class="btn btn-info" data-toggle="modal" data-target="#mas_info">más info</a></td>
                 <td><a class="btn btn-primary" href="{{action('ClienteController@edit', $cliente->id)}}" ><i class="bi bi-pencil"></i></a></td>
                 <td>
@@ -147,8 +147,8 @@ $("#tabla-filtro").on("keyup change",function(){
 <script type="text/javascript"> 
 	$("body").on("click", "[data-target='#mas_info']", function(){
 		let cliente=$(this).data("cliente");
-		for (var key in cliente.entidad) {
-			$("#mas_info ."+key).text(cliente.entidad[key]);
+		for (var key in cliente) {
+			$("#mas_info ."+key).text(cliente[key]);
 		}
 	})
 

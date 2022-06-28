@@ -8,7 +8,7 @@ class Factura extends Model
 {
     protected $table = 'facturas';
     protected $fillable = [
-        'tipo_entidad_id',
+        'entidad_id',
 		'servicio_id',
 		'folio',
 		'tipo_dte',
@@ -36,14 +36,14 @@ class Factura extends Model
     public function servicio(){
     	return $this->belongsTo('App\Servicio','servicio_id');
     }
-    public function tipoentidad(){
-    	return $this->belongsTo('App\TipoEntidad','tipo_entidad_id');
+    public function entidad(){
+    	return $this->belongsTo('App\Entidad','entidad_id');
     }
+
     public function cliente(){
-        return $this->tipoentidad()->where("tipo", "cliente");
+        return $this->entidad()->where("id_tipo_entidad", "1");
     }   
     public function proveedor(){
-        return $this->tipoentidad()->where("tipo", "proveedor");
+        return $this->entidad()->where("id_tipo_entidad", "2");
     }  
-
 }

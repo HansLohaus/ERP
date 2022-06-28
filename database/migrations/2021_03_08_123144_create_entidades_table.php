@@ -15,6 +15,7 @@ class CreateEntidadesTable extends Migration
     {
         Schema::create('entidades', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('id_tipo_entidad')->unsigned()->index()->nullable();
             $table->string('rut', 15);
             $table->string('razon_social', 200);
             $table->string('nombre_fantasia', 50);
@@ -27,6 +28,10 @@ class CreateEntidadesTable extends Migration
             $table->tinyInteger('activo')->default(1);
             $table->timestamps();// created_at, updated_at
             $table->softDeletes();//deleted_at
+        });
+
+        Schema::table('entidades', function ($table) {
+            $table->foreign('id_tipo_entidad')->references('id')->on('tipo_entidades');
         });
     }
 

@@ -176,7 +176,7 @@
               @if($facturas_clientes->count())  
               @foreach($facturas_clientes as $factura)  
               <tr>
-                <td>{{$factura->cliente->entidad->nombre_fantasia}}</td>
+                <td>{{$factura->cliente->nombre_fantasia}}</td>
                 <td>{{$factura->servicio ? $factura->servicio->nombre : ''}}</td>
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>
@@ -232,7 +232,7 @@
               @if($facturas_proveedores->count())  
               @foreach($facturas_proveedores as $factura)  
               <tr>
-                <td>{{$factura->proveedor->entidad->nombre_fantasia}}</td>
+                <td>{{$factura->proveedor->nombre_fantasia}}</td>
                 <td>{{$factura->servicio ? $factura->servicio->nombre : ''}}</td>
                 <td>{{$factura->folio}}</td>
                 <td>{{$factura->tipo_dte}}</td>

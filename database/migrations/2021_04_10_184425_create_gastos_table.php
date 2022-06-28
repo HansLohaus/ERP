@@ -15,14 +15,16 @@ class CreateGastosTable extends Migration
     {
         Schema::create('gastos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('trabajador_id')->unsigned()->index();
+            $table->bigInteger('gastable_id')->unsigned()->index();
+            $table->string('gastable_type');
             $table->bigInteger('monto');
             $table->string('descrip', 100);
+            $table->string('path');
+            $table->boolean('reembolso');
+            $table->date('fecha_gasto');
             $table->timestamps();// created_at, updated_at
             $table->softDeletes();//deleted_at
-        });
-        Schema::table('gastos', function ($table) {
-            $table->foreign('trabajador_id')->references('id')->on('trabajadores')->onDelete('cascade');
+            $table->unique(['gastable_id','gastable_type']);
         });
     }
 
